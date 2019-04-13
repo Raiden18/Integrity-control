@@ -22,6 +22,7 @@ class InfoFragment : Fragment() {
             container,
             false
         )
+        binding.lifecycleOwner = this
         binding.viewModel = viewModel
         return binding.root
     }

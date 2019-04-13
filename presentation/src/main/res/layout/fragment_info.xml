@@ -184,7 +184,7 @@
         <TextView
                 android:id="@+id/info_was_changed_contacts"
                 style="@style/LibleInfoTextStyleField"
-                android:text="@string/yes"
+                android:text="@{viewModel.isChangedContacts ? @string/yes : @string/no}"
                 tools:text="Нет"
 
                 android:layout_marginTop="8dp"
@@ -238,6 +238,9 @@
                 android:layout_marginTop="8dp"
                 app:layout_constraintTop_toBottomOf="@+id/info_files_button"
                 app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginStart="8dp"/>
+                android:layout_marginStart="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="8dp"
+                />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
