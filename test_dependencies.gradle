@@ -1,3 +1,4 @@
 dependencies {
-    testImplementation 'junit:junit:4.12'
+    testImplementation "junit:junit:$junit_version"
+    testImplementation "org.mockito:mockito-core:$mockito_version"
 }

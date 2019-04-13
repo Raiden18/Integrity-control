@@ -1,9 +1,11 @@
 package com.raiden.karpukhinomgupsdiplom.info
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.raiden.domain.interactors.info.InfoInteractor
 
-class InfoViewModel() : ViewModel() {
+class InfoViewModel(private val interactor: InfoInteractor) : ViewModel() {
     val lastUpdate = MutableLiveData<String>().apply {
         value = 0.toString()
     }
@@ -27,5 +29,9 @@ class InfoViewModel() : ViewModel() {
     }
     var isChangedContacts = MutableLiveData<Boolean>().apply {
         value = false
+    }
+
+    init {
+        countUploadApps.postValue(interactor.getCountOfInstalledApps().toString())
     }
 }
