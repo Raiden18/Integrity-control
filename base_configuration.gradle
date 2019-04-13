@@ -2,6 +2,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply from: "$rootDir/kotlin_dependencies.gradle"
 apply from: "$rootDir/test_dependencies.gradle"
+apply from: "$rootDir/koin_core_dependencies.gradle"
 android {
     compileSdkVersion 28
 

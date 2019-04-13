@@ -1,6 +1,8 @@
 apply plugin: 'java-library'
+apply plugin: 'kotlin'
 apply from: "$rootDir/kotlin_dependencies.gradle"
 apply from: "$rootDir/test_dependencies.gradle"
+apply from: "$rootDir/koin_core_dependencies.gradle"
 
 sourceCompatibility = "7"
 targetCompatibility = "7"
