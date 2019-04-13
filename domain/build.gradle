@@ -1,8 +1,6 @@
 apply plugin: 'java-library'
-
-dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-}
+apply from: "$rootDir/kotlin_dependencies.gradle"
+apply from: "$rootDir/test_dependencies.gradle"
 
 sourceCompatibility = "7"
 targetCompatibility = "7"
