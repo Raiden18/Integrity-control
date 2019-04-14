@@ -16,15 +16,9 @@ class InfoViewModel(
     val countUpdatedApps = MutableLiveData<String>()
     val countDeletedApps = MutableLiveData<String>()
     val countUploadApps = MutableLiveData<String>()
-    val countChangedFiles = MutableLiveData<String>().apply {
-        value = 0.toString()
-    }
-    val countAddedFiles = MutableLiveData<String>().apply {
-        value = 0.toString()
-    }
-    val countDeletedFiles = MutableLiveData<String>().apply {
-        value = 0.toString()
-    }
+    val countChangedFiles = MutableLiveData<String>()
+    val countAddedFiles = MutableLiveData<String>()
+    val countDeletedFiles = MutableLiveData<String>()
     var isChangedContacts = MutableLiveData<Boolean>().apply {
         value = false
     }
@@ -32,14 +26,27 @@ class InfoViewModel(
     init {
         GlobalScope.launch {
             launch(IO) {
-                val updatedApps = interactor.getCountOfUpdatedApps()
-                val deletedApps = interactor.getCountOfDeletedApps()
-                val installedApps = interactor.getCountOfInstalledApps()
-                countUpdatedApps.postValue(updatedApps.toString())
-                countDeletedApps.postValue(deletedApps.toString())
-                countUploadApps.postValue(installedApps.toString())
+                //loadAndUpdateApps()
+                loadAndUpdateFiles()
             }
         }
+    }
 
+    private suspend fun loadAndUpdateApps(){
+        val updatedApps = interactor.getCountOfUpdatedApps()
+        val deletedApps = interactor.getCountOfDeletedApps()
+        val installedApps = interactor.getCountOfInstalledApps()
+        countUpdatedApps.postValue(updatedApps.toString())
+        countDeletedApps.postValue(deletedApps.toString())
+        countUploadApps.postValue(installedApps.toString())
+    }
+
+    private suspend fun loadAndUpdateFiles(){
+        val updatedFiles = interactor.getCountOfChangedFiles()
+        val deletedFiles = interactor.getCountOfDeletedFiles()
+        val addedFiles = interactor.getCountOfAddedFiles()
+        countChangedFiles.postValue(updatedFiles.toString())
+        countDeletedFiles.postValue(deletedFiles.toString())
+        countAddedFiles.postValue(addedFiles.toString())
     }
 }

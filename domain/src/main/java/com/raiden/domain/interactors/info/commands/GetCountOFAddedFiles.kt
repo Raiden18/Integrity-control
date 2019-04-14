@@ -7,7 +7,6 @@ internal class GetCountOFAddedFiles(private val gateway: FilesGateway) {
     private var countOfdeletedApps = 0
 
     suspend fun getCountOfAddedFiles(): Int {
-        countOfdeletedApps = 0
         val deviceFiles = gateway.getFilesFromDevice()
         val savedFiles = gateway.getSavedFiles().toList()
         if (!savedFiles.isEmpty()) {
@@ -17,14 +16,14 @@ internal class GetCountOFAddedFiles(private val gateway: FilesGateway) {
     }
 
     private fun countOfAddedFiles(savedFiles: Iterable<InternalFile>, filesFromDevice: Iterable<InternalFile>) {
-        savedFiles.forEach { savedFile ->
-            if (!filesFromDevice.isAdded(savedFile)) {
+        filesFromDevice.forEach { deviceFiles ->
+            if (!savedFiles.isAdded(deviceFiles)) {
                 countOfdeletedApps++
             }
         }
     }
 
-    private fun Iterable<InternalFile>.isAdded(savedFile: InternalFile): Boolean {
-        return find { it.fullName == savedFile.fullName } != null
+    private fun Iterable<InternalFile>.isAdded(deviceFiles: InternalFile): Boolean {
+        return find { it.fullName == deviceFiles.fullName } != null
     }
 }

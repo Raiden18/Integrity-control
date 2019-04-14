@@ -1,5 +1,6 @@
 package com.raiden.data.repositories.files
 
+import android.util.Log
 import com.raiden.data.datasources.database.dao.FilesDao
 import com.raiden.data.datasources.device.files.DeviceFiles
 import com.raiden.domain.gateways.FilesGateway
@@ -20,6 +21,7 @@ internal class FilesRepository(
 
     private suspend fun saveInDataBase(deviceFiles: Iterable<InternalFile>) {
         deviceFiles.forEach {
+            Log.i("HUI", it.fullName)
             filesDao.insert(it.convertToEntity())
         }
     }

@@ -5,6 +5,7 @@ import com.raiden.domain.models.Application
 
 internal class GetCountOfInstalledApp(private val gateway: ApplicationsGateway) {
     private var countOfUpdatedApps = 0
+
     suspend fun getCountOfDeletedApps(): Int {
         val installedApps = gateway.getAppsFromDevice().toList()
         val savedApps = gateway.getSavedApplications()
@@ -16,7 +17,7 @@ internal class GetCountOfInstalledApp(private val gateway: ApplicationsGateway) 
 
     private fun findInstalledApps(installedApps: Iterable<Application>, savedApps: Iterable<Application>) {
         installedApps.forEach { installedApp ->
-            if (!savedApps.isUninstall(installedApp)){
+            if (!savedApps.isUninstall(installedApp)) {
                 countOfUpdatedApps++
             }
         }
