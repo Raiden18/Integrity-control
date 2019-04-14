@@ -11,7 +11,7 @@ import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
 
-class InfoInteractorCountOfInstalledApps {
+internal class InfoInteractorCountOfInstalledApps {
     lateinit var interactor: InfoInteractor
     lateinit var gateway: ApplicationsGateway;
 

@@ -3,7 +3,7 @@ package com.raiden.domain.interactors.info.commands
 import com.raiden.domain.gateways.ApplicationsGateway
 import com.raiden.domain.models.Application
 
-class GetUpdatedAppsCommand(private val gateway: ApplicationsGateway) {
+internal class GetUpdatedAppsCommand(private val gateway: ApplicationsGateway) {
     private var countOfUpdatedApps = 0
 
     suspend fun getCountOfUpdatedApps(): Int {

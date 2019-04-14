@@ -11,7 +11,7 @@ import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Test
 
-class GetCountOfAddedFiles {
+internal class InfoInteractorCountOfAddedFiles {
     lateinit var interactor: InfoInteractor
     lateinit var filesGateway: FilesGateway;
 

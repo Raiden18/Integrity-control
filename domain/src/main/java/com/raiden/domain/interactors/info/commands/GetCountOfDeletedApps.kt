@@ -3,7 +3,7 @@ package com.raiden.domain.interactors.info.commands
 import com.raiden.domain.gateways.ApplicationsGateway
 import com.raiden.domain.models.Application
 
-class GetCountOfDeletedApps(private val gateway: ApplicationsGateway) {
+internal class GetCountOfDeletedApps(private val gateway: ApplicationsGateway) {
     private var countOfdeletedApps = 0
 
     suspend fun getCountOfDeletedApps(): Int {

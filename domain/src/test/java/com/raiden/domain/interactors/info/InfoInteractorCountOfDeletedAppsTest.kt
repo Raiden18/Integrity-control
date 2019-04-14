@@ -11,7 +11,7 @@ import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Test
 
-class InfoInteractorCountOfDeletedAppsTest {
+internal class InfoInteractorCountOfDeletedAppsTest {
     lateinit var interactor: InfoInteractor
     lateinit var gateway: ApplicationsGateway;
 

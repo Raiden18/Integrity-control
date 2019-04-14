@@ -2,10 +2,7 @@ package com.raiden.domain.interactors.info
 
 import com.raiden.domain.gateways.ApplicationsGateway
 import com.raiden.domain.gateways.FilesGateway
-import com.raiden.domain.interactors.info.commands.GetCountOFAddedFiles
-import com.raiden.domain.interactors.info.commands.GetCountOfDeletedApps
-import com.raiden.domain.interactors.info.commands.GetCountOfInstalledApp
-import com.raiden.domain.interactors.info.commands.GetUpdatedAppsCommand
+import com.raiden.domain.interactors.info.commands.*
 
 internal class InfoInteractorImpl(private val applicationsGateway: ApplicationsGateway,
                                   private val filesGateway: FilesGateway) : InfoInteractor {
@@ -36,7 +33,8 @@ internal class InfoInteractorImpl(private val applicationsGateway: ApplicationsG
     }
 
     override suspend fun getCountOfDeletedFiles(): Int {
-        return 0
+        val commandGetCountOfDeletedFiles = GetCountOfDeletedFiles(filesGateway)
+        return commandGetCountOfDeletedFiles.getCountOfDeletedFiles()
     }
 
     override suspend fun isChangedContacts(): Boolean {
