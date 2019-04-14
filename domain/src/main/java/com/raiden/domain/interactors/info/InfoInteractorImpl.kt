@@ -2,23 +2,24 @@ package com.raiden.domain.interactors.info
 
 import com.raiden.domain.gateways.ApplicationsGateway
 import com.raiden.domain.interactors.info.commands.GetCountOfDeletedApps
+import com.raiden.domain.interactors.info.commands.GetCountOfInstalledApp
 import com.raiden.domain.interactors.info.commands.GetUpdatedAppsCommand
-import com.raiden.domain.models.Application
 
-internal class InfoInteractorImpl(gateway: ApplicationsGateway) : InfoInteractor {
-    private val commandGetUpdatedApps = GetUpdatedAppsCommand(gateway)
-    private val commandGetCountOfDeletedApps = GetCountOfDeletedApps(gateway)
+internal class InfoInteractorImpl(private val gateway: ApplicationsGateway) : InfoInteractor {
 
     override suspend fun getCountOfUpdatedApps(): Int {
+        val commandGetUpdatedApps = GetUpdatedAppsCommand(gateway)
         return commandGetUpdatedApps.getCountOfUpdatedApps()
     }
 
     override suspend fun getCountOfDeletedApps(): Int {
+        val commandGetCountOfDeletedApps = GetCountOfDeletedApps(gateway)
         return commandGetCountOfDeletedApps.getCountOfDeletedApps()
     }
 
     override suspend fun getCountOfInstalledApps(): Int {
-        return 1
+        val commandGetCountOfInstalledApp = GetCountOfInstalledApp(gateway)
+        return commandGetCountOfInstalledApp.getCountOfDeletedApps()
     }
 
     override suspend fun getCountOfChangedFiles(): Int {
