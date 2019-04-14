@@ -3,7 +3,7 @@ package com.raiden.data.repositories
 import com.nhaarman.mockitokotlin2.*
 import com.raiden.data.datasources.database.dao.ApplicationsDao
 import com.raiden.data.datasources.database.entities.ApplicationEntity
-import com.raiden.data.datasources.device.DeviceApplications
+import com.raiden.data.datasources.device.applications.DeviceApplications
 import com.raiden.data.repositories.converters.convertToDomainApps
 import com.raiden.domain.gateways.ApplicationsGateway
 import com.raiden.domain.models.Application

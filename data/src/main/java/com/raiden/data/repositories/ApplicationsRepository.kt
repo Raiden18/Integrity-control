@@ -1,8 +1,7 @@
 package com.raiden.data.repositories
 
-import android.util.Log
 import com.raiden.data.datasources.database.dao.ApplicationsDao
-import com.raiden.data.datasources.device.DeviceApplications
+import com.raiden.data.datasources.device.applications.DeviceApplications
 import com.raiden.data.repositories.converters.convertToDomainApps
 import com.raiden.data.repositories.converters.convertToEntityApplication
 import com.raiden.domain.gateways.ApplicationsGateway

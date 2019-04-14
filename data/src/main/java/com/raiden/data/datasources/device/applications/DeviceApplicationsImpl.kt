@@ -1,11 +1,11 @@
-package com.raiden.data.datasources.device
+package com.raiden.data.datasources.device.applications
 
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
-import android.util.Log
 import com.raiden.domain.models.Application
 
-internal class DeviceApplicationsImpl(private val packageManager: PackageManager) : DeviceApplications {
+internal class DeviceApplicationsImpl(private val packageManager: PackageManager) :
+    DeviceApplications {
     private companion object {
         const val ALL_APPS = 0
     }
