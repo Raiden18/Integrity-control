@@ -1,4 +1,4 @@
-package com.raiden.data.repositories.converters
+package com.raiden.data.repositories.applications
 
 import com.raiden.data.datasources.database.entities.ApplicationEntity
 import com.raiden.domain.models.Application

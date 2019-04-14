@@ -1,12 +1,14 @@
 package com.raiden.data.repositories.converters
 
-import com.nhaarman.mockitokotlin2.verify
 import com.raiden.data.datasources.database.entities.ApplicationEntity
+import com.raiden.data.repositories.applications.convertToDomainApplication
+import com.raiden.data.repositories.applications.convertToDomainApps
+import com.raiden.data.repositories.applications.convertToEntites
+import com.raiden.data.repositories.applications.convertToEntityApplication
 import com.raiden.domain.models.Application
 import junitparams.JUnitParamsRunner
 import junitparams.Parameters
 import org.junit.Assert.*
-import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 

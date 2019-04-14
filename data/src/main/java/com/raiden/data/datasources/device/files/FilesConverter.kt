@@ -1,4 +1,4 @@
-package com.raiden.data.datasources.device.converters
+package com.raiden.data.datasources.device.files
 
 import com.raiden.domain.models.InternalFile
 import java.io.File

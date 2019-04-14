@@ -1,9 +1,7 @@
-package com.raiden.data.repositories
+package com.raiden.data.repositories.applications
 
 import com.raiden.data.datasources.database.dao.ApplicationsDao
 import com.raiden.data.datasources.device.applications.DeviceApplications
-import com.raiden.data.repositories.converters.convertToDomainApps
-import com.raiden.data.repositories.converters.convertToEntityApplication
 import com.raiden.domain.gateways.ApplicationsGateway
 import com.raiden.domain.models.Application
 

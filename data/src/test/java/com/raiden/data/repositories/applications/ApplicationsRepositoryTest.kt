@@ -1,10 +1,9 @@
-package com.raiden.data.repositories
+package com.raiden.data.repositories.applications
 
 import com.nhaarman.mockitokotlin2.*
 import com.raiden.data.datasources.database.dao.ApplicationsDao
 import com.raiden.data.datasources.database.entities.ApplicationEntity
 import com.raiden.data.datasources.device.applications.DeviceApplications
-import com.raiden.data.repositories.converters.convertToDomainApps
 import com.raiden.domain.gateways.ApplicationsGateway
 import com.raiden.domain.models.Application
 import junit.framework.Assert.assertEquals
@@ -80,15 +79,5 @@ internal class ApplicationsRepositoryTest {
             val appsFromDeviceRep = gateway.getAppsFromDevice()
             assertEquals(appsFromDevice, appsFromDeviceRep)
         }
-    }
-
-    @Test
-    fun `Should load app to db is one is empty`() = runBlocking {
-        `when`(appsDao.getApplications()).thenReturn(
-            listOf()
-        )
-        gateway.saveApplicationsFromDevice()
-        verify(appsDao).insert(any())
-
     }
 }

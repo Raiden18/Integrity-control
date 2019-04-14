@@ -1,5 +1,7 @@
 package com.raiden.data.datasources.device.converters
 
+import com.raiden.data.datasources.device.files.convertToDomainFile
+import com.raiden.data.datasources.device.files.convertToDomainFiles
 import com.raiden.domain.models.InternalFile
 import org.junit.Assert.assertEquals
 import org.junit.Test
