@@ -26,7 +26,7 @@ class InfoViewModel(
     init {
         GlobalScope.launch {
             launch(IO) {
-                //loadAndUpdateApps()
+                loadAndUpdateApps()
                 loadAndUpdateFiles()
             }
         }
