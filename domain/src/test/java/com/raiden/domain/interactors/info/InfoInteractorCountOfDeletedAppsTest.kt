@@ -4,6 +4,7 @@ import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.stub
 import com.raiden.domain.gateways.ApplicationsGateway
+import com.raiden.domain.gateways.FilesGateway
 import com.raiden.domain.models.Application
 import junit.framework.Assert.assertEquals
 import kotlinx.coroutines.runBlocking
@@ -17,7 +18,8 @@ class InfoInteractorCountOfDeletedAppsTest {
     @Before
     fun setUp() {
         gateway = mock()
-        interactor = InfoInteractorImpl(gateway)
+        val fileGateway: FilesGateway = mock()
+        interactor = InfoInteractorImpl(gateway, fileGateway)
     }
 
     @Test
