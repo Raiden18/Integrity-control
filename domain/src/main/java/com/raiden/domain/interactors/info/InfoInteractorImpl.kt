@@ -3,6 +3,7 @@ package com.raiden.domain.interactors.info
 import com.raiden.domain.gateways.ApplicationsGateway
 
 internal class InfoInteractorImpl(private val gateway: ApplicationsGateway) : InfoInteractor {
+
     override fun getCountOfUpdatedApps(): Int {
         return 0
     }
@@ -11,9 +12,9 @@ internal class InfoInteractorImpl(private val gateway: ApplicationsGateway) : In
         return 0
     }
 
-    //TODO: JUST CHECK IT'S WORK
+
     override fun getCountOfInstalledApps(): Int {
-        return gateway.getApplications().toList().size
+        return 1
     }
 
     override fun getCountOfChangedFiles(): Int {

@@ -1,4 +1,4 @@
-package com.raiden.data.sources.device
+package com.raiden.data.datasources.device
 
 import com.raiden.domain.models.Application
 
