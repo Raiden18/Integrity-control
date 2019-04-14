@@ -1,11 +1,11 @@
 package com.raiden.domain.interactors.info
 
 interface InfoInteractor {
-    fun getCountOfUpdatedApps(): Int
-    fun getCountOfDeletedApps(): Int
-    fun getCountOfInstalledApps(): Int
-    fun getCountOfChangedFiles(): Int
-    fun getCountOfAddedFiles(): Int
-    fun getCountOfDeletedFiles(): Int
-    fun isChangedContacts(): Boolean
+    suspend fun getCountOfUpdatedApps(): Int
+    suspend fun getCountOfDeletedApps(): Int
+    suspend fun getCountOfInstalledApps(): Int
+    suspend fun getCountOfChangedFiles(): Int
+    suspend fun getCountOfAddedFiles(): Int
+    suspend fun getCountOfDeletedFiles(): Int
+    suspend fun isChangedContacts(): Boolean
 }
