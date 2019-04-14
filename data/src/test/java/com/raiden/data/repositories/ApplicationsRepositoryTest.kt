@@ -1,41 +1,39 @@
 package com.raiden.data.repositories
 
-import com.nhaarman.mockitokotlin2.any
-import com.nhaarman.mockitokotlin2.times
-import com.nhaarman.mockitokotlin2.verify
+import com.nhaarman.mockitokotlin2.*
 import com.raiden.data.datasources.database.dao.ApplicationsDao
 import com.raiden.data.datasources.database.entities.ApplicationEntity
 import com.raiden.data.datasources.device.DeviceApplications
+import com.raiden.data.repositories.converters.convertToDomainApps
 import com.raiden.domain.gateways.ApplicationsGateway
 import com.raiden.domain.models.Application
 import junit.framework.Assert.assertEquals
 import junitparams.JUnitParamsRunner
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.mockito.Mockito.*
+import org.mockito.Mockito.`when`
+import org.mockito.Mockito.mock
 
 
 @RunWith(JUnitParamsRunner::class)
 internal class ApplicationsRepositoryTest {
     private lateinit var gateway: ApplicationsGateway
     private lateinit var device: DeviceApplications
-    private lateinit var db: ApplicationsDao
+    private lateinit var appsDao: ApplicationsDao
 
     @Before
     fun getApplications() {
         device = mock(DeviceApplications::class.java)
-        db = mock(ApplicationsDao::class.java)
-        gateway = ApplicationsRepository(device, db)
+        appsDao = mock(ApplicationsDao::class.java)
+        gateway = ApplicationsRepository(device, appsDao)
     }
 
     @Test
-    fun `Should get saved applications`(){
-        GlobalScope.launch {
-            `when`(db.getApplications()).thenReturn(
+    fun `Should get saved applications`() = runBlocking {
+        appsDao.stub {
+            onBlocking { getApplications() }.doReturn(
                 arrayListOf(
                     ApplicationEntity("123", "123"),
                     ApplicationEntity("321", "321"),
@@ -43,10 +41,10 @@ internal class ApplicationsRepositoryTest {
                     ApplicationEntity("32asssaq1", "3erghrh21")
                 )
             )
-            val savedApps = gateway.getSavedApplications()
-            val domainApps = db.getApplications()
-            assertEquals(savedApps, domainApps)
         }
+        val savedApps = gateway.getSavedApplications()
+        val domainApps = appsDao.getApplications().convertToDomainApps()
+        assertEquals(savedApps, domainApps)
     }
 
     @Test
@@ -63,12 +61,12 @@ internal class ApplicationsRepositoryTest {
             )
             gateway.saveApplicationsFromDevice()
             val size = device.getApplications().toList().size
-            verify(db, times(size)).insert(any())
+            verify(appsDao, times(size)).insert(any())
         }
     }
 
     @Test
-    fun `Should get all apps from device`(){
+    fun `Should get all apps from device`() {
         runBlocking {
             `when`(device.getApplications()).thenReturn(
                 arrayListOf(
@@ -82,5 +80,15 @@ internal class ApplicationsRepositoryTest {
             val appsFromDeviceRep = gateway.getAppsFromDevice()
             assertEquals(appsFromDevice, appsFromDeviceRep)
         }
+    }
+
+    @Test
+    fun `Should load app to db is one is empty`() = runBlocking {
+        `when`(appsDao.getApplications()).thenReturn(
+            listOf()
+        )
+        gateway.saveApplicationsFromDevice()
+        verify(appsDao).insert(any())
+
     }
 }

@@ -2,6 +2,7 @@ package com.raiden.data.datasources.device
 
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
+import android.util.Log
 import com.raiden.domain.models.Application
 
 internal class DeviceApplicationsImpl(private val packageManager: PackageManager) : DeviceApplications {

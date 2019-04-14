@@ -48,4 +48,21 @@ internal class EntityConverterKtTest{
 
         assertEquals(domainApps, convertedAPps)
     }
+
+    @Test
+    fun `Should convert list of apps from domain layer to app entity`(){
+        val entityApps = listOf(ApplicationEntity("instagram", "228"),
+            ApplicationEntity("vk", "228"),
+            ApplicationEntity("ok", "228"),
+            ApplicationEntity("google", "228"))
+
+        val domainApps = listOf(Application("instagram", "228"),
+            Application("vk", "228"),
+            Application("ok", "228"),
+            Application("google", "228"))
+
+        val convertedAPps = domainApps.convertToEntites()
+        assertEquals(entityApps, convertedAPps)
+
+    }
 }

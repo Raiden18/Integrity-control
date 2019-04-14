@@ -11,6 +11,10 @@ internal fun Application.convertToEntityApplication(): ApplicationEntity {
     return ApplicationEntity(name, versionName)
 }
 
-internal fun List<ApplicationEntity>.convertToDomainApps(): List<Application> {
+internal fun Iterable<ApplicationEntity>.convertToDomainApps(): Iterable<Application> {
     return map { it.convertToDomainApplication() }
+}
+
+internal fun Iterable<Application>.convertToEntites(): Iterable<ApplicationEntity> {
+    return map { it.convertToEntityApplication() }
 }

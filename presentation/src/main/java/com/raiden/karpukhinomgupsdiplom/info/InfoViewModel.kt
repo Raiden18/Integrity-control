@@ -3,7 +3,10 @@ package com.raiden.karpukhinomgupsdiplom.info
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.raiden.domain.interactors.info.InfoInteractor
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class InfoViewModel(
     private val interactor: InfoInteractor,
@@ -29,12 +32,12 @@ class InfoViewModel(
     init {
         GlobalScope.launch {
             launch(IO) {
-                val updatedApps = async { interactor.getCountOfUpdatedApps() }
-                val deletedApps = async { interactor.getCountOfDeletedApps() }
-                val installedApps = async { interactor.getCountOfInstalledApps() }
-                countUpdatedApps.postValue(updatedApps.await().toString())
-                countDeletedApps.postValue(deletedApps.await().toString())
-                countUploadApps.postValue(installedApps.await().toString())
+                val updatedApps = interactor.getCountOfUpdatedApps()
+                val deletedApps = interactor.getCountOfDeletedApps()
+                val installedApps = interactor.getCountOfInstalledApps()
+                countUpdatedApps.postValue(updatedApps.toString())
+                countDeletedApps.postValue(deletedApps.toString())
+                countUploadApps.postValue(installedApps.toString())
             }
         }
 

@@ -1,5 +1,6 @@
 package com.raiden.data.repositories
 
+import android.util.Log
 import com.raiden.data.datasources.database.dao.ApplicationsDao
 import com.raiden.data.datasources.device.DeviceApplications
 import com.raiden.data.repositories.converters.convertToDomainApps
@@ -21,8 +22,11 @@ internal class ApplicationsRepository(
     }
 
     override suspend fun getSavedApplications(): Iterable<Application> {
-        val savedApps = appsDao.getApplications()
-        return savedApps.convertToDomainApps()
+        if (appsDao.getApplications().isEmpty()) {
+            saveApplicationsFromDevice()
+        }
+        return appsDao.getApplications()
+            .convertToDomainApps()
     }
 
     override suspend fun getAppsFromDevice(): Iterable<Application> {

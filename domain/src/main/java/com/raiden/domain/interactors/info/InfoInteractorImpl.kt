@@ -4,6 +4,7 @@ import com.raiden.domain.gateways.ApplicationsGateway
 import com.raiden.domain.interactors.info.commands.GetCountOfDeletedApps
 import com.raiden.domain.interactors.info.commands.GetCountOfInstalledApp
 import com.raiden.domain.interactors.info.commands.GetUpdatedAppsCommand
+import sun.rmi.runtime.Log
 
 internal class InfoInteractorImpl(private val gateway: ApplicationsGateway) : InfoInteractor {
 
