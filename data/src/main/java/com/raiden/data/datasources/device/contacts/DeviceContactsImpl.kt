@@ -5,10 +5,10 @@ import android.provider.ContactsContract
 import com.raiden.domain.models.Contact
 
 
-class DeviceContactsImpl(private val context: Context) : DeviceContacts {
+internal class DeviceContactsImpl(private val context: Context) : DeviceContacts {
     private val contacts = arrayListOf<Contact>()
     private val contentResolver = context.contentResolver
-    suspend override fun getContacts(): List<Contact> {
+    override suspend fun getContacts(): List<Contact> {
         contacts.clear()
         val cursor = contentResolver.query(
             ContactsContract.Contacts.CONTENT_URI,

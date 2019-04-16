@@ -7,6 +7,7 @@ import com.raiden.data.datasources.database.AppDatabase
 import com.raiden.data.datasources.device.applications.DeviceApplications
 import com.raiden.data.datasources.device.applications.DeviceApplicationsImpl
 import com.raiden.data.datasources.device.contacts.DeviceContacts
+import com.raiden.data.datasources.device.contacts.DeviceContactsImpl
 import com.raiden.data.datasources.device.files.DeviceFiles
 import com.raiden.data.datasources.device.files.DeviceFilesImpl
 import com.raiden.data.repositories.applications.ApplicationsRepository
@@ -39,5 +40,5 @@ val data = module {
 
     singleBy<DeviceApplications, DeviceApplicationsImpl>()
     singleBy<DeviceFiles, DeviceFilesImpl>()
-    singleBy<DeviceContacts, DeviceContacts>()
+    singleBy<DeviceContacts, DeviceContactsImpl>()
 }
