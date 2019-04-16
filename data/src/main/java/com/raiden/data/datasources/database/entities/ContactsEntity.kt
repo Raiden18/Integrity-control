@@ -11,6 +11,6 @@ data class ContactsEntity(
     val name: String,
 
     @PrimaryKey
-    @ColumnInfo(name="phone_number")
-    val versionName: String
+    @ColumnInfo(name="mobile_number")
+    val mobileNumber: String
 )

@@ -8,7 +8,8 @@ import com.raiden.domain.models.Contact
 internal class DeviceContactsImpl(private val context: Context) : DeviceContacts {
     private val contacts = arrayListOf<Contact>()
     private val contentResolver = context.contentResolver
-    override suspend fun getContacts(): List<Contact> {
+
+    override suspend fun getContacts(): Iterable<Contact> {
         contacts.clear()
         val cursor = contentResolver.query(
             ContactsContract.Contacts.CONTENT_URI,
@@ -32,7 +33,7 @@ internal class DeviceContactsImpl(private val context: Context) : DeviceContacts
                     val name = cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME))
                     val mobileNumber =
                         cursorInfo.getString(cursorInfo.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER))
-                    val contact = Contact(id, name, mobileNumber)
+                    val contact = Contact(name, mobileNumber)
                     contacts.add(contact)
                 }
                 cursorInfo.close()
