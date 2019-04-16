@@ -19,20 +19,23 @@ class InfoViewModel(
     val countChangedFiles = MutableLiveData<String>()
     val countAddedFiles = MutableLiveData<String>()
     val countDeletedFiles = MutableLiveData<String>()
-    var isChangedContacts = MutableLiveData<Boolean>().apply {
-        value = false
-    }
+    var isChangedContacts = MutableLiveData<Boolean>()
 
     init {
         GlobalScope.launch {
             launch(IO) {
-                loadAndUpdateApps()
-                loadAndUpdateFiles()
+                loadDataAndUpdateViews()
             }
         }
     }
 
-    private suspend fun loadAndUpdateApps(){
+    private suspend fun loadDataAndUpdateViews() {
+        loadAndUpdateApps()
+        loadAndUpdateFiles()
+        loadAndUpdateContacts()
+    }
+
+    private suspend fun loadAndUpdateApps() {
         val updatedApps = interactor.getCountOfUpdatedApps()
         val deletedApps = interactor.getCountOfDeletedApps()
         val installedApps = interactor.getCountOfInstalledApps()
@@ -41,12 +44,17 @@ class InfoViewModel(
         countUploadApps.postValue(installedApps.toString())
     }
 
-    private suspend fun loadAndUpdateFiles(){
+    private suspend fun loadAndUpdateFiles() {
         val updatedFiles = interactor.getCountOfChangedFiles()
         val deletedFiles = interactor.getCountOfDeletedFiles()
         val addedFiles = interactor.getCountOfAddedFiles()
         countChangedFiles.postValue(updatedFiles.toString())
         countDeletedFiles.postValue(deletedFiles.toString())
         countAddedFiles.postValue(addedFiles.toString())
+    }
+
+    private suspend fun loadAndUpdateContacts() {
+        val isChangedContacts = interactor.isChangedContacts()
+        this.isChangedContacts.postValue(isChangedContacts)
     }
 }

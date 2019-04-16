@@ -11,8 +11,10 @@ import com.raiden.data.datasources.device.contacts.DeviceContactsImpl
 import com.raiden.data.datasources.device.files.DeviceFiles
 import com.raiden.data.datasources.device.files.DeviceFilesImpl
 import com.raiden.data.repositories.applications.ApplicationsRepository
+import com.raiden.data.repositories.contacts.ContactsRepository
 import com.raiden.data.repositories.files.FilesRepository
 import com.raiden.domain.gateways.ApplicationsGateway
+import com.raiden.domain.gateways.ContactsGateway
 import com.raiden.domain.gateways.FilesGateway
 import org.koin.android.ext.koin.androidApplication
 import org.koin.dsl.module.module
@@ -33,10 +35,11 @@ val data = module {
     single { Room.databaseBuilder(androidApplication(), AppDatabase::class.java, DB_NAME).build() }
     single { get<AppDatabase>().getApplicationsDao() }
     single { get<AppDatabase>().getFilesDao() }
-    single { get<AppDatabase>().getFilesDao() }
+    single { get<AppDatabase>().getContactsDao() }
 
     singleBy<ApplicationsGateway, ApplicationsRepository>()
     singleBy<FilesGateway, FilesRepository>()
+    singleBy<ContactsGateway, ContactsRepository>()
 
     singleBy<DeviceApplications, DeviceApplicationsImpl>()
     singleBy<DeviceFiles, DeviceFilesImpl>()
