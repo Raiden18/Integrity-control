@@ -8,7 +8,7 @@ import com.raiden.domain.models.Contact
 class DeviceContactsImpl(private val context: Context) : DeviceContacts {
     private val contacts = arrayListOf<Contact>()
     private val contentResolver = context.contentResolver
-    override fun getContacts(): List<Contact> {
+    suspend override fun getContacts(): List<Contact> {
         contacts.clear()
         val cursor = contentResolver.query(
             ContactsContract.Contacts.CONTENT_URI,

@@ -31,7 +31,8 @@ val data = module {
 
     single { Room.databaseBuilder(androidApplication(), AppDatabase::class.java, DB_NAME).build() }
     single { get<AppDatabase>().getApplicationsDao() }
-    single { get<AppDatabase>().getFilessDao() }
+    single { get<AppDatabase>().getFilesDao() }
+    single { get<AppDatabase>().getFilesDao() }
 
     singleBy<ApplicationsGateway, ApplicationsRepository>()
     singleBy<FilesGateway, FilesRepository>()
