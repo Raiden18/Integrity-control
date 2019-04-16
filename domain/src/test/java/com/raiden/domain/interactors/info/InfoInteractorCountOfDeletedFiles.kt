@@ -4,6 +4,7 @@ import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.stub
 import com.raiden.domain.gateways.ApplicationsGateway
+import com.raiden.domain.gateways.ContactsGateway
 import com.raiden.domain.gateways.FilesGateway
 import com.raiden.domain.models.InternalFile
 import kotlinx.coroutines.runBlocking
@@ -19,7 +20,8 @@ internal class InfoInteractorCountOfDeletedFiles {
     fun setUp() {
         filesGateway = mock()
         val appsGateway: ApplicationsGateway = mock()
-        interactor = InfoInteractorImpl(appsGateway, filesGateway)
+        val contactsGateway: ContactsGateway = mock()
+        interactor = InfoInteractorImpl(appsGateway, filesGateway, contactsGateway)
     }
 
     @Test

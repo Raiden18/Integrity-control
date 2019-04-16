@@ -1,11 +1,15 @@
 package com.raiden.domain.interactors.info
 
 import com.raiden.domain.gateways.ApplicationsGateway
+import com.raiden.domain.gateways.ContactsGateway
 import com.raiden.domain.gateways.FilesGateway
 import com.raiden.domain.interactors.info.commands.*
 
-internal class InfoInteractorImpl(private val applicationsGateway: ApplicationsGateway,
-                                  private val filesGateway: FilesGateway) : InfoInteractor {
+internal class InfoInteractorImpl(
+    private val applicationsGateway: ApplicationsGateway,
+    private val filesGateway: FilesGateway,
+    private val contactsGateway: ContactsGateway
+) : InfoInteractor {
 
     override suspend fun getCountOfUpdatedApps(): Int {
         val commandGetUpdatedApps = GetUpdatedAppsCommand(applicationsGateway)
@@ -38,6 +42,7 @@ internal class InfoInteractorImpl(private val applicationsGateway: ApplicationsG
     }
 
     override suspend fun isChangedContacts(): Boolean {
-        return false
+        val isChangedContactsCommand = IsChangedContactsCommand(contactsGateway)
+        return isChangedContactsCommand.isChange()
     }
 }
