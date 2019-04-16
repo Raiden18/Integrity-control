@@ -6,6 +6,7 @@ import com.raiden.data.DataBase.DB_NAME
 import com.raiden.data.datasources.database.AppDatabase
 import com.raiden.data.datasources.device.applications.DeviceApplications
 import com.raiden.data.datasources.device.applications.DeviceApplicationsImpl
+import com.raiden.data.datasources.device.contacts.DeviceContacts
 import com.raiden.data.datasources.device.files.DeviceFiles
 import com.raiden.data.datasources.device.files.DeviceFilesImpl
 import com.raiden.data.repositories.applications.ApplicationsRepository
@@ -21,6 +22,7 @@ object DataBase {
     const val DB_NAME = "diplom.db";
     const val APPS_TABLE_NAME = "apps"
     const val FILES_TABLE_NAME = "files"
+    const val CONTACTS_TABLE_NAME = "contactss"
 }
 
 val data = module {
@@ -36,4 +38,5 @@ val data = module {
 
     singleBy<DeviceApplications, DeviceApplicationsImpl>()
     singleBy<DeviceFiles, DeviceFilesImpl>()
+    singleBy<DeviceContacts, DeviceContacts>()
 }
