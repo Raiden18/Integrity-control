@@ -73,16 +73,17 @@ class InfoInteractorChangingContacts {
 
     @Test
     fun `Should return false if contact from db and device equal`() = runBlocking {
-        val contacts = listOf(
-            Contact("123", "122"),
-            Contact("asd", "zxc"),
-            Contact("wqdas", "124thryhgdfd")
-        )
         contactsGateway.stub {
-            onBlocking { getSavedContacts() }.doReturn(contacts)
+            onBlocking { getSavedContacts() }.doReturn(listOf(
+                Contact("123", "122"),
+                Contact("asd", "zxc"),
+                Contact("wqdas", "124thryhgdfd")))
         }
         contactsGateway.stub {
-            onBlocking { getContactsFromDevice() }.doReturn(contacts)
+            onBlocking { getContactsFromDevice() }.doReturn(listOf(
+                Contact("123", "122"),
+                Contact("asd", "zxc"),
+                Contact("wqdas", "124thryhgdfd")))
         }
 
         assertFalse(interactor.isChangedContacts())

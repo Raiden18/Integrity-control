@@ -1,5 +1,6 @@
 package com.raiden.karpukhinomgupsdiplom.info
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.raiden.domain.interactors.info.InfoInteractor
@@ -7,9 +8,7 @@ import kotlinx.coroutines.*
 
 class InfoViewModel(
     private val interactor: InfoInteractor,
-    private val IO: CoroutineDispatcher = Dispatchers.Main,
-    private val default: CoroutineDispatcher = Dispatchers.Default
-) : ViewModel() {
+    private val IO: CoroutineDispatcher = Dispatchers.Main) : ViewModel() {
     val lastUpdate = MutableLiveData<String>()
     val countUpdatedApps = MutableLiveData<String>()
     val countDeletedApps = MutableLiveData<String>()
@@ -21,7 +20,8 @@ class InfoViewModel(
 
     init {
         GlobalScope.launch(IO) {
-            val isChangedContact = async { interactor.isChangedContacts() }
+            val isChangedContact = interactor.isChangedContacts()
+            Log.i("HUI", isChangedContact.toString())
             val updatedApps = async { interactor.getCountOfUpdatedApps() }
             val updatedFiles = async { interactor.getCountOfChangedFiles() }
             countUpdatedApps.postValue(updatedApps.await().toString())
@@ -34,7 +34,7 @@ class InfoViewModel(
             val addedFiles = async { interactor.getCountOfAddedFiles() }
             countUploadApps.postValue(installedApps.await().toString())
             countAddedFiles.postValue(addedFiles.await().toString())
-            isChangedContacts.postValue(isChangedContact.await())
+            isChangedContacts.postValue(isChangedContact)
         }
     }
 }
