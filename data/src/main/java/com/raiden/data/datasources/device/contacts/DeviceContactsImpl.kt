@@ -1,18 +1,29 @@
 package com.raiden.data.datasources.device.contacts
 
+import android.Manifest
 import android.content.Context
+import android.content.pm.PackageManager
+import android.database.Cursor
 import android.provider.ContactsContract
+import android.util.Log
+import androidx.core.content.ContextCompat
 import com.raiden.domain.models.Contact
 
 
-internal class DeviceContactsImpl(context: Context) : DeviceContacts {
+internal class DeviceContactsImpl(private val context: Context) : DeviceContacts {
     private val contacts = arrayListOf<Contact>()
-    private val contentResolver = context.contentResolver
 
-    //TODO: fix getting contacts
     override suspend fun getContacts(): Iterable<Contact> {
         contacts.clear()
-        val cursor = contentResolver.query(
+        val checkerPermission = ContextCompat.checkSelfPermission(context, Manifest.permission.READ_CONTACTS)
+        if (checkerPermission == PackageManager.PERMISSION_GRANTED) {
+            loadContacts()
+        }
+        return contacts
+    }
+
+    private fun loadContacts() {
+        val cursor = context.contentResolver.query(
             ContactsContract.Contacts.CONTENT_URI,
             null,
             null,
@@ -20,27 +31,41 @@ internal class DeviceContactsImpl(context: Context) : DeviceContacts {
             null
         )!!
         if (cursor.count > 0) {
-            val id = cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts._ID))
-            val hasNumber = cursor.getInt(cursor.getColumnIndex(ContactsContract.Contacts.HAS_PHONE_NUMBER))
-            if (hasNumber > 0) {
-                val cursorInfo = contentResolver.query(
-                    ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
-                    null,
-                    ContactsContract.CommonDataKinds.Phone.CONTACT_ID + " = ?",
-                    arrayOf<String>(id),
-                    null
-                )!!
-                while (cursorInfo.moveToNext()) {
-                    val name = cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME))
-                    val mobileNumber =
-                        cursorInfo.getString(cursorInfo.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER))
-                    val contact = Contact(name, mobileNumber)
-                    contacts.add(contact)
-                }
-                cursorInfo.close()
+            while (cursor.moveToNext()) {
+                loadContactDataAndAddToList(cursor)
             }
         }
         cursor.close()
-        return contacts
+    }
+
+    private fun loadContactDataAndAddToList(cursor: Cursor){
+        val id = cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts._ID))
+        val name = cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME))
+        val hasPhoneNumber = Integer.parseInt(cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts.HAS_PHONE_NUMBER)))
+        if (hasPhoneNumber > 0) {
+            loadPhoneNumberAndAddContactToList(id, name);
+        }
+    }
+
+    private fun loadPhoneNumberAndAddContactToList(id: String, name: String) {
+        var phone = ""
+        val pCur = context.contentResolver.query(
+            ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
+            null,
+            ContactsContract.CommonDataKinds.Phone.CONTACT_ID + " = ?",
+            arrayOf(id),
+            null
+        )!!
+        while (pCur.moveToNext()) {
+            phone = getPhoneNumber(pCur);
+        }
+        pCur.close()
+        val contact = Contact(name, phone)
+        contacts.add(contact)
+    }
+
+    private fun getPhoneNumber(cursor: Cursor): String {
+        return cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER))
+
     }
 }

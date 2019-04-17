@@ -3,14 +3,12 @@ package com.raiden.karpukhinomgupsdiplom.info
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.raiden.domain.interactors.info.InfoInteractor
-import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 
 class InfoViewModel(
     private val interactor: InfoInteractor,
-    private val IO: CoroutineDispatcher = Dispatchers.IO
+    private val IO: CoroutineDispatcher = Dispatchers.Main,
+    private val default: CoroutineDispatcher = Dispatchers.Default
 ) : ViewModel() {
     val lastUpdate = MutableLiveData<String>()
     val countUpdatedApps = MutableLiveData<String>()
@@ -22,39 +20,21 @@ class InfoViewModel(
     var isChangedContacts = MutableLiveData<Boolean>()
 
     init {
-        GlobalScope.launch {
-            launch(IO) {
-                loadDataAndUpdateViews()
-            }
+        GlobalScope.launch(IO) {
+            val isChangedContact = async { interactor.isChangedContacts() }
+            val updatedApps = async { interactor.getCountOfUpdatedApps() }
+            val updatedFiles = async { interactor.getCountOfChangedFiles() }
+            countUpdatedApps.postValue(updatedApps.await().toString())
+            countChangedFiles.postValue(updatedFiles.await().toString())
+            val deletedApps = async { interactor.getCountOfDeletedApps() }
+            val deletedFiles = async { interactor.getCountOfDeletedFiles() }
+            countDeletedApps.postValue(deletedApps.await().toString())
+            countDeletedFiles.postValue(deletedFiles.await().toString())
+            val installedApps = async { interactor.getCountOfInstalledApps() }
+            val addedFiles = async { interactor.getCountOfAddedFiles() }
+            countUploadApps.postValue(installedApps.await().toString())
+            countAddedFiles.postValue(addedFiles.await().toString())
+            isChangedContacts.postValue(isChangedContact.await())
         }
-    }
-
-    private suspend fun loadDataAndUpdateViews() {
-        loadAndUpdateApps()
-        loadAndUpdateFiles()
-        loadAndUpdateContacts()
-    }
-
-    private suspend fun loadAndUpdateApps() {
-        val updatedApps = interactor.getCountOfUpdatedApps()
-        val deletedApps = interactor.getCountOfDeletedApps()
-        val installedApps = interactor.getCountOfInstalledApps()
-        countUpdatedApps.postValue(updatedApps.toString())
-        countDeletedApps.postValue(deletedApps.toString())
-        countUploadApps.postValue(installedApps.toString())
-    }
-
-    private suspend fun loadAndUpdateFiles() {
-        val updatedFiles = interactor.getCountOfChangedFiles()
-        val deletedFiles = interactor.getCountOfDeletedFiles()
-        val addedFiles = interactor.getCountOfAddedFiles()
-        countChangedFiles.postValue(updatedFiles.toString())
-        countDeletedFiles.postValue(deletedFiles.toString())
-        countAddedFiles.postValue(addedFiles.toString())
-    }
-
-    private suspend fun loadAndUpdateContacts() {
-        val isChangedContacts = interactor.isChangedContacts()
-        this.isChangedContacts.postValue(isChangedContacts)
     }
 }

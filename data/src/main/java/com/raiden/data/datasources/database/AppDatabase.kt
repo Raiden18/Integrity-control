@@ -14,7 +14,7 @@ import com.raiden.data.datasources.database.entities.FileEntity
         ApplicationEntity::class,
         FileEntity::class,
         ContactsEntity::class
-    ], version = 2
+    ], version = 3
 )
 internal abstract class AppDatabase() : RoomDatabase() {
     abstract fun getApplicationsDao(): ApplicationsDao

@@ -37,7 +37,7 @@ class InfoInteractorChangingContacts {
     }
 
     @Test
-    fun `Should return true if contact was added and db is empty`() = runBlocking {
+    fun `Should return true if contact was added`() = runBlocking {
         contactsGateway.stub {
             onBlocking { getSavedContacts() }.doReturn(listOf(Contact("123asd", "asdcxz ")))
         }
@@ -46,7 +46,6 @@ class InfoInteractorChangingContacts {
                 listOf(Contact("123", "122"))
             )
         }
-
         assertTrue(interactor.isChangedContacts())
     }
 
@@ -62,7 +61,7 @@ class InfoInteractorChangingContacts {
         contactsGateway.stub {
             onBlocking { getContactsFromDevice() }.doReturn(
                 listOf(
-                    Contact("123", "122"),
+                    Contact("123", "332"),
                     Contact("asd", "zxc"),
                     Contact("wqdas", "124thryhgdfd")
                 )

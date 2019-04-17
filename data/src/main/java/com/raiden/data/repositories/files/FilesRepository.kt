@@ -21,7 +21,6 @@ internal class FilesRepository(
 
     private suspend fun saveInDataBase(deviceFiles: Iterable<InternalFile>) {
         deviceFiles.forEach {
-            Log.i("HUI", it.fullName)
             filesDao.insert(it.convertToEntity())
         }
     }
