@@ -10,12 +10,16 @@ import com.raiden.data.datasources.device.contacts.DeviceContacts
 import com.raiden.data.datasources.device.contacts.DeviceContactsImpl
 import com.raiden.data.datasources.device.files.DeviceFiles
 import com.raiden.data.datasources.device.files.DeviceFilesImpl
+import com.raiden.data.datasources.sharedpreferences.updatedtime.UpdatedSharedPreferences
+import com.raiden.data.datasources.sharedpreferences.updatedtime.UpdatedSharedPreferencesImpl
 import com.raiden.data.repositories.applications.ApplicationsRepository
 import com.raiden.data.repositories.contacts.ContactsRepository
 import com.raiden.data.repositories.files.FilesRepository
+import com.raiden.data.repositories.updtime.UpdatedTimeRepository
 import com.raiden.domain.gateways.ApplicationsGateway
 import com.raiden.domain.gateways.ContactsGateway
 import com.raiden.domain.gateways.FilesGateway
+import com.raiden.domain.gateways.UpdatedTimeGateway
 import org.koin.android.ext.koin.androidApplication
 import org.koin.dsl.module.module
 import org.koin.experimental.builder.singleBy
@@ -42,8 +46,11 @@ val data = module {
     singleBy<ApplicationsGateway, ApplicationsRepository>()
     singleBy<FilesGateway, FilesRepository>()
     singleBy<ContactsGateway, ContactsRepository>()
+    singleBy<UpdatedTimeGateway, UpdatedTimeRepository>()
 
     singleBy<DeviceApplications, DeviceApplicationsImpl>()
     singleBy<DeviceFiles, DeviceFilesImpl>()
     singleBy<DeviceContacts, DeviceContactsImpl>()
+
+    singleBy<UpdatedSharedPreferences, UpdatedSharedPreferencesImpl>()
 }

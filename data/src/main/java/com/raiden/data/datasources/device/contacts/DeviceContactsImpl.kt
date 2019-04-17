@@ -5,7 +5,6 @@ import android.content.Context
 import android.content.pm.PackageManager
 import android.database.Cursor
 import android.provider.ContactsContract
-import android.util.Log
 import androidx.core.content.ContextCompat
 import com.raiden.domain.models.Contact
 

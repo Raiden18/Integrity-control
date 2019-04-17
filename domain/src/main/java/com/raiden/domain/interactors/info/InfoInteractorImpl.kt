@@ -45,4 +45,11 @@ internal class InfoInteractorImpl(
         val isChangedContactsCommand = IsChangedContactsCommand(contactsGateway)
         return isChangedContactsCommand.isChange()
     }
+
+    override suspend fun getTimeOfDelete(): String {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override suspend fun saveCurrentDBTimeUpdate() {
+    }
 }

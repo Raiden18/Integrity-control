@@ -8,4 +8,6 @@ interface InfoInteractor {
     suspend fun getCountOfAddedFiles(): Int
     suspend fun getCountOfDeletedFiles(): Int
     suspend fun isChangedContacts(): Boolean
+    suspend fun getTimeOfDelete(): String
+    suspend fun saveCurrentDBTimeUpdate()
 }
