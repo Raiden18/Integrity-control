@@ -9,6 +9,7 @@ internal class DeviceContactsImpl(context: Context) : DeviceContacts {
     private val contacts = arrayListOf<Contact>()
     private val contentResolver = context.contentResolver
 
+    //TODO: fix getting contacts
     override suspend fun getContacts(): Iterable<Contact> {
         contacts.clear()
         val cursor = contentResolver.query(

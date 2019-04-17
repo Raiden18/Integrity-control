@@ -32,7 +32,11 @@ val data = module {
     single { androidApplication().packageManager }
     single { File(Environment.getExternalStorageDirectory().absolutePath) }
 
-    single { Room.databaseBuilder(androidApplication(), AppDatabase::class.java, DB_NAME).build() }
+    single {
+        Room.databaseBuilder(androidApplication(), AppDatabase::class.java, DB_NAME)
+            .fallbackToDestructiveMigration()
+            .build()
+    }
     single { get<AppDatabase>().getApplicationsDao() }
     single { get<AppDatabase>().getFilesDao() }
     single { get<AppDatabase>().getContactsDao() }
