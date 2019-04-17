@@ -10,15 +10,14 @@ import java.util.*
 internal class UpdatedTimeRepository(private val updatedSharedPreferences: UpdatedSharedPreferences) :
     UpdatedTimeGateway {
     private companion object {
-        const val TIME_PATTERN = "dd/M/yyyy hh:mm:ss"
+        const val TIME_PATTERN = "dd/M/yyyy HH:mm:ss"
     }
 
-    @SuppressLint("SimpleDateFormat")
-    private val simpleDateFormat = SimpleDateFormat(TIME_PATTERN)
-
     override suspend fun saveUpdatedTime() {
-        val currentTime = simpleDateFormat.format(Date())
-        val updateTime = UpdateTime(currentTime)
+        val locale = Locale.getDefault()
+        val currentDate = Calendar.getInstance().time
+        val currentDateString = SimpleDateFormat(TIME_PATTERN, locale).format(currentDate)
+        val updateTime = UpdateTime(currentDateString)
         updatedSharedPreferences.save(updateTime)
     }
 

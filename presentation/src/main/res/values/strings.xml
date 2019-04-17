@@ -1,13 +1,13 @@
 <resources>
     <string name="app_name">Karpukhin Omgups Diplom</string>
-    <string name="info_last_update_title">Дата последнего обновления:</string>
+    <string name="info_last_update_title">Последнее обновление:</string>
     <string name="info_count_updated_apps_title">Обновлено приложений:</string>
     <string name="info_count_deleted_apps_title">Удалено приложений:</string>
     <string name="info_count_upload_apps_title">Установлено приложений:</string>
     <string name="info_count_changed_files_title">Изменено файлов:</string>
     <string name="info_count_added_files_title">Добавлено файлов:</string>
     <string name="info_count_deleted_files_title">Удалено файлов:</string>
-    <string name="info_was_changed_contacts_title">Были изменены контакты</string>
+    <string name="info_was_changed_contacts_title">Были изменены контакты:</string>
     <string name="yes">Да</string>
     <string name="no">Нет</string>
     <string name="info_more_title">Посмотреть подробнее:</string>

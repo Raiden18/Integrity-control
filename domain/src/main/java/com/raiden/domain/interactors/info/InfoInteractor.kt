@@ -10,6 +10,6 @@ interface InfoInteractor {
     suspend fun getCountOfAddedFiles(): Int
     suspend fun getCountOfDeletedFiles(): Int
     suspend fun isChangedContacts(): Boolean
-    suspend fun saveUpdatedTime()
+    suspend fun updateInfo()
     suspend fun getSavedTime(): String
 }

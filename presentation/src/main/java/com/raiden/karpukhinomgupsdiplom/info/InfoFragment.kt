@@ -6,12 +6,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import com.raiden.karpukhinomgupsdiplom.R
 import com.raiden.karpukhinomgupsdiplom.databinding.FragmentInfoBinding
 import kotlinx.android.synthetic.main.fragment_info.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class InfoFragment : Fragment() {
+    private companion object {
+        const val LOADER_KEY = "com.raiden.karpukhinomgupsdiplom.info.LOADER"
+    }
 
     private val viewModel by viewModel<InfoViewModel>()
 
@@ -30,6 +34,13 @@ class InfoFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initClickListeners()
+        viewModel.isShowLoading.observe(this, Observer { isLoad ->
+            if (isLoad) {
+                showLoading()
+            } else {
+                showContent()
+            }
+        })
     }
 
     private fun initClickListeners() {
@@ -42,10 +53,13 @@ class InfoFragment : Fragment() {
         info_contacts_button.setOnClickListener {
             openContactsScreen()
         }
+        info_update_db.setOnClickListener {
+            viewModel.updateData()
+        }
     }
 
     private fun openAppsScreen() {
-
+        viewModel.updateData()
     }
 
     private fun openFilesScreen() {
@@ -54,5 +68,15 @@ class InfoFragment : Fragment() {
 
     private fun openContactsScreen() {
 
+    }
+
+    private fun showLoading(){
+        info_view_animator.displayedChildId = R.id.info_rotateloading
+        info_rotateloading.start()
+    }
+
+    private fun showContent(){
+        info_view_animator.displayedChildId = R.id.info_root_view
+        info_rotateloading.stop()
     }
 }

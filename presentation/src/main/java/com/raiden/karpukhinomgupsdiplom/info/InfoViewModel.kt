@@ -7,8 +7,10 @@ import kotlinx.coroutines.*
 
 class InfoViewModel(
     private val interactor: InfoInteractor,
-    private val IO: CoroutineDispatcher = Dispatchers.Main
+    private val IO: CoroutineDispatcher = Dispatchers.Main,
+    private val DEFAULT: CoroutineDispatcher = Dispatchers.Default
 ) : ViewModel() {
+
     val timeLastUpdate = MutableLiveData<String>()
     val countUpdatedApps = MutableLiveData<String>()
     val countDeletedApps = MutableLiveData<String>()
@@ -17,25 +19,40 @@ class InfoViewModel(
     val countAddedFiles = MutableLiveData<String>()
     val countDeletedFiles = MutableLiveData<String>()
     var isChangedContacts = MutableLiveData<Boolean>()
+    var isShowLoading = MutableLiveData<Boolean>()
 
     init {
+        loadAndDataAndBind()
+    }
+
+    private fun loadAndDataAndBind() {
         GlobalScope.launch(IO) {
-            val updatedApps = async { interactor.getCountOfUpdatedApps() }
-            val updatedFiles = async { interactor.getCountOfChangedFiles() }
-            countUpdatedApps.postValue(updatedApps.await().toString())
-            countChangedFiles.postValue(updatedFiles.await().toString())
-            val deletedApps = async { interactor.getCountOfDeletedApps() }
-            val deletedFiles = async { interactor.getCountOfDeletedFiles() }
-            countDeletedApps.postValue(deletedApps.await().toString())
-            countDeletedFiles.postValue(deletedFiles.await().toString())
-            val installedApps = async { interactor.getCountOfInstalledApps() }
-            val addedFiles = async { interactor.getCountOfAddedFiles() }
-            countUploadApps.postValue(installedApps.await().toString())
-            countAddedFiles.postValue(addedFiles.await().toString())
-            val isChangedContact = async { interactor.isChangedContacts() }
-            val updatedTime = async { interactor.getSavedTime() }
-            isChangedContacts.postValue(isChangedContact.await())
-            timeLastUpdate.postValue(updatedTime.await())
+            isShowLoading.postValue(true)
+            val updatedApps = withContext(DEFAULT) { interactor.getCountOfUpdatedApps() }
+            val updatedFiles = withContext(DEFAULT) { interactor.getCountOfChangedFiles() }
+            val deletedApps = withContext(DEFAULT) { interactor.getCountOfDeletedApps() }
+            val deletedFiles = withContext(DEFAULT) { interactor.getCountOfDeletedFiles() }
+            val installedApps = withContext(DEFAULT) { interactor.getCountOfInstalledApps() }
+            val addedFiles = withContext(DEFAULT) { interactor.getCountOfAddedFiles() }
+            val isChangedContact = withContext(DEFAULT) { interactor.isChangedContacts() }
+            val updatedTime = withContext(DEFAULT) { interactor.getSavedTime() }
+            isShowLoading.postValue(false)
+            countDeletedApps.postValue(deletedApps.toString())
+            countDeletedFiles.postValue(deletedFiles.toString())
+            countUploadApps.postValue(installedApps.toString())
+            countAddedFiles.postValue(addedFiles.toString())
+            countUpdatedApps.postValue(updatedApps.toString())
+            countChangedFiles.postValue(updatedFiles.toString())
+            isChangedContacts.postValue(isChangedContact)
+            timeLastUpdate.postValue(updatedTime)
+        }
+    }
+
+    fun updateData() {
+        GlobalScope.launch(IO) {
+            isShowLoading.postValue(true)
+            launch(DEFAULT) { interactor.updateInfo() }
+            loadAndDataAndBind()
         }
     }
 }

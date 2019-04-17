@@ -5,7 +5,6 @@ import com.raiden.domain.gateways.ContactsGateway
 import com.raiden.domain.gateways.FilesGateway
 import com.raiden.domain.gateways.UpdatedTimeGateway
 import com.raiden.domain.interactors.info.commands.*
-import com.raiden.domain.models.UpdateTime
 
 internal class InfoInteractorImpl(
     private val applicationsGateway: ApplicationsGateway,
@@ -49,12 +48,15 @@ internal class InfoInteractorImpl(
         return isChangedContactsCommand.isChange()
     }
 
-    override suspend fun saveUpdatedTime() {
-        updatedTimeGateway.saveUpdatedTime()
-    }
-
     override suspend fun getSavedTime(): String {
         val updateTime = updatedTimeGateway.getUpdatedTime()
         return updateTime.time
+    }
+
+    override suspend fun updateInfo() {
+        applicationsGateway.saveApplicationsFromDevice()
+        filesGateway.saveFilesFromDevices()
+        contactsGateway.saveContactsFromDevice()
+        updatedTimeGateway.saveUpdatedTime()
     }
 }

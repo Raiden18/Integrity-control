@@ -28,12 +28,6 @@ class InfoInteractorUpdateTime {
     }
 
     @Test
-    fun `Should save time`() = runBlocking {
-        interactor.saveUpdatedTime()
-        Mockito.verify(timeGateway).saveUpdatedTime()
-    }
-
-    @Test
     fun `Should get saved time`() = runBlocking {
         timeGateway.stub {
             onBlocking { getUpdatedTime() }.doReturn(UpdateTime("123"))
