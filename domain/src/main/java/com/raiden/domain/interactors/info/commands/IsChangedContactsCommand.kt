@@ -7,44 +7,42 @@ class IsChangedContactsCommand(private val contactsGateway: ContactsGateway) {
     private var isChanged = false
     lateinit var savedContacts: Iterable<Contact>
     lateinit var deviceContacts: Iterable<Contact>
+
     suspend fun isChange(): Boolean {
         savedContacts = contactsGateway.getSavedContacts().toList()
         deviceContacts = contactsGateway.getContactsFromDevice().toList()
         if (!savedContacts.toList().isEmpty()) {
-            isDeleteContact()
-            if (!isChanged) {
-                isAddedContact()
-                if (!isChanged) {
-                    isChanged = false
-                }
-            }
+            isChangeOrDeleteOrAdded()
         }
         return isChanged
     }
 
+    private fun isChangeOrDeleteOrAdded() {
+        isDeleteContact()
+        if (!isChanged) {
+            isAddedOrChanged()
+        }
+    }
+
+    private fun isAddedOrChanged() {
+        isAddedContact()
+        if (!isChanged) {
+            isChanged = false
+        }
+    }
+
     private fun isDeleteContact() {
-        var isDeleted: Boolean
         savedContacts.forEach { savedContact ->
-            isDeleted = false
-            if (deviceContacts.contains(savedContact)) {
-                isDeleted = true
-            }
-            if (!isDeleted) {
+            if (!deviceContacts.contains(savedContact)) {
                 isChanged = true
             }
         }
     }
 
     private fun isAddedContact() {
-        var isAdded: Boolean
         deviceContacts.forEach { deviceContact ->
-            isAdded = false
             if (!savedContacts.contains(deviceContact)) {
-                isAdded = true
-            }
-            if (isAdded) {
                 isChanged = true
-                return
             }
         }
     }
