@@ -6,6 +6,7 @@ import com.nhaarman.mockitokotlin2.stub
 import com.raiden.domain.gateways.ApplicationsGateway
 import com.raiden.domain.gateways.ContactsGateway
 import com.raiden.domain.gateways.FilesGateway
+import com.raiden.domain.gateways.UpdatedTimeGateway
 import com.raiden.domain.models.Contact
 import junit.framework.Assert.assertFalse
 import junit.framework.Assert.assertTrue
@@ -20,8 +21,9 @@ class InfoInteractorChangingContacts {
     fun setUp() {
         val filesGateway: FilesGateway = mock()
         val appsGateway: ApplicationsGateway = mock()
+        val time : UpdatedTimeGateway = mock()
         contactsGateway = mock()
-        interactor = InfoInteractorImpl(appsGateway, filesGateway, contactsGateway)
+        interactor = InfoInteractorImpl(appsGateway, filesGateway, contactsGateway, time)
     }
 
     @Test

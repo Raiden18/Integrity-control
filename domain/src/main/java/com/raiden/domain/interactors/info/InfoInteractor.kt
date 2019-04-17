@@ -1,5 +1,7 @@
 package com.raiden.domain.interactors.info
 
+import com.raiden.domain.models.UpdateTime
+
 interface InfoInteractor {
     suspend fun getCountOfUpdatedApps(): Int
     suspend fun getCountOfDeletedApps(): Int
@@ -8,6 +10,6 @@ interface InfoInteractor {
     suspend fun getCountOfAddedFiles(): Int
     suspend fun getCountOfDeletedFiles(): Int
     suspend fun isChangedContacts(): Boolean
-    suspend fun getTimeOfDelete(): String
-    suspend fun saveCurrentDBTimeUpdate()
+    suspend fun saveUpdatedTime()
+    suspend fun getSavedTime(): String
 }

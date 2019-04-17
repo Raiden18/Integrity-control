@@ -6,6 +6,7 @@ import com.nhaarman.mockitokotlin2.stub
 import com.raiden.domain.gateways.ApplicationsGateway
 import com.raiden.domain.gateways.ContactsGateway
 import com.raiden.domain.gateways.FilesGateway
+import com.raiden.domain.gateways.UpdatedTimeGateway
 import com.raiden.domain.models.Application
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.assertEquals
@@ -21,7 +22,8 @@ internal class InfoInteractorCountOfInstalledApps {
         gateway = mock()
         val fileGateway: FilesGateway = mock()
         val contactsGateway: ContactsGateway = mock()
-        interactor = InfoInteractorImpl(gateway, fileGateway, contactsGateway)
+        val time : UpdatedTimeGateway = mock()
+        interactor = InfoInteractorImpl(gateway, fileGateway, contactsGateway, time)
     }
 
     @Test

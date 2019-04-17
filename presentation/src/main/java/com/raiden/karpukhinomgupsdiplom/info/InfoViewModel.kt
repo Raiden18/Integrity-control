@@ -20,7 +20,6 @@ class InfoViewModel(
 
     init {
         GlobalScope.launch(IO) {
-            val isChangedContact = async { interactor.isChangedContacts() }
             val updatedApps = async { interactor.getCountOfUpdatedApps() }
             val updatedFiles = async { interactor.getCountOfChangedFiles() }
             countUpdatedApps.postValue(updatedApps.await().toString())
@@ -33,7 +32,10 @@ class InfoViewModel(
             val addedFiles = async { interactor.getCountOfAddedFiles() }
             countUploadApps.postValue(installedApps.await().toString())
             countAddedFiles.postValue(addedFiles.await().toString())
+            val isChangedContact = async { interactor.isChangedContacts() }
+            val updatedTime = async { interactor.getSavedTime() }
             isChangedContacts.postValue(isChangedContact.await())
+            timeLastUpdate.postValue(updatedTime.await())
         }
     }
 }

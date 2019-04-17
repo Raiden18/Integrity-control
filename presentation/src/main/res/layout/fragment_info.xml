@@ -34,7 +34,7 @@
         <TextView
                 android:id="@+id/info_last_update"
                 style="@style/LibleInfoTextStyleField"
-                android:text="@{viewModel.lastUpdate}"
+                android:text="@{viewModel.timeLastUpdate}"
                 tools:text="13.05.2019, 13:30:29"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginEnd="8dp"

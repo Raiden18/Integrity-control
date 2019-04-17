@@ -3,12 +3,15 @@ package com.raiden.domain.interactors.info
 import com.raiden.domain.gateways.ApplicationsGateway
 import com.raiden.domain.gateways.ContactsGateway
 import com.raiden.domain.gateways.FilesGateway
+import com.raiden.domain.gateways.UpdatedTimeGateway
 import com.raiden.domain.interactors.info.commands.*
+import com.raiden.domain.models.UpdateTime
 
 internal class InfoInteractorImpl(
     private val applicationsGateway: ApplicationsGateway,
     private val filesGateway: FilesGateway,
-    private val contactsGateway: ContactsGateway
+    private val contactsGateway: ContactsGateway,
+    private val updatedTimeGateway: UpdatedTimeGateway
 ) : InfoInteractor {
 
     override suspend fun getCountOfUpdatedApps(): Int {
@@ -46,10 +49,12 @@ internal class InfoInteractorImpl(
         return isChangedContactsCommand.isChange()
     }
 
-    override suspend fun getTimeOfDelete(): String {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override suspend fun saveUpdatedTime() {
+        updatedTimeGateway.saveUpdatedTime()
     }
 
-    override suspend fun saveCurrentDBTimeUpdate() {
+    override suspend fun getSavedTime(): String {
+        val updateTime = updatedTimeGateway.getUpdatedTime()
+        return updateTime.time
     }
 }

@@ -9,6 +9,8 @@ import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mockito.*
+import java.text.SimpleDateFormat
+import java.util.*
 
 class UpdatedTimeRepositoryTest {
     private lateinit var updatedRepo: UpdatedTimeGateway
@@ -22,9 +24,12 @@ class UpdatedTimeRepositoryTest {
 
     @Test
     fun `Should save updated time to shared preferences`() = runBlocking {
-        val updTime = UpdateTime("123")
-        updatedRepo.saveUpdatedTime(updTime)
-        verify(updateSharedPreferences).save(updTime)
+        val timePattern = "dd/M/yyyy hh:mm:ss"
+        val simpleDateFormat = SimpleDateFormat(timePattern)
+        val currentTime = simpleDateFormat.format(Date())
+        val updateTime = UpdateTime(currentTime)
+        updatedRepo.saveUpdatedTime()
+        verify(updateSharedPreferences).save(updateTime)
         verifyNoMoreInteractions(updateSharedPreferences)
     }
 
