@@ -7,5 +7,5 @@ import org.koin.android.viewmodel.ext.koin.viewModel
 import org.koin.dsl.module.module
 
 val presentation = module {
-    viewModel { InfoViewModel(get()) }
+    viewModel { InfoViewModel(get(), get()) }
 }

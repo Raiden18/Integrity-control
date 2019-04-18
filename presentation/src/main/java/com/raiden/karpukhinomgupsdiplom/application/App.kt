@@ -10,7 +10,7 @@ class App: Application() {
 
     override fun onCreate() {
         super.onCreate()
-        val dependencies = listOf(presentation, data, domain)
+        val dependencies = listOf(presentation, data, domain, main)
         startKoin(this, dependencies)
     }
 }

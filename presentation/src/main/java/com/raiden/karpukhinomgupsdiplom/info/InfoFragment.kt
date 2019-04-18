@@ -13,10 +13,6 @@ import kotlinx.android.synthetic.main.fragment_info.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class InfoFragment : Fragment() {
-    private companion object {
-        const val LOADER_KEY = "com.raiden.karpukhinomgupsdiplom.info.LOADER"
-    }
-
     private val viewModel by viewModel<InfoViewModel>()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -70,12 +66,12 @@ class InfoFragment : Fragment() {
 
     }
 
-    private fun showLoading(){
+    private fun showLoading() {
         info_view_animator.displayedChildId = R.id.info_rotateloading
         info_rotateloading.start()
     }
 
-    private fun showContent(){
+    private fun showContent() {
         info_view_animator.displayedChildId = R.id.info_root_view
         info_rotateloading.stop()
     }

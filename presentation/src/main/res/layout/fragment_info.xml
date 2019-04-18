@@ -13,7 +13,7 @@
                 />
     </data>
 
-    <com.raiden.karpukhinomgupsdiplom.common.BetterViewAnimator
+    <com.raiden.karpukhinomgupsdiplom.common.Loader
             android:id="@+id/info_view_animator"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -274,5 +274,5 @@
                     android:layout_marginEnd="8dp"
                     />
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </com.raiden.karpukhinomgupsdiplom.common.BetterViewAnimator>
+    </com.raiden.karpukhinomgupsdiplom.common.Loader>
 </layout>

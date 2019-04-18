@@ -10,6 +10,10 @@ android {
     dataBinding.enabled = true
 }
 
+repositories{
+    maven { url "https://jitpack.io" }
+}
+
 dependencies {
     //Architecture
     implementation project(':data')
@@ -32,4 +36,8 @@ dependencies {
 
     //Loader
     implementation "com.victor:lib:$victor"
+
+    /*Live Typing Binder*/
+    implementation "com.github.LiveTyping.activity-binder:core:$binder"
+    implementation "com.github.LiveTyping.activity-binder:permission:$binder"
 }
