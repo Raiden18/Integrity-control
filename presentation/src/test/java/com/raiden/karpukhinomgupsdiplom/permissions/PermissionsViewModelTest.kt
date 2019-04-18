@@ -118,7 +118,7 @@ class PermissionsViewModelTest {
         viewModel.isAllPermissionsGranted.observeForever(observer)
         viewModel.checkPermissions(parameters)
         viewModel.isAllPermissionsGranted.observeForever {
-            assertFalse(it)
+            assertTrue(it)
         }
     }
 
