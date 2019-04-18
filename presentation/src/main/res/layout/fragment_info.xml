@@ -44,7 +44,7 @@
                     android:id="@+id/info_update_db"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/info_contacts_button"
+                    android:text="@string/info_update_button"
                     android:layout_marginTop="8dp"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent"

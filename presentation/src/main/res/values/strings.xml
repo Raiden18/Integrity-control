@@ -18,6 +18,6 @@
     <string name="info_screen_permission_message">Разрешения на чтение контактов и внутреннего хранилища необходимо для работы приложения.
     Без этих разрешений работа программы не может быть продолжена</string>
     <string name="info_needs_permissions">Запросить разрения</string>
-
     <string name="permission_screen_label">Разрешения</string>
+    <string name="info_update_button">Разрешения</string>
 </resources>

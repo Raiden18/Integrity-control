@@ -10,6 +10,7 @@ class PermissionsViewModel : ViewModel() {
 
     fun checkPermissions(permissionsResult: HashMap<String, Boolean>) {
         var isAllPermissionsGranted = true
+
         for ((_, value) in permissionsResult) {
             if (!value) {
                 isAllPermissionsGranted = false
