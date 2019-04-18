@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+                name="application"
+                type="com.raiden.karpukhinomgupsdiplom.apps.models.UiApplication"
+                />
+    </data>
+
+    <TextView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/recycler_application_item"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="123123"
+            android:text="@{application.name}"
+            android:layout_marginStart="8dp"
+            android:textSize="32sp"
+            android:textColor="@android:color/black"
+            />
+</layout>

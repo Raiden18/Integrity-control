@@ -1,0 +1,3 @@
+package com.raiden.karpukhinomgupsdiplom.apps
+
+class ApplicationsViewModelInstalledAppsTest
