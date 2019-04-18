@@ -12,8 +12,28 @@ class ApplicationViewHolder(
 
     fun bindItem(application: UiApplication) {
         itemBinding.application = application
-        itemBinding.root.recycler_application_item.setOnClickListener {
+        itemView.recycler_application_item.setOnClickListener {
             onApplicationClick(application)
         }
+        setColorForApplication(application)
+    }
+
+    private fun setColorForApplication(application: UiApplication) {
+        application.apply {
+            if (isDeleted) {
+                setItemTextColor(android.R.color.holo_red_light)
+            }
+            if (isInstalled) {
+                setItemTextColor(android.R.color.holo_blue_dark)
+            }
+            if (isUpdated) {
+                setItemTextColor(android.R.color.holo_orange_dark)
+            }
+        }
+    }
+
+    private fun setItemTextColor(idColor: Int) {
+        val color = itemView.context.resources.getColor(idColor)
+        itemView.recycler_application_item.setTextColor(color)
     }
 }

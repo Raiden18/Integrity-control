@@ -10,8 +10,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.raiden.karpukhinomgupsdiplom.R
 import com.raiden.karpukhinomgupsdiplom.apps.adapter.ApplicationAdapter
 import com.raiden.karpukhinomgupsdiplom.apps.models.UiApplication
-import kotlinx.android.synthetic.main.fragment_applications.*
-import kotlinx.android.synthetic.main.fragment_applications.view.*
+import kotlinx.android.synthetic.main.fragment_contents.*
+import kotlinx.android.synthetic.main.fragment_contents.view.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class ApplicationsFragment : Fragment() {
@@ -21,7 +21,7 @@ class ApplicationsFragment : Fragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        val fragment = inflater.inflate(R.layout.fragment_applications, container, false)
+        val fragment = inflater.inflate(R.layout.fragment_contents, container, false)
         initRecycler(fragment)
         return fragment
     }
@@ -42,6 +42,11 @@ class ApplicationsFragment : Fragment() {
     private fun observeChangedApps() {
         viewModel.changedApps.observe(this, Observer { changedApps ->
             adapter.setApplications(changedApps)
+            if (changedApps.isEmpty()) {
+                showNoContentMessage()
+            } else {
+                hideNoContentMessage()
+            }
         })
     }
 
@@ -66,7 +71,18 @@ class ApplicationsFragment : Fragment() {
     }
 
     private fun showContent() {
-        applications_view_animator.displayedChildId = R.id.applications_recycler_view
+        applications_view_animator.displayedChildId = R.id.application_root_view
         applications_rotate_loading.stop()
+    }
+
+    private fun showNoContentMessage() {
+        content_lentach.visibility = View.VISIBLE
+        content_empty_message.visibility = View.VISIBLE
+        content_empty_message.text = getString(R.string.applications_screen_no_updates)
+    }
+
+    private fun hideNoContentMessage() {
+        content_lentach.visibility = View.GONE
+        content_empty_message.visibility = View.GONE
     }
 }

@@ -23,7 +23,7 @@
                 android:id="@+id/permission_button"
                 style="@style/LibleInfoTextStyleTitle"
                 android:textColor="@android:color/white"
-                android:text="@string/info_needs_permissions"
+                android:text="@string/permission_needs_permissions"
                 android:layout_gravity="center"
                 android:visibility="gone"
                 android:layout_centerInParent="true"

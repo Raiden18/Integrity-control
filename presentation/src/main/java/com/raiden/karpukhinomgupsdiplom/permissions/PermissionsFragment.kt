@@ -52,7 +52,7 @@ class PermissionsFragment : Fragment() {
 
     private fun checkPermissions() {
         val permissions = listOf(Manifest.permission.READ_CONTACTS, Manifest.permission.READ_EXTERNAL_STORAGE)
-        val permissionMessage = getString(R.string.info_screen_permission_message)
+        val permissionMessage = getString(R.string.permission_screen_message)
         permissionBinder.activePermission(permissions, permissionMessage) { permissionsResult ->
             viewModel.checkPermissions(permissionsResult)
         }

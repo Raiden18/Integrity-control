@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="permission_screen_message">Разрешения на чтение контактов и внутреннего хранилища необходимо для работы приложения.
+    Без этих разрешений работа программы не может быть продолжена</string>
+    <string name="permission_needs_permissions">Запросить разрения</string>
+    <string name="permission_screen_label">Разрешения</string>
+</resources>
