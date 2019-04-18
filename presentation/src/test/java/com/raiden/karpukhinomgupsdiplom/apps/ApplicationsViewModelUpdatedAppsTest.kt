@@ -16,7 +16,7 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.TestRule
 
-class ApplicationsViewModelInstalledAppsTest {
+class ApplicationsViewModelUpdatedAppsTest {
     @get:Rule
     var rule: TestRule = InstantTaskExecutorRule()
     lateinit var viewModel: ApplicationsViewModel
@@ -28,10 +28,15 @@ class ApplicationsViewModelInstalledAppsTest {
     }
 
     @Test
-    fun `Should post installed apps if there are no apps in db`() = runBlocking {
+    fun `Should post updated apps`() = runBlocking {
         applicationInteractor.stub {
             onBlocking { getSavedApps() }.doReturn(
                 listOf(
+                    Application("123", "1"),
+                    Application("asdc", "22"),
+                    Application("zcxasdcasdgf", "33"),
+                    Application("sdafadAD", "44"),
+                    Application("zxCXBVADSF", "55")
                 )
             )
         }
@@ -47,23 +52,23 @@ class ApplicationsViewModelInstalledAppsTest {
             )
         }
         val uiInstalledApps = applicationInteractor.getDeviceApps().toList().convertToUi()
-            .map { UiApplication(it.name, it.versionName, isInstalled = true) }
+            .map { UiApplication(it.name, it.versionName, isUpdated = true) }
         viewModel = ApplicationsViewModel(applicationInteractor, Dispatchers.Unconfined, Dispatchers.Unconfined)
         viewModel.changedApps.observeForever {
-            Assert.assertEquals(uiInstalledApps, it.filter { it.isInstalled })
+            Assert.assertEquals(uiInstalledApps, it.filter { it.isUpdated })
         }
     }
 
     @Test
-    fun `Should post installed apps if there are apps in db`() = runBlocking {
+    fun `Should post updated apps if unupdated exists`() = runBlocking {
         applicationInteractor.stub {
             onBlocking { getSavedApps() }.doReturn(
                 listOf(
-                    Application("asdsad", "asd"),
-                    Application("asdas", "Adadfdsf"),
-                    Application("aadvsdxvc", "wasdadsgsg"),
-                    Application("adfasxv", "ADAXVCZXV"),
-                    Application("awedweofj;;;", "adqwwe12easdfaD")
+                    Application("123", "1"),
+                    Application("asdc", "22"),
+                    Application("zcxasdcasdgf", "33"),
+                    Application("sdafadAD", "44"),
+                    Application("zxCXBVADSF", "55")
                 )
             )
         }
@@ -71,18 +76,24 @@ class ApplicationsViewModelInstalledAppsTest {
             onBlocking { getDeviceApps() }.doReturn(
                 listOf(
                     Application("123", "asd"),
-                    Application("asdc", "Adadfdsf"),
+                    Application("asdc", "22"),
                     Application("zcxasdcasdgf", "wasdadsgsg"),
-                    Application("sdafadAD", "[ppl[pl"),
+                    Application("sdafadAD", "ADAXVCZXV"),
                     Application("zxCXBVADSF", "adqwwe12easdfaD")
                 )
             )
         }
-        val uiInstalledApps = applicationInteractor.getDeviceApps().toList().convertToUi()
-            .map { UiApplication(it.name, it.versionName, isInstalled = true) }
+        val listOfUpdated = listOf(
+            Application("123", "asd"),
+            Application("zcxasdcasdgf", "wasdadsgsg"),
+            Application("sdafadAD", "ADAXVCZXV"),
+            Application("zxCXBVADSF", "adqwwe12easdfaD")
+        )
+        val uiInstalledApps = listOfUpdated.toList().convertToUi()
+            .map { UiApplication(it.name, it.versionName, isUpdated = true) }
         viewModel = ApplicationsViewModel(applicationInteractor, Dispatchers.Unconfined, Dispatchers.Unconfined)
         viewModel.changedApps.observeForever {
-            Assert.assertEquals(uiInstalledApps, it.filter { it.isInstalled })
+            Assert.assertEquals(uiInstalledApps, it.filter { it.isUpdated })
         }
     }
 }

@@ -6,6 +6,7 @@ import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.stub
 import com.raiden.domain.interactors.applications.ApplicationsInteractor
 import com.raiden.domain.models.Application
+import com.raiden.karpukhinomgupsdiplom.apps.models.UiApplication
 import com.raiden.karpukhinomgupsdiplom.apps.models.convertToUi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
@@ -43,6 +44,8 @@ class ApplicationsViewModelDeletedAppsTest {
             onBlocking { getDeviceApps() }.doReturn(listOf())
         }
         val uiSavedApps = applicationInteractor.getSavedApps().toList().convertToUi()
+            .map { UiApplication(it.name, it.versionName, true) }
+
         viewModel = ApplicationsViewModel(applicationInteractor, Dispatchers.Unconfined, Dispatchers.Unconfined)
         viewModel.changedApps.observeForever {
             assertEquals(uiSavedApps, it)
@@ -74,9 +77,10 @@ class ApplicationsViewModelDeletedAppsTest {
             )
         }
         val uiSavedApps = applicationInteractor.getSavedApps().toList().convertToUi()
+            .map { UiApplication(it.name, it.versionName, true) }
         viewModel = ApplicationsViewModel(applicationInteractor, Dispatchers.Unconfined, Dispatchers.Unconfined)
-        viewModel.changedApps.observeForever {
-            assertEquals(uiSavedApps, it)
+        viewModel.changedApps.observeForever { deletedApps ->
+            assertEquals(uiSavedApps, deletedApps.filter { it.isDeleted })
         }
     }
 }

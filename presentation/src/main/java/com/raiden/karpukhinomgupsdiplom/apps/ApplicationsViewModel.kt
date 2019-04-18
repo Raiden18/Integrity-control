@@ -24,10 +24,8 @@ class ApplicationsViewModel(
     init {
         loadSavedAndDeviceApps()
         calculateDeletedApps()
-
-
-
-
+        calculateInstalledApps()
+        calculateUpdatedApps()
         setChangedApps()
     }
 
@@ -49,6 +47,7 @@ class ApplicationsViewModel(
     private fun calculateDeletedApps() {
         savedApps.forEach { savedApp ->
             if (!deviceApps.containsApp(savedApp)) {
+                savedApp.isDeleted = true
                 deletedApps.add(savedApp)
             }
         }
@@ -56,6 +55,28 @@ class ApplicationsViewModel(
 
     private fun List<UiApplication>.containsApp(uiApp: UiApplication): Boolean {
         return find { it.name == uiApp.name } != null
+    }
+
+    private fun calculateInstalledApps() {
+        deviceApps.forEach { deviceApp ->
+            if (!savedApps.containsApp(deviceApp)) {
+                deviceApp.isInstalled = true
+                updatedApps.add(deviceApp)
+            }
+        }
+    }
+
+    private fun calculateUpdatedApps() {
+        savedApps.forEach { savedApp ->
+            deviceApps.forEach { deviceApps ->
+                if (savedApp.name == deviceApps.name) {
+                    if (savedApp.versionName != deviceApps.versionName) {
+                        deviceApps.isUpdated = true
+                        updatedApps.add(deviceApps)
+                    }
+                }
+            }
+        }
     }
 
     private fun setChangedApps() {
