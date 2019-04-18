@@ -21,22 +21,22 @@ class ApplicationsFragment : Fragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        val fragment = inflater.inflate(R.layout.fragment_permissions, container, false)
+        val fragment = inflater.inflate(R.layout.fragment_applications, container, false)
         initRecycler(fragment)
         return fragment
     }
 
     private fun initRecycler(fragment: View) {
         fragment.applications_recycler_view.apply {
-            layoutManager = LinearLayoutManager(context)
+            layoutManager = LinearLayoutManager(this@ApplicationsFragment.context)
             adapter = this@ApplicationsFragment.adapter
         }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        observeChangedApps()
         observeLoading()
+        observeChangedApps()
     }
 
     private fun observeChangedApps() {

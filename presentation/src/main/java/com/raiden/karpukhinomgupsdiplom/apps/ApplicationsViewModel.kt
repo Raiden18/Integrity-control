@@ -23,10 +23,6 @@ class ApplicationsViewModel(
 
     init {
         loadSavedAndDeviceApps()
-        calculateDeletedApps()
-        calculateInstalledApps()
-        calculateUpdatedApps()
-        setChangedApps()
     }
 
     private fun loadSavedAndDeviceApps() {
@@ -41,6 +37,12 @@ class ApplicationsViewModel(
                 .convertToUi()
             this@ApplicationsViewModel.savedApps.addAll(uiSavedApps)
             this@ApplicationsViewModel.deviceApps.addAll(uiDeviceApps)
+            isLoading.postValue(true)
+            calculateDeletedApps()
+            calculateInstalledApps()
+            calculateUpdatedApps()
+            isLoading.postValue(false)
+            setChangedApps()
         }
     }
 

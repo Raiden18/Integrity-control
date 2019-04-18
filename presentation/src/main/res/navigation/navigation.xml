@@ -11,7 +11,12 @@
             android:name="com.raiden.karpukhinomgupsdiplom.info.InfoFragment"
             android:label="@string/info_screen_label"
             tools:layout="@layout/fragment_info"
-            />
+            >
+        <action
+                android:id="@+id/action_infoFragment_to_applicationsFragment"
+                app:destination="@id/applicationsFragment"
+                />
+    </fragment>
 
     <fragment
             android:id="@+id/permissionScreen"
@@ -27,4 +32,10 @@
                 app:popUpTo="@+id/navigation"
                 />
     </fragment>
+
+    <fragment
+            android:id="@+id/applicationsFragment"
+            android:name="com.raiden.karpukhinomgupsdiplom.apps.ApplicationsFragment"
+            android:label="ApplicationsFragment"
+            />
 </navigation>

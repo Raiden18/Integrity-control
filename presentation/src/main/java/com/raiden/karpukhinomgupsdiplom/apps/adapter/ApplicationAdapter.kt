@@ -8,7 +8,7 @@ import com.raiden.karpukhinomgupsdiplom.databinding.RecyclerApplicationItemBindi
 
 class ApplicationAdapter(private val onApplicationClick: OnApplicationClick) :
     RecyclerView.Adapter<ApplicationViewHolder>() {
-    private var applications = listOf<UiApplication>()
+    private var applications = arrayListOf<UiApplication>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ApplicationViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -28,7 +28,8 @@ class ApplicationAdapter(private val onApplicationClick: OnApplicationClick) :
     }
 
     fun setApplications(applications: Iterable<UiApplication>) {
-        this.applications = applications.toList()
+        this.applications.clear()
+        this.applications.addAll(applications)
         notifyDataSetChanged()
     }
 }

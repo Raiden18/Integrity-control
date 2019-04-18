@@ -61,6 +61,5 @@ class PermissionsFragment : Fragment() {
     private fun openInfoScreen() {
         val navDirections = actionPermissionScreenToInfoFragment()
         findNavController(this).navigate(navDirections)
-
     }
 }

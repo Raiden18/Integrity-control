@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.NavHostFragment
 import com.raiden.karpukhinomgupsdiplom.R
 import com.raiden.karpukhinomgupsdiplom.databinding.FragmentInfoBinding
 import kotlinx.android.synthetic.main.fragment_info.*
@@ -60,7 +61,8 @@ class InfoFragment : Fragment() {
     }
 
     private fun openAppsScreen() {
-
+        val appDirection = InfoFragmentDirections.actionInfoFragmentToApplicationsFragment()
+        NavHostFragment.findNavController(this).navigate(appDirection)
     }
 
     private fun openFilesScreen() {
