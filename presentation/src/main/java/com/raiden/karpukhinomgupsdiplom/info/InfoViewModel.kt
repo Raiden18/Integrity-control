@@ -1,16 +1,12 @@
 package com.raiden.karpukhinomgupsdiplom.info
 
-import android.Manifest
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.livetyping.permission.PermissionBinder
 import com.raiden.domain.interactors.info.InfoInteractor
 import kotlinx.coroutines.*
 
 class InfoViewModel(
     private val interactor: InfoInteractor,
-    private val permissionBinder: PermissionBinder,
     private val IO: CoroutineDispatcher = Dispatchers.Main,
     private val DEFAULT: CoroutineDispatcher = Dispatchers.Default
 ) : ViewModel() {
@@ -22,30 +18,10 @@ class InfoViewModel(
     val countChangedFiles = MutableLiveData<String>()
     val countAddedFiles = MutableLiveData<String>()
     val countDeletedFiles = MutableLiveData<String>()
-    var isChangedContacts = MutableLiveData<Boolean>()
-    var isShowLoading = MutableLiveData<Boolean>()
+    val isChangedContacts = MutableLiveData<Boolean>()
+    val isShowLoading = MutableLiveData<Boolean>()
 
     init {
-        val permissions = listOf(Manifest.permission.READ_CONTACTS, Manifest.permission.READ_EXTERNAL_STORAGE)
-        permissionBinder.activePermission(permissions, "ТЫ ХУЙ") { permissionsResult ->
-            var isAllGranted = false;
-            for ((_, isGranted) in permissionsResult) {
-                if (!isGranted){
-                    isAllGranted = false
-                    break
-                }
-            }
-            if (isAllGranted){
-                loadAndBindData()
-            } else {
-                Log.i("HUI", "ТЫ ХУЙ")
-            }
-
-        }
-
-    }
-
-    private fun loadAndBindData() {
         GlobalScope.launch(IO) {
             loadAndDataAndBind()
         }

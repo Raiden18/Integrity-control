@@ -4,11 +4,27 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/navigation"
-        app:startDestination="@id/infoFragment"
+        app:startDestination="@id/permissionScreen"
         >
     <fragment
             android:id="@+id/infoFragment"
             android:name="com.raiden.karpukhinomgupsdiplom.info.InfoFragment"
             android:label="@string/info_screen_label"
-            tools:layout="@layout/fragment_info"/>
+            tools:layout="@layout/fragment_info"
+            />
+
+    <fragment
+            android:id="@+id/permissionScreen"
+            android:name="com.raiden.karpukhinomgupsdiplom.permissions.PermissionsFragment"
+            android:label="@string/permission_screen_label"
+            tools:layout="@layout/fragment_permissions"
+            >
+        <action
+                android:id="@+id/action_permissionScreen_to_infoFragment"
+                app:destination="@id/infoFragment"
+                app:popUpToInclusive="false"
+                app:launchSingleTop="true"
+                app:popUpTo="@+id/navigation"
+                />
+    </fragment>
 </navigation>

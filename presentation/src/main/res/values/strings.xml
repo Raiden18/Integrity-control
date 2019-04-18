@@ -15,4 +15,9 @@
     <string name="info_files_button">Файлы</string>
     <string name="info_contacts_button">Контакты</string>
     <string name="info_screen_label">Информационный экран</string>
+    <string name="info_screen_permission_message">Разрешения на чтение контактов и внутреннего хранилища необходимо для работы приложения.
+    Без этих разрешений работа программы не может быть продолжена</string>
+    <string name="info_needs_permissions">Запросить разрения</string>
+
+    <string name="permission_screen_label">Разрешения</string>
 </resources>

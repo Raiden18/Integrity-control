@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import com.raiden.karpukhinomgupsdiplom.R
 import com.raiden.karpukhinomgupsdiplom.databinding.FragmentInfoBinding
+import com.raiden.karpukhinomgupsdiplom.mainactivity.MainActivity
 import kotlinx.android.synthetic.main.fragment_info.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -27,9 +28,16 @@ class InfoFragment : Fragment() {
         return binding.root
     }
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        (activity as MainActivity).supportActionBar!!.setDisplayShowHomeEnabled(true)
+        (activity as MainActivity).supportActionBar!!.setHomeAsUpIndicator(null)
         initClickListeners()
+        observeLoading()
+    }
+
+    private fun observeLoading() {
         viewModel.isShowLoading.observe(this, Observer { isLoad ->
             if (isLoad) {
                 showLoading()

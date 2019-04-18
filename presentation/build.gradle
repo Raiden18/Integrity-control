@@ -8,6 +8,9 @@ android {
         applicationId "com.raiden.karpukhinomgupsdiplom"
     }
     dataBinding.enabled = true
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
 }
 
 repositories{
@@ -40,4 +43,7 @@ dependencies {
     /*Live Typing Binder*/
     implementation "com.github.LiveTyping.activity-binder:core:$binder"
     implementation "com.github.LiveTyping.activity-binder:permission:$binder"
+
+    testImplementation "android.arch.core:core-testing:1.1.1"
+    testImplementation 'org.mockito:mockito-inline:2.8.47'
 }
