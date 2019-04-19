@@ -43,5 +43,13 @@ class MainActivity : AppCompatActivity() {
     private fun setupNavigation() {
         val navController = findNavController(this, R.id.nav_host_fragment)
         NavigationUI.setupActionBarWithNavController(this, navController)
+        navController.addOnDestinationChangedListener { controller, destination, arguments ->
+            when (destination.id) {
+                R.id.infoFragment -> {
+                    toolbar.navigationIcon = null
+                }
+            }
+        }
     }
+
 }
