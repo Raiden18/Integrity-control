@@ -21,6 +21,11 @@
                 android:id="@+id/action_infoFragment_to_filesFragment"
                 app:destination="@id/filesFragment"
                 />
+
+        <action
+                android:id="@+id/action_infoFragment_to_contactsFragment"
+                app:destination="@id/contactsFragment"
+                />
     </fragment>
 
     <fragment
@@ -49,5 +54,11 @@
             android:id="@+id/filesFragment"
             android:name="com.raiden.karpukhinomgupsdiplom.content.files.FilesFragment"
             android:label="FilesFragment"
+            />
+
+    <fragment
+            android:id="@+id/contactsFragment"
+            android:name="com.raiden.karpukhinomgupsdiplom.content.contacts.ContactsFragment"
+            android:label="ContactsFragment"
             />
 </navigation>

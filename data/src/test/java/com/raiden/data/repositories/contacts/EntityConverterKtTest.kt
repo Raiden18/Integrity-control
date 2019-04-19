@@ -9,8 +9,8 @@ class EntityConverterKtTest {
 
     @Test
     fun `Should convert Entity contact to domain`() {
-        val contactEntity = ContactsEntity("123", "321")
-        val contactDomain = Contact("123", "321")
+        val contactEntity = ContactsEntity("123", "123", "321")
+        val contactDomain = Contact("123", "123", "321")
 
         val contactConverted = contactEntity.convertToDomain()
         assertEquals(contactDomain, contactConverted)
@@ -18,8 +18,8 @@ class EntityConverterKtTest {
 
     @Test
     fun `Should convert domain contact to entity`() {
-        val contactEntity = ContactsEntity("123", "321")
-        val contactDomain = Contact("123", "321")
+        val contactEntity = ContactsEntity("123", "123", "321")
+        val contactDomain = Contact("123", "123", "321")
 
         val contactConverted = contactDomain.convertToEntity()
         assertEquals(contactEntity, contactConverted)
@@ -28,12 +28,12 @@ class EntityConverterKtTest {
     @Test
     fun `Should convert list of Entities contact to list of domain`() {
         val contactEntities = listOf(
-            ContactsEntity("123", "321"),
-            ContactsEntity("222", "333")
+            ContactsEntity("123", "123", "321"),
+            ContactsEntity("123", "222", "333")
         )
         val contactDomains = listOf(
-            Contact("123", "321"),
-            Contact("222", "333")
+            Contact("123", "123", "321"),
+            Contact("123", "222", "333")
         )
 
         val contactConverted = contactEntities.convertToDomains()
@@ -43,15 +43,15 @@ class EntityConverterKtTest {
     @Test
     fun `Should convert list of domain contact to list of contacts`() {
         val contactEntities = listOf(
-            ContactsEntity("123", "321"),
-            ContactsEntity("222", "333")
+            ContactsEntity("123", "123", "321"),
+            ContactsEntity("123", "222", "333")
         )
         val contactDomains = listOf(
-            Contact("123", "321"),
-            Contact("222", "333")
+            Contact("123", "123", "321"),
+            Contact("123", "222", "333")
         )
 
-        val contactConverted = contactDomains.convertToEntetis()
+        val contactConverted = contactDomains.convertToEnteties()
         assertEquals(contactEntities, contactConverted)
     }
 }

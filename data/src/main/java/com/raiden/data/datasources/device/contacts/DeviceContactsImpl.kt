@@ -42,7 +42,7 @@ internal class DeviceContactsImpl(private val context: Context) : DeviceContacts
         val name = cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME))
         val hasPhoneNumber = Integer.parseInt(cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts.HAS_PHONE_NUMBER)))
         if (hasPhoneNumber > 0) {
-            loadPhoneNumberAndAddContactToList(id, name);
+            loadPhoneNumberAndAddContactToList(id, name)
         }
     }
 
@@ -56,10 +56,10 @@ internal class DeviceContactsImpl(private val context: Context) : DeviceContacts
             null
         )!!
         while (pCur.moveToNext()) {
-            phone = getPhoneNumber(pCur);
+            phone = getPhoneNumber(pCur)
         }
         pCur.close()
-        val contact = Contact(name, phone)
+        val contact = Contact(id, name, phone)
         contacts.add(contact)
     }
 

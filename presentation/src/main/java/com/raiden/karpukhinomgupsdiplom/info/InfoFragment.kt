@@ -71,7 +71,8 @@ class InfoFragment : Fragment() {
     }
 
     private fun openContactsScreen() {
-
+        val appDirection = InfoFragmentDirections.actionInfoFragmentToContactsFragment()
+        NavHostFragment.findNavController(this).navigate(appDirection)
     }
 
     private fun showLoading() {

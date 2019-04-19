@@ -32,7 +32,7 @@ class InfoInteractorChangingContacts {
             onBlocking { getSavedContacts() }.doReturn(emptyList())
         }
         contactsGateway.stub {
-            onBlocking { getContactsFromDevice() }.doReturn(listOf(Contact("123", "122")))
+            onBlocking { getContactsFromDevice() }.doReturn(listOf(Contact("123", "123", "122")))
         }
 
         assertFalse(interactor.isChangedContacts())
@@ -41,11 +41,11 @@ class InfoInteractorChangingContacts {
     @Test
     fun `Should return true if contact was added`() = runBlocking {
         contactsGateway.stub {
-            onBlocking { getSavedContacts() }.doReturn(listOf(Contact("123asd", "asdcxz ")))
+            onBlocking { getSavedContacts() }.doReturn(listOf(Contact("123", "123asd", "asdcxz ")))
         }
         contactsGateway.stub {
             onBlocking { getContactsFromDevice() }.doReturn(
-                listOf(Contact("123", "122"))
+                listOf(Contact("qas", "123", "122"))
             )
         }
         assertTrue(interactor.isChangedContacts())
@@ -56,16 +56,16 @@ class InfoInteractorChangingContacts {
         contactsGateway.stub {
             onBlocking { getSavedContacts() }.doReturn(
                 listOf(
-                    Contact("123", "122")
+                    Contact("123", "123", "122")
                 )
             )
         }
         contactsGateway.stub {
             onBlocking { getContactsFromDevice() }.doReturn(
                 listOf(
-                    Contact("123", "332"),
-                    Contact("asd", "zxc"),
-                    Contact("wqdas", "124thryhgdfd")
+                    Contact("qas", "123", "332"),
+                    Contact("qas", "asd", "zxc"),
+                    Contact("qas", "wqdas", "124thryhgdfd")
                 )
             )
         }
@@ -77,15 +77,19 @@ class InfoInteractorChangingContacts {
     fun `Should return false if contact from db and device equal`() = runBlocking {
         contactsGateway.stub {
             onBlocking { getSavedContacts() }.doReturn(listOf(
-                Contact("123", "122"),
-                Contact("asd", "zxc"),
-                Contact("wqdas", "124thryhgdfd")))
+                Contact("qas", "123", "122"),
+                Contact("qas", "asd", "zxc"),
+                Contact("qas", "wqdas", "124thryhgdfd")
+            )
+            )
         }
         contactsGateway.stub {
             onBlocking { getContactsFromDevice() }.doReturn(listOf(
-                Contact("123", "122"),
-                Contact("asd", "zxc"),
-                Contact("wqdas", "124thryhgdfd")))
+                Contact("qas", "123", "122"),
+                Contact("qas", "asd", "zxc"),
+                Contact("qas", "wqdas", "124thryhgdfd")
+            )
+            )
         }
 
         assertFalse(interactor.isChangedContacts())
@@ -96,17 +100,17 @@ class InfoInteractorChangingContacts {
         contactsGateway.stub {
             onBlocking { getSavedContacts() }.doReturn(
                 listOf(
-                    Contact("123", "122"),
-                    Contact("asd", "zxc"),
-                    Contact("wqdas", "124thryhgdfd")
+                    Contact("qas", "123", "122"),
+                    Contact("qas", "asd", "zxc"),
+                    Contact("qas", "wqdas", "124thryhgdfd")
                 )
             )
         }
         contactsGateway.stub {
             onBlocking { getContactsFromDevice() }.doReturn(
                 listOf(
-                    Contact("123", "122"),
-                    Contact("asd", "zxc")
+                    Contact("qas", "123", "122"),
+                    Contact("qas", "asd", "zxc")
                 )
             )
         }
@@ -119,9 +123,9 @@ class InfoInteractorChangingContacts {
         contactsGateway.stub {
             onBlocking { getSavedContacts() }.doReturn(
                 listOf(
-                    Contact("123", "122"),
-                    Contact("asd", "zxc"),
-                    Contact("wqdas", "124thryhgdfd")
+                    Contact("qas", "123", "122"),
+                    Contact("qas", "asd", "zxc"),
+                    Contact("qas", "wqdas", "124thryhgdfd")
                 )
             )
         }

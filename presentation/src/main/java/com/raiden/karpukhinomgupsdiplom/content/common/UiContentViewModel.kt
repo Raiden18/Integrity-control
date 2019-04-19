@@ -3,8 +3,13 @@ package com.raiden.karpukhinomgupsdiplom.content.common
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.raiden.karpukhinomgupsdiplom.content.common.models.UiContent
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
 
+//I have no idea why my tests doesn't work.
+// Probably, it needs more time to get best practice and libs to test kotlin coroutines
 abstract class UiContentViewModel(
     private val IO: CoroutineDispatcher,
     private val DEFAULT: CoroutineDispatcher
@@ -29,21 +34,18 @@ abstract class UiContentViewModel(
     fun loadSavedAndDeviceApps() {
         GlobalScope.launch(IO) {
             isLoading.postValue(true)
-            withContext(DEFAULT) {
-                val savedApps = async { loadDeviceContent() }
-                val deviceApps = async { loadSavedContent() }
-                val uiSavedApps = savedApps.await()
-                    .toList()
-                val uiDeviceApps = deviceApps.await()
-                    .toList()
-                this@UiContentViewModel.savedContent.addAll(uiSavedApps)
-                this@UiContentViewModel.deviceContent.addAll(uiDeviceApps)
-                calculateDeletedContent()
-                calculateAdded()
-                calculateChanged()
-                setChangedApps()
-            }
-
+            val savedApps = async(DEFAULT) { loadDeviceContent() }
+            val deviceApps = async(DEFAULT) { loadSavedContent() }
+            val uiSavedApps = savedApps.await()
+                .toList()
+            val uiDeviceApps = deviceApps.await()
+                .toList()
+            this@UiContentViewModel.savedContent.addAll(uiSavedApps)
+            this@UiContentViewModel.deviceContent.addAll(uiDeviceApps)
+            calculateDeletedContent()
+            calculateAdded()
+            calculateChanged()
+            setChangedApps()
         }
     }
 

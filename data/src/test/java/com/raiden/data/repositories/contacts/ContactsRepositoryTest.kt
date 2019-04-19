@@ -28,10 +28,10 @@ internal class ContactsRepositoryTest {
         deviceSource.stub {
             onBlocking { getContacts() }.doReturn(
                 listOf(
-                    Contact("123", "123"),
-                    Contact("321", "321"),
-                    Contact("asd", "asd"),
-                    Contact("sss", "sss")
+                    Contact("123", "123", "123"),
+                    Contact("123", "321", "321"),
+                    Contact("123", "asd", "asd"),
+                    Contact("123", "sss", "sss")
                 )
             )
         }
@@ -44,10 +44,10 @@ internal class ContactsRepositoryTest {
         dataBaseSource.stub {
             onBlocking { getContacts() }.doReturn(
                 listOf(
-                    ContactsEntity("123", "123"),
-                    ContactsEntity("321", "321"),
-                    ContactsEntity("asd", "asd"),
-                    ContactsEntity("sss", "sss")
+                    ContactsEntity("123", "123", "123"),
+                    ContactsEntity("123", "321", "321"),
+                    ContactsEntity("123", "asd", "asd"),
+                    ContactsEntity("123", "sss", "sss")
                 )
             )
         }
@@ -59,10 +59,10 @@ internal class ContactsRepositoryTest {
     @Test
     fun `Should save all contacts to db`() = runBlocking {
         val contacts = listOf(
-            Contact("123", "123"),
-            Contact("321", "321"),
-            Contact("asd", "asd"),
-            Contact("sss", "sss")
+            Contact("123", "123", "123"),
+            Contact("123", "321", "321"),
+            Contact("123", "asd", "asd"),
+            Contact("123", "sss", "sss")
         )
         deviceSource.stub { onBlocking { getContacts() }.doReturn(contacts) }
         repository.saveContactsFromDevice()
