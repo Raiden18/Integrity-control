@@ -52,20 +52,20 @@ abstract class ContentViewModel(
 
     private fun findInstalled() {
         savedContent.forEach { savedApp ->
-            if (!deviceContent.containsApp(savedApp)) {
+            if (!deviceContent.containsContent(savedApp)) {
                 savedApp.isInstalled = true
                 deletedContent.add(savedApp)
             }
         }
     }
 
-    private fun List<UiContent>.containsApp(uiContent: UiContent): Boolean {
+    private fun List<UiContent>.containsContent(uiContent: UiContent): Boolean {
         return find { it.nameContent == uiContent.nameContent } != null
     }
 
     private fun findDeleted() {
         deviceContent.forEach { deviceApp ->
-            if (!savedContent.containsApp(deviceApp)) {
+            if (!savedContent.containsContent(deviceApp)) {
                 deviceApp.isDeleted = true
                 changesContent.add(deviceApp)
             }
