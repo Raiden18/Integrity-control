@@ -35,7 +35,7 @@
 
     <fragment
             android:id="@+id/applicationsFragment"
-            android:name="com.raiden.karpukhinomgupsdiplom.apps.ApplicationsFragment"
+            android:name="com.raiden.karpukhinomgupsdiplom.content.applications.ApplicationsFragment"
             android:label="ApplicationsFragment"
             />
 </navigation>

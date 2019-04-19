@@ -1,32 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-        xmlns:tools="http://schemas.android.com/tools">
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
 
-    <data>
+    <TextView
+            android:id="@+id/recycler_application_item"
+            style="@style/Content_item"
+            tools:text="123123"
+            />
 
-        <variable
-                name="application"
-                type="com.raiden.karpukhinomgupsdiplom.apps.models.UiApplication"
-                />
-    </data>
+    <View
+            style="@style/Divider"
+            />
+</LinearLayout>
 
-    <LinearLayout
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            >
-
-        <TextView
-                android:id="@+id/recycler_application_item"
-                style="@style/Content_item"
-                tools:text="123123"
-                android:text="@{application.name}"
-                />
-
-        <View
-                style="@style/Divider"
-                />
-    </LinearLayout>
-
-</layout>
