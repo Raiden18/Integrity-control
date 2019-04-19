@@ -1,5 +1,6 @@
 package com.raiden.karpukhinomgupsdiplom.content.common
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.raiden.karpukhinomgupsdiplom.content.common.models.UiContent
@@ -39,6 +40,13 @@ abstract class ContentViewModel(
                     .toList()
                 val uiDeviceApps = deviceApps.await()
                     .toList()
+                uiDeviceApps.forEach {
+                    Log.i("HUI", "$it.nameContent ${it.primaryKey}")
+                }
+                Log.i("HUI", "----------------------")
+                uiSavedApps.forEach {
+                    Log.i("HUI", "$it.nameContent ${it.primaryKey}")
+                }
                 this@ContentViewModel.savedContent.addAll(uiSavedApps)
                 this@ContentViewModel.deviceContent.addAll(uiDeviceApps)
                 findInstalled()
@@ -60,7 +68,7 @@ abstract class ContentViewModel(
     }
 
     private fun List<UiContent>.containsContent(uiContent: UiContent): Boolean {
-        return find { it.nameContent == uiContent.nameContent } != null
+        return find { it.primaryKey == uiContent.primaryKey } != null
     }
 
     private fun findDeleted() {

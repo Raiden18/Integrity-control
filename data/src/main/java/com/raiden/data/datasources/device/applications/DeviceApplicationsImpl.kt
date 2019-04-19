@@ -25,7 +25,8 @@ internal class DeviceApplicationsImpl(private val packageManager: PackageManager
     private fun convertToDomainAndAddToAppsList(packageInfo: PackageInfo) {
         val versionName = packageInfo.versionName
         val appLabel = packageManager.getApplicationLabel(packageInfo.applicationInfo).toString()
-        val application = Application(appLabel, versionName)
+        val packageName = packageInfo.packageName
+        val application = Application(appLabel, versionName, packageName)
         devicesApps.add(application)
     }
 }

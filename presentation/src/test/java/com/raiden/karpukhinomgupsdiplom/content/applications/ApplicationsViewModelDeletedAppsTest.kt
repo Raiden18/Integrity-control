@@ -32,11 +32,11 @@ class ApplicationsViewModelDeletedAppsTest {
         applicationInteractor.stub {
             onBlocking { getSavedApps() }.doReturn(
                 listOf(
-                    Application("123", "asd"),
-                    Application("asdc", "Adadfdsf"),
-                    Application("zcxasdcasdgf", "wasdadsgsg"),
-                    Application("sdafadAD", "ADAXVCZXV"),
-                    Application("zxCXBVADSF", "adqwwe12easdfaD")
+                    Application("123", "asd", "packageName"),
+                    Application("asdc", "Adadfdsf", "packageName"),
+                    Application("zcxasdcasdgf", "wasdadsgsg", "packageName"),
+                    Application("sdafadAD", "ADAXVCZXV", "packageName"),
+                    Application("zxCXBVADSF", "adqwwe12easdfaD", "packageName")
                 )
             )
         }
@@ -47,7 +47,8 @@ class ApplicationsViewModelDeletedAppsTest {
             .map {
                 UiApplication(
                     it.name,
-                    it.versionName
+                    it.versionName,
+                    it.packageName
                 ).apply {
                     isDeleted = true
                 }
@@ -68,22 +69,22 @@ class ApplicationsViewModelDeletedAppsTest {
         applicationInteractor.stub {
             onBlocking { getSavedApps() }.doReturn(
                 listOf(
-                    Application("123", "asd"),
-                    Application("asdc", "Adadfdsf"),
-                    Application("zcxasdcasdgf", "wasdadsgsg"),
-                    Application("sdafadAD", "ADAXVCZXV"),
-                    Application("zxCXBVADSF", "adqwwe12easdfaD")
+                    Application("123", "asd", "packageName"),
+                    Application("asdc", "Adadfdsf", "packageName"),
+                    Application("zcxasdcasdgf", "wasdadsgsg", "packageName"),
+                    Application("sdafadAD", "ADAXVCZXV", "packageName"),
+                    Application("zxCXBVADSF", "adqwwe12easdfaD", "packageName")
                 )
             )
         }
         applicationInteractor.stub {
             onBlocking { getDeviceApps() }.doReturn(
                 listOf(
-                    Application("asdsad", "asd"),
-                    Application("asdas", "Adadfdsf"),
-                    Application("aadvsdxvc", "wasdadsgsg"),
-                    Application("adfasxv", "ADAXVCZXV"),
-                    Application("awedweofj;;;", "adqwwe12easdfaD")
+                    Application("asdsad", "asd", "packageName"),
+                    Application("asdas", "Adadfdsf", "packageName"),
+                    Application("aadvsdxvc", "wasdadsgsg", "packageName"),
+                    Application("adfasxv", "ADAXVCZXV", "packageName"),
+                    Application("awedweofj;;;", "adqwwe12easdfaD", "packageName")
                 )
             )
         }
@@ -91,7 +92,8 @@ class ApplicationsViewModelDeletedAppsTest {
             .map {
                 UiApplication(
                     it.name,
-                    it.versionName
+                    it.versionName,
+                    it.packageName
                 ).apply {
                     isDeleted = true
                 }

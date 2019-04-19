@@ -8,6 +8,7 @@ import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
 
+//Look at MockK
 class UiContentViewModelTest {
     lateinit var viewModel: ContentViewModel
     @Before

@@ -33,22 +33,22 @@ class ApplicationsViewModelUpdatedAppsTest {
         applicationInteractor.stub {
             onBlocking { getSavedApps() }.doReturn(
                 listOf(
-                    Application("123", "1"),
-                    Application("asdc", "22"),
-                    Application("zcxasdcasdgf", "33"),
-                    Application("sdafadAD", "44"),
-                    Application("zxCXBVADSF", "55")
+                    Application("123", "1", "packageName"),
+                    Application("asdc", "22", "packageName"),
+                    Application("zcxasdcasdgf", "33", "packageName"),
+                    Application("sdafadAD", "44", "packageName"),
+                    Application("zxCXBVADSF", "55", "packageName")
                 )
             )
         }
         applicationInteractor.stub {
             onBlocking { getDeviceApps() }.doReturn(
                 listOf(
-                    Application("123", "asd"),
-                    Application("asdc", "Adadfdsf"),
-                    Application("zcxasdcasdgf", "wasdadsgsg"),
-                    Application("sdafadAD", "ADAXVCZXV"),
-                    Application("zxCXBVADSF", "adqwwe12easdfaD")
+                    Application("123", "asd", "packageName"),
+                    Application("asdc", "Adadfdsf", "packageName"),
+                    Application("zcxasdcasdgf", "wasdadsgsg", "packageName"),
+                    Application("sdafadAD", "ADAXVCZXV", "packageName"),
+                    Application("zxCXBVADSF", "adqwwe12easdfaD", "packageName")
                 )
             )
         }
@@ -56,7 +56,8 @@ class ApplicationsViewModelUpdatedAppsTest {
             .map {
                 UiApplication(
                     it.name,
-                    it.versionName
+                    it.versionName,
+                    it.packageName
                 ).apply {
                     isUpdated = true
                 }
@@ -76,36 +77,37 @@ class ApplicationsViewModelUpdatedAppsTest {
         applicationInteractor.stub {
             onBlocking { getSavedApps() }.doReturn(
                 listOf(
-                    Application("123", "1"),
-                    Application("asdc", "22"),
-                    Application("zcxasdcasdgf", "33"),
-                    Application("sdafadAD", "44"),
-                    Application("zxCXBVADSF", "55")
+                    Application("123", "1", "packageName"),
+                    Application("asdc", "22", "packageName"),
+                    Application("zcxasdcasdgf", "33", "packageName"),
+                    Application("sdafadAD", "44", "packageName"),
+                    Application("zxCXBVADSF", "55", "packageName")
                 )
             )
         }
         applicationInteractor.stub {
             onBlocking { getDeviceApps() }.doReturn(
                 listOf(
-                    Application("123", "asd"),
-                    Application("asdc", "22"),
-                    Application("zcxasdcasdgf", "wasdadsgsg"),
-                    Application("sdafadAD", "ADAXVCZXV"),
-                    Application("zxCXBVADSF", "adqwwe12easdfaD")
+                    Application("123", "asd", "packageName"),
+                    Application("asdc", "22", "packageName"),
+                    Application("zcxasdcasdgf", "wasdadsgsg", "packageName"),
+                    Application("sdafadAD", "ADAXVCZXV", "packageName"),
+                    Application("zxCXBVADSF", "adqwwe12easdfaD", "packageName")
                 )
             )
         }
         val listOfUpdated = listOf(
-            Application("123", "asd"),
-            Application("zcxasdcasdgf", "wasdadsgsg"),
-            Application("sdafadAD", "ADAXVCZXV"),
-            Application("zxCXBVADSF", "adqwwe12easdfaD")
+            Application("123", "asd", "packageName"),
+            Application("zcxasdcasdgf", "wasdadsgsg", "packageName"),
+            Application("sdafadAD", "ADAXVCZXV", "packageName"),
+            Application("zxCXBVADSF", "adqwwe12easdfaD", "packageName")
         )
         val uiInstalledApps = listOfUpdated.toList().convertToUi()
             .map {
                 UiApplication(
                     it.name,
-                    it.versionName
+                    it.versionName,
+                    it.packageName
                 ).apply {
                     isUpdated = true
                 }

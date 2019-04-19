@@ -11,9 +11,9 @@ internal data class ApplicationEntity(
     val name: String,
 
     @ColumnInfo(name = "app_version_name")
-    val versionName: String
-){
-    @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "id")
-    var id: Long = 0
-}
+    val versionName: String,
+
+    @PrimaryKey
+    @ColumnInfo(name = "package_name")
+    var packageName: String
+)

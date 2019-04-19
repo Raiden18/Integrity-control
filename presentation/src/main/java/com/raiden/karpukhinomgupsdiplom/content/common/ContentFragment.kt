@@ -62,7 +62,6 @@ abstract class ContentFragment : Fragment() {
         })
     }
 
-
     protected abstract fun onItemClick(uiContent: UiContent)
 
     private fun showLoading() {

@@ -25,7 +25,7 @@ internal class GetUpdatedAppsCommand(private val gateway: ApplicationsGateway) {
     }
 
     private fun checkVersionCodeIfAppsNameEquals(appsFromDevice: Application, savedApp: Application) {
-        if (appsFromDevice.name == savedApp.name) {
+        if (appsFromDevice.packageName == savedApp.packageName) {
             incCountOfUpdateAppIfVersionCodeDifferent(appsFromDevice, savedApp)
         }
     }

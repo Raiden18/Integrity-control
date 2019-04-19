@@ -3,7 +3,7 @@ package com.raiden.karpukhinomgupsdiplom.content.applications.model
 import com.raiden.domain.models.Application
 
 internal fun Application.convertToUi(): UiApplication {
-    return UiApplication(name, versionName)
+    return UiApplication(name, versionName, packageName)
 }
 
 internal fun List<Application>.convertToUi(): List<UiApplication> {

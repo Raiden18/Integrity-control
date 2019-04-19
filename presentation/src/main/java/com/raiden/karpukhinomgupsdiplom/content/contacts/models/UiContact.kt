@@ -7,6 +7,7 @@ data class UiContact(
     val name: String,
     val phoneNumber: String
 ) : UiContent {
+    override val primaryKey = id
     override val nameContent = name
     override var isDeleted: Boolean = false
     override var isInstalled: Boolean = false

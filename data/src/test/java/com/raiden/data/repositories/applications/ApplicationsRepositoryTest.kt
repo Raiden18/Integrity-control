@@ -34,10 +34,10 @@ internal class ApplicationsRepositoryTest {
         appsDao.stub {
             onBlocking { getApplications() }.doReturn(
                 arrayListOf(
-                    ApplicationEntity("123", "123"),
-                    ApplicationEntity("321", "321"),
-                    ApplicationEntity("asdasd", "32asdasd1"),
-                    ApplicationEntity("32asssaq1", "3erghrh21")
+                    ApplicationEntity("123", "123", "asdasd"),
+                    ApplicationEntity("321", "321", "asdasd"),
+                    ApplicationEntity("asdasd", "32asdasd1", "asdasd"),
+                    ApplicationEntity("32asssaq1", "3erghrh21", "asdasd")
                 )
             )
         }
@@ -51,10 +51,10 @@ internal class ApplicationsRepositoryTest {
         runBlocking {
             `when`(device.getApplications()).thenReturn(
                 arrayListOf(
-                    Application("123", "123"),
-                    Application("321", "321"),
-                    Application("asdasd", "32asdasd1"),
-                    Application("32asssaq1", "3erghrh21")
+                    Application("123", "123", "asdasd"),
+                    Application("321", "321", "asdasd"),
+                    Application("asdasd", "32asdasd1", "asdasd"),
+                    Application("32asssaq1", "3erghrh21", "asdasd")
                 )
 
             )
@@ -69,10 +69,10 @@ internal class ApplicationsRepositoryTest {
         runBlocking {
             `when`(device.getApplications()).thenReturn(
                 arrayListOf(
-                    Application("123", "123"),
-                    Application("321", "321"),
-                    Application("asdasd", "32asdasd1"),
-                    Application("32asssaq1", "3erghrh21")
+                    Application("123", "123", "asdasd"),
+                    Application("321", "321", "asdasd"),
+                    Application("asdasd", "32asdasd1", "asdasd"),
+                    Application("32asssaq1", "3erghrh21", "asdasd")
                 )
             )
             val appsFromDevice = device.getApplications()

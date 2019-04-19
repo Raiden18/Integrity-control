@@ -1,3 +1,7 @@
 package com.raiden.domain.models
 
-data class Application(val name: String, val versionName: String)
+data class Application(
+    val name: String,
+    val versionName: String,
+    val packageName: String
+)
