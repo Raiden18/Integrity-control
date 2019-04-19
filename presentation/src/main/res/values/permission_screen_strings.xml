@@ -4,4 +4,7 @@
     Без этих разрешений работа программы не может быть продолжена</string>
     <string name="permission_needs_permissions">Запросить разрения</string>
     <string name="permission_screen_label">Разрешения</string>
+    <string name="apps_title">Приложения</string>
+    <string name="contacts_title">Контакты</string>
+    <string name="files_title">Файлы</string>
 </resources>

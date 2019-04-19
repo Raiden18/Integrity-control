@@ -47,18 +47,18 @@
     <fragment
             android:id="@+id/applicationsFragment"
             android:name="com.raiden.karpukhinomgupsdiplom.content.applications.ApplicationsFragment"
-            android:label="ApplicationsFragment"
+            android:label="@string/apps_title"
             />
 
     <fragment
             android:id="@+id/filesFragment"
             android:name="com.raiden.karpukhinomgupsdiplom.content.files.FilesFragment"
-            android:label="FilesFragment"
+            android:label="@string/files_title"
             />
 
     <fragment
             android:id="@+id/contactsFragment"
             android:name="com.raiden.karpukhinomgupsdiplom.content.contacts.ContactsFragment"
-            android:label="ContactsFragment"
+            android:label="@string/contacts_title"
             />
 </navigation>

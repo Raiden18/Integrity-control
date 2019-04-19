@@ -40,6 +40,7 @@ class MainActivity : AppCompatActivity() {
         toolbar.setNavigationOnClickListener {
             onBackPressed()
         }
+        setupNavigation()
     }
 
     private fun setupNavigation() {

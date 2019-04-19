@@ -11,6 +11,6 @@ class ContactsFragment : ContentFragment() {
     override val emptyContentMessageId = R.string.contacts_screen_no_updates
 
     override fun onItemClick(uiContent: UiContent) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
     }
 }
