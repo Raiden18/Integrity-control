@@ -25,12 +25,12 @@ class InfoViewModel(
 
     init {
         loadingJob = GlobalScope.launch(IO) {
+            isShowLoading.postValue(true)
             loadAndDataAndBind()
         }
     }
 
     private suspend fun loadAndDataAndBind() {
-        isShowLoading.postValue(true)
         val updatedApps = withContext(DEFAULT) { interactor.getCountOfUpdatedApps() }
         val updatedFiles = withContext(DEFAULT) { interactor.getCountOfChangedFiles() }
         val deletedApps = withContext(DEFAULT) { interactor.getCountOfDeletedApps() }
@@ -39,7 +39,6 @@ class InfoViewModel(
         val addedFiles = withContext(DEFAULT) { interactor.getCountOfAddedFiles() }
         val isChangedContact = withContext(DEFAULT) { interactor.isChangedContacts() }
         val updatedTime = withContext(DEFAULT) { interactor.getSavedTime() }
-        isShowLoading.postValue(false)
         countDeletedApps.postValue(deletedApps.toString())
         countDeletedFiles.postValue(deletedFiles.toString())
         countUploadApps.postValue(installedApps.toString())
@@ -48,14 +47,16 @@ class InfoViewModel(
         countChangedFiles.postValue(updatedFiles.toString())
         isChangedContacts.postValue(isChangedContact)
         timeLastUpdate.postValue(updatedTime)
-
+        isShowLoading.postValue(false)
     }
 
     fun updateData() {
         updateJob = GlobalScope.launch(IO) {
             isShowLoading.postValue(true)
-            launch(DEFAULT) { interactor.updateInfo() }
-            loadAndDataAndBind()
+            launch(DEFAULT) {
+                interactor.updateInfo()
+                loadAndDataAndBind()
+            }
         }
     }
 

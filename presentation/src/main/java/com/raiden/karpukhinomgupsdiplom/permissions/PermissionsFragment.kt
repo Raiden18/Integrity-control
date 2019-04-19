@@ -2,9 +2,7 @@ package com.raiden.karpukhinomgupsdiplom.permissions
 
 import android.Manifest
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -35,6 +33,7 @@ class PermissionsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setHasOptionsMenu(true)
         checkPermissions()
         viewModel.isAllPermissionsGranted.observe(this, Observer { isGranted ->
             isGranted?.let {
@@ -50,6 +49,10 @@ class PermissionsFragment : Fragment() {
         }
     }
 
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        menu.clear()
+        super.onCreateOptionsMenu(menu, inflater)
+    }
     private fun checkPermissions() {
         val permissions = listOf(Manifest.permission.READ_CONTACTS, Manifest.permission.READ_EXTERNAL_STORAGE)
         val permissionMessage = getString(R.string.permission_screen_message)

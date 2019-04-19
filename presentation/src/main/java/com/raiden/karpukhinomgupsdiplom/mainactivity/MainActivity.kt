@@ -2,6 +2,7 @@ package com.raiden.karpukhinomgupsdiplom.mainactivity
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.Navigation.findNavController
 import androidx.navigation.ui.NavigationUI
@@ -46,13 +47,21 @@ class MainActivity : AppCompatActivity() {
     private fun setupNavigation() {
         val navController = findNavController(this, R.id.nav_host_fragment)
         NavigationUI.setupActionBarWithNavController(this, navController)
-        navController.addOnDestinationChangedListener { controller, destination, arguments ->
+        navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
                 R.id.infoFragment -> {
-                    toolbar.navigationIcon = null
+                    setUpToolbarForInfoScreen()
                 }
             }
         }
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.info_screen_menu, menu)
+        return true
+    }
+
+    private fun setUpToolbarForInfoScreen() {
+        toolbar.navigationIcon = null
+    }
 }
