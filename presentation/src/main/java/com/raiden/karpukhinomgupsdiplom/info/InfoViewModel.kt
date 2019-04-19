@@ -20,9 +20,11 @@ class InfoViewModel(
     val countDeletedFiles = MutableLiveData<String>()
     val isChangedContacts = MutableLiveData<Boolean>()
     val isShowLoading = MutableLiveData<Boolean>()
+    private var loadingJob: Job
+    private lateinit var updateJob: Job
 
     init {
-        GlobalScope.launch(IO) {
+        loadingJob = GlobalScope.launch(IO) {
             loadAndDataAndBind()
         }
     }
@@ -50,10 +52,18 @@ class InfoViewModel(
     }
 
     fun updateData() {
-        GlobalScope.launch(IO) {
+        updateJob = GlobalScope.launch(IO) {
             isShowLoading.postValue(true)
             launch(DEFAULT) { interactor.updateInfo() }
             loadAndDataAndBind()
         }
+    }
+
+    override fun onCleared() {
+        loadingJob.cancel()
+        if (::updateJob.isInitialized) {
+            updateJob.cancel()
+        }
+        super.onCleared()
     }
 }

@@ -8,7 +8,7 @@ import com.raiden.karpukhinomgupsdiplom.content.common.models.UiContent
 
 class ContentAdapter(private val onApplicationClick: OnContentClick) :
     RecyclerView.Adapter<ContentViewHolder>() {
-    private var applications = arrayListOf<UiContent>()
+    private var applications = listOf<UiContent>()
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ContentViewHolder {
@@ -24,9 +24,8 @@ class ContentAdapter(private val onApplicationClick: OnContentClick) :
         holder.bindItem(item)
     }
 
-    fun setApplications(applications: Iterable<UiContent>) {
-        this.applications.clear()
-        this.applications.addAll(applications)
+    fun setApplications(applications: List<UiContent>) {
+        this.applications = applications
         notifyDataSetChanged()
     }
 }

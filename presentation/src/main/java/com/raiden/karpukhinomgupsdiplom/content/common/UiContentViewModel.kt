@@ -3,10 +3,7 @@ package com.raiden.karpukhinomgupsdiplom.content.common
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.raiden.karpukhinomgupsdiplom.content.common.models.UiContent
-import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.async
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 
 //I have no idea why my tests doesn't work.
 // Probably, it needs more time to get best practice and libs to test kotlin coroutines and live data.
@@ -23,7 +20,7 @@ abstract class UiContentViewModel(
     private val deletedContent = arrayListOf<UiContent>()
     protected val changesContent = arrayListOf<UiContent>()
     private val addedContent = arrayListOf<UiContent>()
-
+    private lateinit var job: Job
     init {
         loadSavedAndDeviceApps()
     }
@@ -33,20 +30,23 @@ abstract class UiContentViewModel(
     abstract suspend fun loadSavedContent(): List<UiContent>
 
     fun loadSavedAndDeviceApps() {
-        GlobalScope.launch(IO) {
+        job = GlobalScope.launch(IO) {
+            isLoading.postValue(true)
             val savedApps = async(DEFAULT) { loadDeviceContent() }
             val deviceApps = async(DEFAULT) { loadSavedContent() }
-            val uiSavedApps = savedApps.await()
-                .toList()
-            val uiDeviceApps = deviceApps.await()
-                .toList()
-            this@UiContentViewModel.savedContent.addAll(uiSavedApps)
-            this@UiContentViewModel.deviceContent.addAll(uiDeviceApps)
-            calculateDeletedContent()
-            calculateAdded()
-            calculateChanged()
-            setChangedApps()
-            isLoading.postValue(false)
+            withContext(DEFAULT) {
+                val uiSavedApps = savedApps.await()
+                    .toList()
+                val uiDeviceApps = deviceApps.await()
+                    .toList()
+                this@UiContentViewModel.savedContent.addAll(uiSavedApps)
+                this@UiContentViewModel.deviceContent.addAll(uiDeviceApps)
+                calculateDeletedContent()
+                calculateAdded()
+                calculateChanged()
+                setChangedApps()
+                isLoading.postValue(false)
+            }
         }
     }
 
@@ -73,6 +73,10 @@ abstract class UiContentViewModel(
         }
     }
 
+    override fun onCleared() {
+        job.cancel()
+        super.onCleared()
+    }
     protected abstract fun calculateChanged()
 
     private fun setChangedApps() {
