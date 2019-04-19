@@ -4,7 +4,7 @@ import com.raiden.domain.gateways.FilesGateway
 import com.raiden.domain.models.InternalFile
 
 internal class GetCountOFAddedFiles(private val gateway: FilesGateway) {
-    private var countOfdeletedApps = 0
+    private var countOfAddedFiles = 0
 
     suspend fun getCountOfAddedFiles(): Int {
         val deviceFiles = gateway.getFilesFromDevice()
@@ -12,18 +12,14 @@ internal class GetCountOFAddedFiles(private val gateway: FilesGateway) {
         if (!savedFiles.isEmpty()) {
             countOfAddedFiles(savedFiles, deviceFiles)
         }
-        return countOfdeletedApps
+        return countOfAddedFiles
     }
 
     private fun countOfAddedFiles(savedFiles: Iterable<InternalFile>, filesFromDevice: Iterable<InternalFile>) {
         filesFromDevice.forEach { deviceFiles ->
-            if (!savedFiles.isAdded(deviceFiles)) {
-                countOfdeletedApps++
+            if (!savedFiles.contains(deviceFiles)) {
+                countOfAddedFiles++
             }
         }
-    }
-
-    private fun Iterable<InternalFile>.isAdded(deviceFiles: InternalFile): Boolean {
-        return find { it.fullName == deviceFiles.fullName } != null
     }
 }

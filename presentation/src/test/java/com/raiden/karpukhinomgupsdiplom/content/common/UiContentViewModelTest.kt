@@ -9,7 +9,7 @@ import org.junit.Before
 import org.junit.Test
 
 class UiContentViewModelTest {
-    lateinit var viewModel: UiContentViewModel
+    lateinit var viewModel: ContentViewModel
     @Before
     fun setUp() {
         viewModel = mock()

@@ -1,7 +1,7 @@
 package com.raiden.karpukhinomgupsdiplom.content.files
 
 import com.raiden.domain.interactors.files.FilesInteractor
-import com.raiden.karpukhinomgupsdiplom.content.common.UiContentViewModel
+import com.raiden.karpukhinomgupsdiplom.content.common.ContentViewModel
 import com.raiden.karpukhinomgupsdiplom.content.common.models.UiContent
 import com.raiden.karpukhinomgupsdiplom.content.files.model.convertToUi
 import kotlinx.coroutines.CoroutineDispatcher
@@ -11,7 +11,8 @@ class FilesViewModel(
     private val filesInteractor: FilesInteractor,
     IO: CoroutineDispatcher = Dispatchers.Main,
     DEFAULT: CoroutineDispatcher = Dispatchers.Default
-) : UiContentViewModel(IO, DEFAULT) {
+) : ContentViewModel(IO, DEFAULT) {
+
     override suspend fun loadDeviceContent(): List<UiContent> {
         return filesInteractor.getDeviceFiles().toList().convertToUi()
     }

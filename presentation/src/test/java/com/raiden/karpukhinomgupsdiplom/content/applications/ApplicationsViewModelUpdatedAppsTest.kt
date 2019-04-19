@@ -8,7 +8,7 @@ import com.raiden.domain.interactors.applications.ApplicationsInteractor
 import com.raiden.domain.models.Application
 import com.raiden.karpukhinomgupsdiplom.content.applications.model.UiApplication
 import com.raiden.karpukhinomgupsdiplom.content.applications.model.convertToUi
-import com.raiden.karpukhinomgupsdiplom.content.common.UiContentViewModel
+import com.raiden.karpukhinomgupsdiplom.content.common.ContentViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert
@@ -20,7 +20,7 @@ import org.junit.rules.TestRule
 class ApplicationsViewModelUpdatedAppsTest {
     @get:Rule
     var rule: TestRule = InstantTaskExecutorRule()
-    lateinit var viewModel: UiContentViewModel
+    lateinit var viewModel: ContentViewModel
     lateinit var applicationInteractor: ApplicationsInteractor
 
     @Before

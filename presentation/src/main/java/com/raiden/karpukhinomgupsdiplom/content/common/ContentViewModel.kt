@@ -6,9 +6,9 @@ import com.raiden.karpukhinomgupsdiplom.content.common.models.UiContent
 import kotlinx.coroutines.*
 
 //I have no idea why my tests doesn't work.
-// Probably, it needs more time to get best practice and libs to test kotlin coroutines and live data.
+//Probably, it needs more time to get best practice and libs to test kotlin coroutines and live data.
 //And of course I need more experience with JUnit, because it's my first project that was writing in TDD way
-abstract class UiContentViewModel(
+abstract class ContentViewModel(
     private val IO: CoroutineDispatcher,
     private val DEFAULT: CoroutineDispatcher
 ) : ViewModel() {
@@ -39,10 +39,10 @@ abstract class UiContentViewModel(
                     .toList()
                 val uiDeviceApps = deviceApps.await()
                     .toList()
-                this@UiContentViewModel.savedContent.addAll(uiSavedApps)
-                this@UiContentViewModel.deviceContent.addAll(uiDeviceApps)
-                calculateDeletedContent()
-                calculateAdded()
+                this@ContentViewModel.savedContent.addAll(uiSavedApps)
+                this@ContentViewModel.deviceContent.addAll(uiDeviceApps)
+                findInstalled()
+                findDeleted()
                 calculateChanged()
                 setChangedApps()
                 isLoading.postValue(false)
@@ -50,11 +50,10 @@ abstract class UiContentViewModel(
         }
     }
 
-
-    private fun calculateDeletedContent() {
+    private fun findInstalled() {
         savedContent.forEach { savedApp ->
             if (!deviceContent.containsApp(savedApp)) {
-                savedApp.isDeleted = true
+                savedApp.isInstalled = true
                 deletedContent.add(savedApp)
             }
         }
@@ -64,10 +63,10 @@ abstract class UiContentViewModel(
         return find { it.nameContent == uiContent.nameContent } != null
     }
 
-    private fun calculateAdded() {
+    private fun findDeleted() {
         deviceContent.forEach { deviceApp ->
             if (!savedContent.containsApp(deviceApp)) {
-                deviceApp.isInstalled = true
+                deviceApp.isDeleted = true
                 changesContent.add(deviceApp)
             }
         }
@@ -80,10 +79,10 @@ abstract class UiContentViewModel(
     protected abstract fun calculateChanged()
 
     private fun setChangedApps() {
-        val changedApps = arrayListOf<UiContent>()
-        changedApps.addAll(deletedContent)
-        changedApps.addAll(changesContent)
-        changedApps.addAll(addedContent)
-        this.changedApps.postValue(changedApps)
+        val changes = arrayListOf<UiContent>()
+        changes.addAll(deletedContent)
+        changes.addAll(changesContent)
+        changes.addAll(addedContent)
+        this.changedApps.postValue(changes)
     }
 }

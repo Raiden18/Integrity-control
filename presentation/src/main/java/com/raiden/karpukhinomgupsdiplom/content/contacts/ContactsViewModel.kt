@@ -1,7 +1,7 @@
 package com.raiden.karpukhinomgupsdiplom.content.contacts
 
 import com.raiden.domain.interactors.contacts.ContactsInteractor
-import com.raiden.karpukhinomgupsdiplom.content.common.UiContentViewModel
+import com.raiden.karpukhinomgupsdiplom.content.common.ContentViewModel
 import com.raiden.karpukhinomgupsdiplom.content.common.models.UiContent
 import com.raiden.karpukhinomgupsdiplom.content.contacts.models.UiContact
 import com.raiden.karpukhinomgupsdiplom.content.contacts.models.convertToUi
@@ -12,7 +12,7 @@ class ContactsViewModel(
     private val filesInteractor: ContactsInteractor,
     IO: CoroutineDispatcher = Dispatchers.Main,
     DEFAULT: CoroutineDispatcher = Dispatchers.Default
-) : UiContentViewModel(IO, DEFAULT) {
+) : ContentViewModel(IO, DEFAULT) {
 
     override suspend fun loadDeviceContent(): List<UiContent> {
         return filesInteractor.getDeviceContacts().toList().convertToUi()

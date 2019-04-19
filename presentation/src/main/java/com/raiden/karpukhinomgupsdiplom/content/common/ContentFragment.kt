@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.fragment_contents.*
 import kotlinx.android.synthetic.main.fragment_contents.view.*
 
 abstract class ContentFragment : Fragment() {
-    protected abstract val viewModel: UiContentViewModel
+    protected abstract val viewModel: ContentViewModel
     @get:StringRes
     protected abstract val emptyContentMessageId: Int
     private val adapter: ContentAdapter by lazy {

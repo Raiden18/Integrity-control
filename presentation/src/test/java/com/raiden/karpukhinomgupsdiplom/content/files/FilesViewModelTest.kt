@@ -6,7 +6,7 @@ import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.stub
 import com.raiden.domain.interactors.files.FilesInteractor
 import com.raiden.domain.models.InternalFile
-import com.raiden.karpukhinomgupsdiplom.content.common.UiContentViewModel
+import com.raiden.karpukhinomgupsdiplom.content.common.ContentViewModel
 import com.raiden.karpukhinomgupsdiplom.content.files.model.convertToUi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
@@ -19,7 +19,7 @@ import org.junit.rules.TestRule
 class FilesViewModelTest {
     @get:Rule
     var rule: TestRule = InstantTaskExecutorRule()
-    lateinit var viewModel: UiContentViewModel
+    lateinit var viewModel: ContentViewModel
 
     @Before
     fun setUp() {
