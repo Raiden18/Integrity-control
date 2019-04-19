@@ -9,7 +9,8 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 
 //I have no idea why my tests doesn't work.
-// Probably, it needs more time to get best practice and libs to test kotlin coroutines
+// Probably, it needs more time to get best practice and libs to test kotlin coroutines and live data.
+//And of course I need more experience with JUnit, because it's my first project that was writing in TDD way
 abstract class UiContentViewModel(
     private val IO: CoroutineDispatcher,
     private val DEFAULT: CoroutineDispatcher
@@ -19,9 +20,9 @@ abstract class UiContentViewModel(
     val isLoading = MutableLiveData<Boolean>()
     protected val savedContent = arrayListOf<UiContent>()
     protected val deviceContent = arrayListOf<UiContent>()
-    protected val deletedContent = arrayListOf<UiContent>()
+    private val deletedContent = arrayListOf<UiContent>()
     protected val changesContent = arrayListOf<UiContent>()
-    protected val addedContent = arrayListOf<UiContent>()
+    private val addedContent = arrayListOf<UiContent>()
 
     init {
         loadSavedAndDeviceApps()
@@ -33,7 +34,6 @@ abstract class UiContentViewModel(
 
     fun loadSavedAndDeviceApps() {
         GlobalScope.launch(IO) {
-            isLoading.postValue(true)
             val savedApps = async(DEFAULT) { loadDeviceContent() }
             val deviceApps = async(DEFAULT) { loadSavedContent() }
             val uiSavedApps = savedApps.await()
@@ -46,6 +46,7 @@ abstract class UiContentViewModel(
             calculateAdded()
             calculateChanged()
             setChangedApps()
+            isLoading.postValue(true)
         }
     }
 
@@ -79,7 +80,6 @@ abstract class UiContentViewModel(
         changedApps.addAll(deletedContent)
         changedApps.addAll(changesContent)
         changedApps.addAll(addedContent)
-        isLoading.postValue(false)
         this.changedApps.postValue(changedApps)
     }
 }

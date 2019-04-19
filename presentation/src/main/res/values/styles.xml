@@ -3,9 +3,9 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimary">#9c27b0</item>
+        <item name="colorPrimaryDark">#6a0080</item>
+        <item name="colorAccent">#d05ce3</item>
     </style>
 
 
@@ -50,5 +50,21 @@
         <item name="android:textSize">20sp</item>
         <item name="android:layout_marginStart">8dp</item>
         <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <style name="RotateLoader">
+        <item name="android:layout_width">80dp</item>
+        <item name="android:layout_height">80dp</item>
+        <item name="loading_width">5dp</item>
+        <item name="loading_color">@color/colorPrimary</item>
+        <item name="android:layout_centerInParent">true</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
+    <style name="ButtonStyle">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="android:foreground">?android:attr/selectableItemBackground</item>
     </style>
 </resources>
