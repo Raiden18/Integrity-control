@@ -46,7 +46,7 @@ abstract class UiContentViewModel(
             calculateAdded()
             calculateChanged()
             setChangedApps()
-            isLoading.postValue(true)
+            isLoading.postValue(false)
         }
     }
 
