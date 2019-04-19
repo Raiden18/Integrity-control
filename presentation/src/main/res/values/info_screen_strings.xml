@@ -17,5 +17,4 @@
     <string name="info_contacts_button">Контакты</string>
     <string name="info_screen_label">Информационный экран</string>
     <string name="info_update_button">Обновить данные</string>
-    <string name="info_update_menu_message">Перезагрузить данные</string>
 </resources>

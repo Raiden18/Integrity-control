@@ -3,4 +3,5 @@
     <string name="applications_screen_no_updates">Приложения не были изменены</string>
     <string name="files_screen_no_updates">Файлы не были изменены</string>
     <string name="contacts_screen_no_updates">Контакты не были изменены</string>
+    <string name="content_menu_help_message">Перезагрузить данные</string>
 </resources>

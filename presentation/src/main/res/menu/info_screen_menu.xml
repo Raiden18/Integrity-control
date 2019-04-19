@@ -6,7 +6,7 @@
     <item
             android:id="@+id/action_update"
             android:icon="@mipmap/icon_help"
-            android:title="@string/info_update_menu_message"
+            android:title="@string/content_menu_help_message"
             android:orderInCategory="100"
             app:showAsAction="always"
             android:visible="true"
