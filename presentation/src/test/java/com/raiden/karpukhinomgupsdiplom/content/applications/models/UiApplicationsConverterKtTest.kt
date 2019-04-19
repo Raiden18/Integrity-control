@@ -1,4 +1,4 @@
-package com.raiden.karpukhinomgupsdiplom.content.models
+package com.raiden.karpukhinomgupsdiplom.content.applications.models
 
 import com.raiden.domain.models.Application
 import com.raiden.karpukhinomgupsdiplom.content.applications.model.UiApplication

@@ -66,7 +66,8 @@ class InfoFragment : Fragment() {
     }
 
     private fun openFilesScreen() {
-
+        val appDirection = InfoFragmentDirections.actionInfoFragmentToFilesFragment()
+        NavHostFragment.findNavController(this).navigate(appDirection)
     }
 
     private fun openContactsScreen() {

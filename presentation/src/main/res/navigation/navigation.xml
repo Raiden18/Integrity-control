@@ -16,6 +16,11 @@
                 android:id="@+id/action_infoFragment_to_applicationsFragment"
                 app:destination="@id/applicationsFragment"
                 />
+
+        <action
+                android:id="@+id/action_infoFragment_to_filesFragment"
+                app:destination="@id/filesFragment"
+                />
     </fragment>
 
     <fragment
@@ -31,11 +36,18 @@
                 app:launchSingleTop="true"
                 app:popUpTo="@+id/navigation"
                 />
+
     </fragment>
 
     <fragment
             android:id="@+id/applicationsFragment"
             android:name="com.raiden.karpukhinomgupsdiplom.content.applications.ApplicationsFragment"
             android:label="ApplicationsFragment"
+            />
+
+    <fragment
+            android:id="@+id/filesFragment"
+            android:name="com.raiden.karpukhinomgupsdiplom.content.files.FilesFragment"
+            android:label="FilesFragment"
             />
 </navigation>

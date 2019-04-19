@@ -3,10 +3,7 @@ package com.raiden.karpukhinomgupsdiplom.content.common
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.raiden.karpukhinomgupsdiplom.content.common.models.UiContent
-import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.async
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 
 abstract class UiContentViewModel(
     private val IO: CoroutineDispatcher,
@@ -29,24 +26,27 @@ abstract class UiContentViewModel(
 
     abstract suspend fun loadSavedContent(): List<UiContent>
 
-    private fun loadSavedAndDeviceApps() = GlobalScope.launch(IO) {
+    fun loadSavedAndDeviceApps() {
         GlobalScope.launch(IO) {
             isLoading.postValue(true)
-            val savedApps = async { loadDeviceContent() }
-            val deviceApps = async { loadSavedContent() }
-            val uiSavedApps = savedApps.await()
-                .toList()
-            val uiDeviceApps = deviceApps.await()
-                .toList()
-            this@UiContentViewModel.savedContent.addAll(uiSavedApps)
-            this@UiContentViewModel.deviceContent.addAll(uiDeviceApps)
-            calculateDeletedContent()
-            calculateAdded()
-            calculateChanged()
-            isLoading.postValue(false)
-            setChangedApps()
+            withContext(DEFAULT) {
+                val savedApps = async { loadDeviceContent() }
+                val deviceApps = async { loadSavedContent() }
+                val uiSavedApps = savedApps.await()
+                    .toList()
+                val uiDeviceApps = deviceApps.await()
+                    .toList()
+                this@UiContentViewModel.savedContent.addAll(uiSavedApps)
+                this@UiContentViewModel.deviceContent.addAll(uiDeviceApps)
+                calculateDeletedContent()
+                calculateAdded()
+                calculateChanged()
+                setChangedApps()
+            }
+
         }
     }
+
 
     private fun calculateDeletedContent() {
         savedContent.forEach { savedApp ->
@@ -77,6 +77,7 @@ abstract class UiContentViewModel(
         changedApps.addAll(deletedContent)
         changedApps.addAll(changesContent)
         changedApps.addAll(addedContent)
+        isLoading.postValue(false)
         this.changedApps.postValue(changedApps)
     }
 }

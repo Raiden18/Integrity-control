@@ -1,4 +1,4 @@
-package com.raiden.karpukhinomgupsdiplom.content
+package com.raiden.karpukhinomgupsdiplom.content.applications
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.nhaarman.mockitokotlin2.doReturn
@@ -6,7 +6,6 @@ import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.stub
 import com.raiden.domain.interactors.applications.ApplicationsInteractor
 import com.raiden.domain.models.Application
-import com.raiden.karpukhinomgupsdiplom.content.applications.ApplicationsViewModel
 import com.raiden.karpukhinomgupsdiplom.content.applications.model.UiApplication
 import com.raiden.karpukhinomgupsdiplom.content.applications.model.convertToUi
 import kotlinx.coroutines.Dispatchers
