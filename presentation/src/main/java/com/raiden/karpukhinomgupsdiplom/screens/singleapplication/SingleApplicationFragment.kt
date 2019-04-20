@@ -4,14 +4,13 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.provider.Settings
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.raiden.karpukhinomgupsdiplom.R
 import com.raiden.karpukhinomgupsdiplom.databinding.FragmentSingleApplicationBinding
 import com.raiden.karpukhinomgupsdiplom.screens.singleapplication.SingleApplicationFragmentArgs.Companion.fromBundle
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_single_application.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -24,6 +23,8 @@ class SingleApplicationFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         viewModel.uiApplication = uiApplication
+        setHasOptionsMenu(true)
+        requireActivity().toolbar.title = uiApplication.name
         val binding = DataBindingUtil.inflate<FragmentSingleApplicationBinding>(
             inflater,
             com.raiden.karpukhinomgupsdiplom.R.layout.fragment_single_application,
@@ -45,6 +46,11 @@ class SingleApplicationFragment : Fragment() {
         }
         getIconAppIfIsNotDeleted()
         calculateAction()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        menu.clear()
+        super.onCreateOptionsMenu(menu, inflater)
     }
 
     private fun getIconAppIfIsNotDeleted() {
