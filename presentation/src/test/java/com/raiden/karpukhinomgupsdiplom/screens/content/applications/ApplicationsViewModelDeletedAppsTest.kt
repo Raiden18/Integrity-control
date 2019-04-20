@@ -47,7 +47,7 @@ class ApplicationsViewModelDeletedAppsTest {
             .map {
                 UiApplication(
                     it.name,
-                    it.currentVersionNameMd5,
+                    it.versionNameMd5,
                     it.packageName
                 ).apply {
                     isDeleted = true
@@ -92,7 +92,7 @@ class ApplicationsViewModelDeletedAppsTest {
             .map {
                 UiApplication(
                     it.name,
-                    it.currentVersionNameMd5,
+                    it.versionNameMd5,
                     it.packageName
                 ).apply {
                     isDeleted = true

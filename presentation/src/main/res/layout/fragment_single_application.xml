@@ -105,7 +105,7 @@
 
         <TextView
                 android:id="@+id/single_app_current_hash"
-                android:text="@{viewModel.uiApplication.currentVersionNameMd5}"
+                android:text="@{viewModel.uiApplication.versionNameMd5}"
                 style="@style/SingleAppField"
                 tools:text="1111111111111111111111111111"
                 app:layout_constraintEnd_toEndOf="@+id/single_app_name_package"
@@ -127,7 +127,7 @@
 
         <TextView
                 android:id="@+id/single_app_old_hash"
-                android:text="@{viewModel.uiApplication.currentVersionNameMd5}"
+                android:text="@{viewModel.uiApplication.oldVersionNameMd5}"
                 style="@style/SingleAppField"
                 tools:text="1111111111111111111111111111"
                 app:layout_constraintEnd_toEndOf="@+id/single_app_current_hash"

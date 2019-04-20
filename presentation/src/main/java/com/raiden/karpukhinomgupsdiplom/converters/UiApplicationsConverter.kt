@@ -12,5 +12,5 @@ internal fun List<Application>.convertToUi(): List<UiApplication> {
 }
 
 internal fun UiApplication.convertToDomain(): Application {
-    return Application(name, currentVersionNameMd5, packageName)
+    return Application(name, versionNameMd5, packageName)
 }

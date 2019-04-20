@@ -56,7 +56,7 @@ class ApplicationsViewModelUpdatedAppsTest {
             .map {
                 UiApplication(
                     it.name,
-                    it.currentVersionNameMd5,
+                    it.versionNameMd5,
                     it.packageName
                 ).apply {
                     isUpdated = true
@@ -106,7 +106,7 @@ class ApplicationsViewModelUpdatedAppsTest {
             .map {
                 UiApplication(
                     it.name,
-                    it.currentVersionNameMd5,
+                    it.versionNameMd5,
                     it.packageName
                 ).apply {
                     isUpdated = true

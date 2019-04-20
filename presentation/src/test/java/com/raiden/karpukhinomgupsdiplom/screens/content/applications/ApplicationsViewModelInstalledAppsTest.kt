@@ -50,7 +50,7 @@ class ApplicationsViewModelInstalledAppsTest {
             .map {
                 UiApplication(
                     it.name,
-                    it.currentVersionNameMd5,
+                    it.versionNameMd5,
                     it.packageName
                 ).apply {
                     isInstalled = true
@@ -94,7 +94,7 @@ class ApplicationsViewModelInstalledAppsTest {
             .map {
                 UiApplication(
                     it.name,
-                    it.currentVersionNameMd5,
+                    it.versionNameMd5,
                     it.packageName
                 ).apply {
                     isInstalled = true
