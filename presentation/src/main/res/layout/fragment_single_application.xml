@@ -75,20 +75,22 @@
                 android:text="@string/single_app_package_name"
                 style="@style/LibleInfoTextStyleField"
                 android:layout_marginTop="8dp"
-                app:layout_constraintTop_toBottomOf="@+id/single_app_icon"
                 app:layout_constraintStart_toStartOf="@+id/single_app_icon"
+                app:layout_constraintBottom_toBottomOf="@+id/single_app_name_package"
+                app:layout_constraintTop_toTopOf="@+id/single_app_name_package"
                 />
 
         <TextView
                 android:id="@+id/single_app_name_package"
                 android:text="@{viewModel.uiApplication.packageName}"
                 tools:text="com.raiden.thesiswork"
-                style="@style/LibleInfoTextStyleField"
+                style="@style/SingleAppField"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginEnd="8dp"
                 android:layout_marginTop="8dp"
                 app:layout_constraintTop_toBottomOf="@+id/single_app_icon"
-                android:gravity="right"
+                app:layout_constraintStart_toStartOf="@+id/single_app_open_in_options"
+                android:layout_width="0dp"
                 />
 
         <TextView
@@ -104,16 +106,13 @@
         <TextView
                 android:id="@+id/single_app_current_hash"
                 android:text="@{viewModel.uiApplication.currentVersionNameMd5}"
-                style="@style/LibleInfoTextStyleField"
-                android:layout_width="120dp"
+                style="@style/SingleAppField"
                 tools:text="1111111111111111111111111111"
-                android:singleLine="false"
-                android:textSize="14sp"
-                android:gravity="right"
-                android:maxLines="2"
                 app:layout_constraintEnd_toEndOf="@+id/single_app_name_package"
                 android:layout_marginTop="8dp"
                 app:layout_constraintTop_toBottomOf="@+id/single_app_name_package"
+                app:layout_constraintStart_toStartOf="@+id/single_app_name_package"
+                android:layout_width="0dp"
                 />
 
         <TextView
@@ -129,16 +128,13 @@
         <TextView
                 android:id="@+id/single_app_old_hash"
                 android:text="@{viewModel.uiApplication.currentVersionNameMd5}"
-                style="@style/LibleInfoTextStyleField"
-                android:layout_width="120dp"
+                style="@style/SingleAppField"
                 tools:text="1111111111111111111111111111"
-                android:singleLine="false"
-                android:textSize="14sp"
-                android:maxLines="2"
                 app:layout_constraintEnd_toEndOf="@+id/single_app_current_hash"
                 android:layout_marginTop="8dp"
                 app:layout_constraintTop_toBottomOf="@+id/single_app_current_hash"
-                android:gravity="right"
+                app:layout_constraintStart_toStartOf="@+id/single_app_current_hash"
+                android:layout_width="0dp"
                 />
 
         <TextView
@@ -154,14 +150,12 @@
         <TextView
                 android:id="@+id/single_app_action"
                 android:text="НИНАЮ"
-                style="@style/LibleInfoTextStyleField"
-                android:layout_width="wrap_content"
+                style="@style/SingleAppField"
                 tools:text="Удалено"
-                android:singleLine="false"
-                android:layout_marginTop="8dp"
                 app:layout_constraintTop_toBottomOf="@+id/single_app_old_hash"
                 app:layout_constraintEnd_toEndOf="@+id/single_app_old_hash"
-                android:gravity="right"
+                app:layout_constraintStart_toStartOf="@+id/single_app_old_hash"
+                android:layout_width="0dp"
                 />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
