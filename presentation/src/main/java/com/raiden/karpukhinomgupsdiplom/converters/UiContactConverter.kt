@@ -1,4 +1,4 @@
-package com.raiden.karpukhinomgupsdiplom.screens.content.contacts
+package com.raiden.karpukhinomgupsdiplom.converters
 
 import com.raiden.domain.models.Contact
 import com.raiden.karpukhinomgupsdiplom.uimodels.UiContact

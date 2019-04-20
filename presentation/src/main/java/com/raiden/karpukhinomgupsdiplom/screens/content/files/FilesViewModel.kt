@@ -1,6 +1,7 @@
 package com.raiden.karpukhinomgupsdiplom.screens.content.files
 
 import com.raiden.domain.interactors.files.FilesInteractor
+import com.raiden.karpukhinomgupsdiplom.converters.convertToUi
 import com.raiden.karpukhinomgupsdiplom.screens.content.common.ContentViewModel
 import com.raiden.karpukhinomgupsdiplom.uimodels.UiContent
 import kotlinx.coroutines.CoroutineDispatcher

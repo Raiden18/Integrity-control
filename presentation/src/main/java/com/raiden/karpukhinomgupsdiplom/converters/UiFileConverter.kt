@@ -1,4 +1,4 @@
-package com.raiden.karpukhinomgupsdiplom.screens.content.files
+package com.raiden.karpukhinomgupsdiplom.converters
 
 import com.raiden.domain.models.InternalFile
 import com.raiden.karpukhinomgupsdiplom.uimodels.UiFile

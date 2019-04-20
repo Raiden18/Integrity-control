@@ -1,6 +1,7 @@
 package com.raiden.karpukhinomgupsdiplom.screens.content.applications
 
 import com.raiden.domain.interactors.applications.ApplicationsInteractor
+import com.raiden.karpukhinomgupsdiplom.converters.convertToUi
 import com.raiden.karpukhinomgupsdiplom.screens.content.common.ContentViewModel
 import com.raiden.karpukhinomgupsdiplom.uimodels.UiApplication
 import com.raiden.karpukhinomgupsdiplom.uimodels.UiContent

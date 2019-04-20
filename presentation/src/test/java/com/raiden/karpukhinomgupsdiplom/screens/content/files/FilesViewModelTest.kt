@@ -6,6 +6,7 @@ import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.stub
 import com.raiden.domain.interactors.files.FilesInteractor
 import com.raiden.domain.models.InternalFile
+import com.raiden.karpukhinomgupsdiplom.converters.convertToUi
 import com.raiden.karpukhinomgupsdiplom.screens.content.common.ContentViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking

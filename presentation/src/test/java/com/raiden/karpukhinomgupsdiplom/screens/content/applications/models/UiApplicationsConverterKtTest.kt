@@ -1,7 +1,7 @@
 package com.raiden.karpukhinomgupsdiplom.screens.content.applications.models
 
 import com.raiden.domain.models.Application
-import com.raiden.karpukhinomgupsdiplom.screens.content.applications.convertToUi
+import com.raiden.karpukhinomgupsdiplom.converters.convertToUi
 import com.raiden.karpukhinomgupsdiplom.uimodels.UiApplication
 import org.junit.Assert.assertEquals
 import org.junit.Test

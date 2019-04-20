@@ -6,6 +6,7 @@ import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.stub
 import com.raiden.domain.interactors.applications.ApplicationsInteractor
 import com.raiden.domain.models.Application
+import com.raiden.karpukhinomgupsdiplom.converters.convertToUi
 import com.raiden.karpukhinomgupsdiplom.screens.content.common.ContentViewModel
 import com.raiden.karpukhinomgupsdiplom.uimodels.UiApplication
 import kotlinx.coroutines.Dispatchers

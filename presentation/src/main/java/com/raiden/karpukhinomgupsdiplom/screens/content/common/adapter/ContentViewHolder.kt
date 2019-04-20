@@ -1,6 +1,7 @@
 package com.raiden.karpukhinomgupsdiplom.screens.content.common.adapter
 
 import android.view.View
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.raiden.karpukhinomgupsdiplom.R
 import com.raiden.karpukhinomgupsdiplom.uimodels.UiContent
@@ -34,7 +35,7 @@ class ContentViewHolder(
     }
 
     private fun setItemTextColor(idColor: Int) {
-        val color = itemView.context.resources.getColor(idColor)
+        val color = ContextCompat.getColor(itemView.context, idColor)
         itemView.recycler_application_item.setTextColor(color)
     }
 }

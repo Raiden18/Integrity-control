@@ -1,6 +1,7 @@
 package com.raiden.karpukhinomgupsdiplom.screens.content.contacts
 
 import com.raiden.domain.interactors.contacts.ContactsInteractor
+import com.raiden.karpukhinomgupsdiplom.converters.convertToUi
 import com.raiden.karpukhinomgupsdiplom.screens.content.common.ContentViewModel
 import com.raiden.karpukhinomgupsdiplom.uimodels.UiContact
 import com.raiden.karpukhinomgupsdiplom.uimodels.UiContent

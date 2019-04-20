@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment
 import com.raiden.karpukhinomgupsdiplom.databinding.FragmentSingleApplicationBinding
 import com.raiden.karpukhinomgupsdiplom.screens.singleapplication.SingleApplicationFragmentArgs.Companion.fromBundle
 import kotlinx.android.synthetic.main.fragment_single_application.*
+import kotlinx.android.synthetic.main.fragment_single_application.view.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
 
@@ -31,6 +32,8 @@ class SingleApplicationFragment : Fragment() {
         )
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
+        val iconApp = requireActivity().packageManager.getApplicationIcon(uiApplication.packageName)
+        binding.root.single_app_icon.background = iconApp
         return binding.root
     }
 
