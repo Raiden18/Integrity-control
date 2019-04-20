@@ -1,4 +1,5 @@
 <resources>
+    <string name="application_name">Integrity Control</string>
     <string name="lentach_smile">¯\\_(ツ)_/¯</string>
     <string name="applications_screen_no_updates">Приложения не были изменены</string>
     <string name="files_screen_no_updates">Файлы не были изменены</string>
