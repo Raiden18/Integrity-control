@@ -2,8 +2,8 @@
 <resources>
     <string name="single_app_name">Имя приложения:</string>
     <string name="single_app_package_name">Имя пакета:</string>
-    <string name="single_app_current_hash">Текущий хэш:</string>
-    <string name="single_app_old_hash">Прошлый хэш:</string>
+    <string name="single_app_current_hash">Хэш:</string>
+    <string name="single_app_old_hash">Хэш до обновления:</string>
     <string name="single_app_action">Действие:</string>
 
     <string name="single_app_name_delete">Удалено</string>

@@ -27,7 +27,7 @@ class ApplicationsViewModel(
             savedApp as UiApplication
             deviceContent.forEach { deviceApps ->
                 deviceApps as UiApplication
-                if (savedApp.name == deviceApps.name) {
+                if (savedApp.packageName == deviceApps.packageName) {
                     if (savedApp.versionNameMd5 != deviceApps.versionNameMd5) {
                         deviceApps.isUpdated = true
                         deviceApps.oldVersionNameMd5 = savedApp.versionNameMd5
