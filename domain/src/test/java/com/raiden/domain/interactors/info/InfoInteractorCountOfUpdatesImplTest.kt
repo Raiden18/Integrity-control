@@ -12,11 +12,10 @@ import kotlinx.coroutines.runBlocking
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
-import org.mockito.Mockito.`when`
 
 internal class InfoInteractorCountOfUpdatesImplTest {
     lateinit var interactor: InfoInteractor
-    lateinit var gateway: ApplicationsGateway;
+    lateinit var gateway: ApplicationsGateway
 
     @Before
     fun setUp() {
@@ -36,7 +35,7 @@ internal class InfoInteractorCountOfUpdatesImplTest {
                 )
                 onBlocking { getAppsFromDevice() }.doReturn(
                     listOf(
-                        Application("123", "321")
+                        Application("123", "321", "132123123")
                     )
                 )
             }
@@ -51,12 +50,12 @@ internal class InfoInteractorCountOfUpdatesImplTest {
             onBlocking { getSavedApplications() }.doReturn(
                 listOf
                     (
-                    Application("123", "123")
+                    Application("123", "123", "132123123")
                 )
             )
             onBlocking { getAppsFromDevice() }.doReturn(
                 listOf(
-                    Application("123", "321")
+                    Application("123", "321", "132123123")
                 )
             )
         }
@@ -69,18 +68,18 @@ internal class InfoInteractorCountOfUpdatesImplTest {
         gateway.stub {
             onBlocking { getSavedApplications() }.doReturn(
                 listOf(
-                    Application("123", "123"),
-                    Application("321", "123"),
-                    Application("22", "123"),
-                    Application("21", "123")
+                    Application("123", "123", "321"),
+                    Application("321", "123", "123"),
+                    Application("22", "123", "qwe"),
+                    Application("21", "123", "ewq")
                 )
             )
             onBlocking { getAppsFromDevice() }.doReturn(
                 listOf(
-                    Application("123", "1123123123aszxc23"),
-                    Application("321", "1asdasd23"),
-                    Application("22", "1asdasda23"),
-                    Application("21", "1zxcxzc23")
+                    Application("123", "1123123123aszxc23", "321"),
+                    Application("321", "1asdasd23", "123"),
+                    Application("22", "1asdasda23", "qwe"),
+                    Application("21", "1zxcxzc23", "ewq")
                 )
             )
         }
@@ -93,18 +92,18 @@ internal class InfoInteractorCountOfUpdatesImplTest {
         gateway.stub {
             onBlocking { getSavedApplications() }.doReturn(
                 listOf(
-                    Application("123", "123"),
-                    Application("321", "123"),
-                    Application("22", "123"),
-                    Application("221", "123")
+                    Application("123", "123", "22"),
+                    Application("321", "123", "33"),
+                    Application("22", "123", "44"),
+                    Application("221", "123", "55")
                 )
             )
             onBlocking { getAppsFromDevice() }.doReturn(
                 listOf(
-                    Application("123", "123"),
-                    Application("321", "1asdasd23"),
-                    Application("22", "1asdasda23"),
-                    Application("221", "1zxcxzc23")
+                    Application("123", "123", "22"),
+                    Application("321", "1asdasd23", "33"),
+                    Application("22", "1asdasda23", "44"),
+                    Application("221", "1zxcxzc23", "55")
                 )
             )
         }

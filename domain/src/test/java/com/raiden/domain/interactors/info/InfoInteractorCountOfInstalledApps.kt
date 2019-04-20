@@ -15,7 +15,7 @@ import org.junit.Test
 
 internal class InfoInteractorCountOfInstalledApps {
     lateinit var interactor: InfoInteractor
-    lateinit var gateway: ApplicationsGateway;
+    lateinit var gateway: ApplicationsGateway
 
     @Before
     fun setUp() {
@@ -48,7 +48,7 @@ internal class InfoInteractorCountOfInstalledApps {
             )
             onBlocking { getAppsFromDevice() }.doReturn(
                 listOf(
-                    Application("123213", "asdasdasd")
+                    Application("123213", "asdasdasd", "132123123")
                 )
             )
         }
@@ -61,18 +61,18 @@ internal class InfoInteractorCountOfInstalledApps {
         gateway.stub {
             onBlocking { getSavedApplications() }.doReturn(
                 listOf(
-                    Application("asdsad", "asdasdasd"),
-                    Application("asdasd", "asdasdasd"),
-                    Application("zxczxc", "asdasdasd"),
-                    Application("444444", "asdasdasd")
+                    Application("asdsad", "asdasdasd", "132123123"),
+                    Application("asdasd", "asdasdasd", "132123123"),
+                    Application("zxczxc", "asdasdasd", "132123123"),
+                    Application("444444", "asdasdasd", "132123123")
                 )
             )
             onBlocking { getAppsFromDevice() }.doReturn(
                 listOf(
-                    Application("123213", "asdasdasd"),
-                    Application("2222", "asdasdasd"),
-                    Application("3333", "asdasdasd"),
-                    Application("444444", "asdasdasd")
+                    Application("123213", "asdasdasd", "132123123"),
+                    Application("2222", "asdasdasd", "132123123"),
+                    Application("3333", "asdasdasd", "132123123"),
+                    Application("444444", "asdasdasd", "132123123")
                 )
             )
         }

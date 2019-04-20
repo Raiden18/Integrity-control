@@ -15,7 +15,7 @@ import org.junit.Test
 
 internal class InfoInteractorCountOfDeletedAppsTest {
     lateinit var interactor: InfoInteractor
-    lateinit var gateway: ApplicationsGateway;
+    lateinit var gateway: ApplicationsGateway
 
     @Before
     fun setUp() {
@@ -41,7 +41,7 @@ internal class InfoInteractorCountOfDeletedAppsTest {
     fun `Should return one count of deleted apps`() = runBlocking {
         gateway.stub {
             onBlocking { getSavedApplications() }.doReturn(
-                listOf(Application("123", "123"))
+                listOf(Application("123", "123", "132123123"))
             )
             onBlocking { getAppsFromDevice() }.doReturn(
                 listOf()
@@ -56,10 +56,10 @@ internal class InfoInteractorCountOfDeletedAppsTest {
         gateway.stub {
             onBlocking { getSavedApplications() }.doReturn(
                 listOf(
-                    Application("123", "123"),
-                    Application("222", "123"),
-                    Application("11123", "123"),
-                    Application("2122", "123")
+                    Application("123", "123", "132123123"),
+                    Application("222", "123", "132123123"),
+                    Application("11123", "123", "132123123"),
+                    Application("2122", "123", "132123123")
                 )
             )
             onBlocking { getAppsFromDevice() }.doReturn(
@@ -75,19 +75,19 @@ internal class InfoInteractorCountOfDeletedAppsTest {
         gateway.stub {
             onBlocking { getSavedApplications() }.doReturn(
                 listOf(
-                    Application("123", "123"),
-                    Application("222", "123"),
-                    Application("11123", "123"),
-                    Application("2122", "123"),
-                    Application("aaaaa", "123")
+                    Application("123", "123", "132123123"),
+                    Application("222", "123", "132123123"),
+                    Application("11123", "123", "132123123"),
+                    Application("2122", "123", "132123123"),
+                    Application("aaaaa", "123", "132123123")
                 )
             )
             onBlocking { getAppsFromDevice() }.doReturn(
                 listOf(
-                    Application("asdasd", "123"),
-                    Application("asdsad", "123"),
-                    Application("zxczxc", "123"),
-                    Application("hhhhhh", "123")
+                    Application("asdasd", "123", "132123123"),
+                    Application("asdsad", "123", "132123123"),
+                    Application("zxczxc", "123", "132123123"),
+                    Application("hhhhhh", "123", "132123123")
                 )
             )
         }

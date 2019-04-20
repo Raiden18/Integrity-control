@@ -24,10 +24,10 @@ class ApplicationsInteractorImplTest {
         applicationsGateway.stub {
             onBlocking { getAppsFromDevice() }.thenReturn(
                 listOf(
-                    Application("123123", "123"),
-                    Application("xzc", "adscxz"),
-                    Application("qewfdsgbf", "ZXCxc"),
-                    Application("wadsczx", "qwewfas")
+                    Application("123123", "123", "132123123"),
+                    Application("xzc", "adscxz", "132123123"),
+                    Application("qewfdsgbf", "ZXCxc", "132123123"),
+                    Application("wadsczx", "qwewfas", "132123123")
                 )
             )
         }
@@ -39,10 +39,10 @@ class ApplicationsInteractorImplTest {
         applicationsGateway.stub {
             onBlocking { getSavedApplications() }.thenReturn(
                 listOf(
-                    Application("123123", "123"),
-                    Application("xzc", "adscxz"),
-                    Application("qewfdsgbf", "ZXCxc"),
-                    Application("wadsczx", "qwewfas")
+                    Application("123123", "123", "132123123"),
+                    Application("xzc", "adscxz", "132123123"),
+                    Application("qewfdsgbf", "ZXCxc", "132123123"),
+                    Application("wadsczx", "qwewfas", "132123123")
                 )
             )
         }

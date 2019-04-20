@@ -6,6 +6,7 @@ import android.content.pm.PackageManager
 import android.database.Cursor
 import android.provider.ContactsContract
 import androidx.core.content.ContextCompat
+import com.raiden.data.extensions.md5
 import com.raiden.domain.models.Contact
 
 
@@ -59,7 +60,8 @@ internal class DeviceContactsImpl(private val context: Context) : DeviceContacts
             phone = getPhoneNumber(pCur)
         }
         pCur.close()
-        val contact = Contact(id, name, phone)
+        val idMd5 = id.md5()
+        val contact = Contact(idMd5, name, phone)
         contacts.add(contact)
     }
 
