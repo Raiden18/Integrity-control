@@ -30,6 +30,8 @@ class ContactsViewModel(
                 if (savedContent.id == deviceContent.id) {
                     if (savedContent.currentName != deviceContent.currentName || savedContent.currentPhoneNumber != deviceContent.currentPhoneNumber) {
                         deviceContent.isUpdated = true
+                        deviceContent.oldName = savedContent.currentName
+                        deviceContent.oldPoneNumber = deviceContent.currentPhoneNumber
                         changesContent.add(deviceContent)
                     }
                 }

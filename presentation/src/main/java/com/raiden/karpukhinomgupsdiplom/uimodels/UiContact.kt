@@ -4,8 +4,8 @@ data class UiContact(
     val id: String,
     val currentName: String,
     val currentPhoneNumber: String,
-    val oldName: String = "",
-    val oldPoneNumber: String = ""
+    var oldName: String = "",
+    var oldPoneNumber: String = ""
 ) : UiContent {
     override val primaryKey = id
     override val nameContent = currentName

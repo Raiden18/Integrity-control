@@ -81,7 +81,16 @@
             android:id="@+id/contactsFragment"
             android:name="com.raiden.karpukhinomgupsdiplom.screens.content.contacts.ContactsFragment"
             android:label="@string/contacts_title"
-            />
+            >
+        <action
+                android:id="@+id/action_contactsFragment_to_singleContactFragment"
+                app:destination="@id/singleContactFragment"
+                app:enterAnim="@anim/nav_default_enter_anim"
+                app:exitAnim="@anim/nav_default_exit_anim"
+                app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+                app:popExitAnim="@anim/nav_default_pop_exit_anim"
+                />
+    </fragment>
     <fragment
             android:id="@+id/singleApplicationFragment"
             android:name="com.raiden.karpukhinomgupsdiplom.screens.singleapplication.SingleApplicationFragment"
@@ -89,6 +98,16 @@
         <argument
                 android:name="uiApplication"
                 app:argType="com.raiden.karpukhinomgupsdiplom.uimodels.UiApplication"
+                />
+    </fragment>
+    <fragment
+            android:id="@+id/singleContactFragment"
+            android:name="com.raiden.karpukhinomgupsdiplom.screens.singlecontact.SingleContactFragment"
+            android:label="@string/single_contact_saved_title"
+            >
+        <argument
+                android:name="uiContact"
+                app:argType="com.raiden.karpukhinomgupsdiplom.uimodels.UiContact"
                 />
     </fragment>
 </navigation>

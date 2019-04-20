@@ -17,4 +17,8 @@
     <string name="content_alert_message_contact_installed">Контакт добавлен</string>
     <string name="content_alert_message_contact_changed">Контакт изменен</string>
     <string name="content_alert_message_contact_deleted">Контакт удален</string>
+
+    <string name="single_content_name_delete">Удалено</string>
+    <string name="single_content_name_installed">Установлено</string>
+    <string name="single_content_name_updated">Обновлено</string>
 </resources>

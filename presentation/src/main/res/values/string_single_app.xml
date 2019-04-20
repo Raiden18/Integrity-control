@@ -6,10 +6,6 @@
     <string name="single_app_old_hash">Хэш до обновления:</string>
     <string name="single_app_action">Действие:</string>
 
-    <string name="single_app_name_delete">Удалено</string>
-    <string name="single_app_name_installed">Установлено</string>
-    <string name="single_app_name_updated">Обновлено</string>
-
     <string name="single_app_name_button_store">Google Play</string>
     <string name="single_app_name_button_options">настройках ОС</string>
     <string name="single_app_name_open_in">Открыть в</string>

@@ -1,6 +1,8 @@
 package com.raiden.karpukhinomgupsdiplom.uimodels
 
-interface UiContent {
+import java.io.Serializable
+
+interface UiContent : Serializable {
     val nameContent: String
     val primaryKey: String
     var isDeleted: Boolean

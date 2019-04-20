@@ -62,14 +62,14 @@ class SingleApplicationFragment : Fragment() {
     private fun calculateAction() {
         when {
             uiApplication.isInstalled -> {
-                setActionMessage(R.string.single_app_name_installed)
+                setActionMessage(R.string.single_content_name_installed)
                 hideOldHash()
             }
             uiApplication.isDeleted -> {
-                setActionMessage(R.string.single_app_name_delete)
+                setActionMessage(R.string.single_content_name_delete)
                 hideOldHash()
             }
-            uiApplication.isUpdated -> setActionMessage(R.string.single_app_name_updated)
+            uiApplication.isUpdated -> setActionMessage(R.string.single_content_name_updated)
         }
     }
 

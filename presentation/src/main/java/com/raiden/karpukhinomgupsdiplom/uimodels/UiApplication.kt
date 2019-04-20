@@ -1,13 +1,11 @@
 package com.raiden.karpukhinomgupsdiplom.uimodels
 
-import java.io.Serializable
-
 data class UiApplication(
     val name: String,
     val versionNameMd5: String,
     val packageName: String = "",
     var oldVersionNameMd5: String = ""
-) : UiContent, Serializable {
+) : UiContent {
     override val primaryKey = versionNameMd5
     override val nameContent = name
     override var isDeleted: Boolean = false

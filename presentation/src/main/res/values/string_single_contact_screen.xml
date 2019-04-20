@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="single_contact_current_name_label">Текущее имя контакта:</string>
+    <string name="single_contact_saved_name_label">Прошлое имя контакта:</string>
+
+    <string name="single_contact_current_number_label">Текущий номер:</string>
+    <string name="single_contact_saved_number_label">Прошлый номер:</string>
+
+    <string name="single_contact_saved_title">Контакт</string>
+
+    <string name="single_contact_action_title">Действие:</string>
+</resources>

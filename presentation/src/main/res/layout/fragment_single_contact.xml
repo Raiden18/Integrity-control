@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        >
+
+    <data>
+
+        <import type="android.view.View"/>
+
+        <variable
+                name="viewModel"
+                type="com.raiden.karpukhinomgupsdiplom.screens.singlecontact.SingleContactViewModel"
+                />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+        <TextView
+                android:id="@+id/single_contact_current_name_label"
+                android:text="@string/single_contact_current_name_label"
+                style="@style/SingleContactLabel"
+                android:layout_marginTop="8dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="8dp"
+                />
+
+        <TextView
+                android:id="@+id/single_contact_current_name"
+                android:text="@{viewModel.uiContact.currentName}"
+                tools:text="Батя"
+                android:textSize="24sp"
+                style="@style/LibleInfoTextStyleField"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="8dp"
+                app:layout_constraintTop_toBottomOf="@+id/single_contact_current_name_label"
+                />
+
+        <TextView
+                android:id="@+id/single_contact_current_phone_label"
+                android:text="@string/single_contact_current_number_label"
+                style="@style/SingleContactLabel"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintTop_toBottomOf="@+id/single_contact_current_name"
+                />
+
+        <TextView
+                android:id="@+id/single_contact_current_phone"
+                android:text="@{viewModel.uiContact.currentPhoneNumber}"
+                tools:text="+79501488228"
+                android:textSize="24sp"
+                style="@style/LibleInfoTextStyleField"
+                app:layout_constraintTop_toBottomOf="@+id/single_contact_current_phone_label"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="8dp"
+                />
+
+        <TextView
+                android:id="@+id/single_contact_changed_name_label"
+                android:text="@string/single_contact_saved_name_label"
+                style="@style/SingleContactLabel"
+                app:layout_constraintTop_toBottomOf="@+id/single_contact_current_phone"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="8dp"
+                />
+
+        <TextView
+                android:id="@+id/single_contact_changed_name"
+                android:text="@{viewModel.uiContact.oldName}"
+                tools:text="Батя"
+                android:textSize="24sp"
+                style="@style/LibleInfoTextStyleField"
+                app:layout_constraintTop_toBottomOf="@+id/single_contact_changed_name_label"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="8dp"
+                />
+
+        <TextView
+                android:id="@+id/single_contact_changed_number_label"
+                android:text="@string/single_contact_saved_number_label"
+                style="@style/SingleContactLabel"
+                android:layout_marginTop="8dp"
+                app:layout_constraintTop_toBottomOf="@+id/single_contact_changed_name"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="8dp"
+                />
+
+        <TextView
+                android:id="@+id/single_contact_changed_number"
+                android:text="@{viewModel.uiContact.oldPoneNumber}"
+                tools:text="+79501488228"
+                android:textSize="24sp"
+                style="@style/LibleInfoTextStyleField"
+                app:layout_constraintTop_toBottomOf="@+id/single_contact_changed_number_label"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="8dp"
+                />
+
+        <TextView
+                android:id="@+id/single_contact_action_label"
+                android:text="@string/single_contact_action_title"
+                style="@style/SingleContactLabel"
+                app:layout_constraintTop_toBottomOf="@+id/single_contact_changed_number"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="8dp"
+                />
+
+        <TextView
+                android:id="@+id/single_contact_action"
+                tools:text="Удалено"
+                android:textSize="24sp"
+                style="@style/LibleInfoTextStyleField"
+                app:layout_constraintTop_toBottomOf="@+id/single_contact_action_label"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="8dp"
+                />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
