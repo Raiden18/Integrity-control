@@ -68,6 +68,8 @@
     </style>
 
     <style name="ButtonStyle">
+        <item name="android:paddingEnd">4dp</item>
+        <item name="android:paddingStart">4dp</item>
         <item name="android:textColor">@android:color/white</item>
         <item name="android:background">@color/colorPrimary</item>
         <item name="android:foreground">?android:attr/selectableItemBackground</item>

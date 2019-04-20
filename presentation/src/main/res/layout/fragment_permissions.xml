@@ -7,7 +7,7 @@
 
         <variable
                 name="viewModel"
-                type="com.raiden.karpukhinomgupsdiplom.permissions.PermissionsViewModel"
+                type="com.raiden.karpukhinomgupsdiplom.screens.permissions.PermissionsViewModel"
                 />
     </data>
 

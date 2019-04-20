@@ -8,29 +8,41 @@
         >
     <fragment
             android:id="@+id/infoFragment"
-            android:name="com.raiden.karpukhinomgupsdiplom.info.InfoFragment"
+            android:name="com.raiden.karpukhinomgupsdiplom.screens.info.InfoFragment"
             android:label="@string/info_screen_label"
             tools:layout="@layout/fragment_info"
             >
         <action
                 android:id="@+id/action_infoFragment_to_applicationsFragment"
                 app:destination="@id/applicationsFragment"
+                app:exitAnim="@anim/nav_default_exit_anim"
+                app:enterAnim="@anim/nav_default_enter_anim"
+                app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+                app:popExitAnim="@anim/nav_default_pop_exit_anim"
                 />
 
         <action
                 android:id="@+id/action_infoFragment_to_filesFragment"
                 app:destination="@id/filesFragment"
+                app:enterAnim="@anim/nav_default_enter_anim"
+                app:exitAnim="@anim/nav_default_exit_anim"
+                app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+                app:popExitAnim="@anim/nav_default_pop_exit_anim"
                 />
 
         <action
                 android:id="@+id/action_infoFragment_to_contactsFragment"
                 app:destination="@id/contactsFragment"
+                app:enterAnim="@anim/nav_default_enter_anim"
+                app:exitAnim="@anim/nav_default_exit_anim"
+                app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+                app:popExitAnim="@anim/nav_default_pop_exit_anim"
                 />
     </fragment>
 
     <fragment
             android:id="@+id/permissionScreen"
-            android:name="com.raiden.karpukhinomgupsdiplom.permissions.PermissionsFragment"
+            android:name="com.raiden.karpukhinomgupsdiplom.screens.permissions.PermissionsFragment"
             android:label="@string/permission_screen_label"
             tools:layout="@layout/fragment_permissions"
             >
@@ -46,19 +58,33 @@
 
     <fragment
             android:id="@+id/applicationsFragment"
-            android:name="com.raiden.karpukhinomgupsdiplom.content.applications.ApplicationsFragment"
+            android:name="com.raiden.karpukhinomgupsdiplom.screens.content.applications.ApplicationsFragment"
             android:label="@string/apps_title"
-            />
+            >
+        <action
+                android:id="@+id/action_applicationsFragment_to_singleApplicationFragment"
+                app:destination="@id/singleApplicationFragment"
+                app:enterAnim="@anim/nav_default_enter_anim"
+                app:exitAnim="@anim/nav_default_exit_anim"
+                app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+                app:popExitAnim="@anim/nav_default_pop_exit_anim"
+                />
+    </fragment>
 
     <fragment
             android:id="@+id/filesFragment"
-            android:name="com.raiden.karpukhinomgupsdiplom.content.files.FilesFragment"
+            android:name="com.raiden.karpukhinomgupsdiplom.screens.content.files.FilesFragment"
             android:label="@string/files_title"
             />
 
     <fragment
             android:id="@+id/contactsFragment"
-            android:name="com.raiden.karpukhinomgupsdiplom.content.contacts.ContactsFragment"
+            android:name="com.raiden.karpukhinomgupsdiplom.screens.content.contacts.ContactsFragment"
             android:label="@string/contacts_title"
+            />
+    <fragment
+            android:id="@+id/singleApplicationFragment"
+            android:name="com.raiden.karpukhinomgupsdiplom.screens.singleapplication.SingleApplicationFragment"
+            android:label="SingleApplicationFragment"
             />
 </navigation>

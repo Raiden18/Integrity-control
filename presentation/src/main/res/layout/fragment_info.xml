@@ -11,11 +11,11 @@
 
         <variable
                 name="viewModel"
-                type="com.raiden.karpukhinomgupsdiplom.info.InfoViewModel"
+                type="com.raiden.karpukhinomgupsdiplom.screens.info.InfoViewModel"
                 />
     </data>
 
-    <com.raiden.karpukhinomgupsdiplom.common.Loader
+    <com.raiden.karpukhinomgupsdiplom.screens.common.Loader
             android:id="@+id/info_view_animator"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -276,5 +276,5 @@
                     android:layout_marginEnd="8dp"
                     />
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </com.raiden.karpukhinomgupsdiplom.common.Loader>
+    </com.raiden.karpukhinomgupsdiplom.screens.common.Loader>
 </layout>

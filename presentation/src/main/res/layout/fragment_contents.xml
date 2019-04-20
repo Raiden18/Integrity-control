@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.raiden.karpukhinomgupsdiplom.common.Loader
+<com.raiden.karpukhinomgupsdiplom.screens.common.Loader
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
@@ -64,4 +64,4 @@
                 app:layout_constraintTop_toBottomOf="@+id/content_lentach"
                 />
     </androidx.constraintlayout.widget.ConstraintLayout>
-</com.raiden.karpukhinomgupsdiplom.common.Loader>
+</com.raiden.karpukhinomgupsdiplom.screens.common.Loader>

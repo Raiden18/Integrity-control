@@ -8,7 +8,7 @@ internal fun ApplicationEntity.convertToDomainApplication(): Application {
 }
 
 internal fun Application.convertToEntityApplication(): ApplicationEntity {
-    return ApplicationEntity(name, versionName, packageName)
+    return ApplicationEntity(name, versionNameMd5, packageName)
 }
 
 internal fun Iterable<ApplicationEntity>.convertToDomainApps(): Iterable<Application> {
