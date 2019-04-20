@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Karpukhin Omgups Diplom</string>
+    <string name="app_name">Integrity Control</string>
     <string name="info_last_update_title">Последнее обновление:</string>
     <string name="info_count_updated_apps_title">Обновлено приложений:</string>
     <string name="info_count_deleted_apps_title">Удалено приложений:</string>
