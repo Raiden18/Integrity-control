@@ -10,6 +10,10 @@ class ContactsFragment : ContentFragment() {
 
     override val emptyContentMessageId = R.string.contacts_screen_no_updates
 
+    override val contentInstalled = R.string.content_alert_message_contact_installed
+    override val contentChanged = R.string.content_alert_message_contact_changed
+    override val contentDeleted = R.string.content_alert_message_contact_deleted
+
     override fun onItemClick(uiContent: UiContent) {
 
     }

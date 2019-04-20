@@ -3,4 +3,8 @@
     <color name="colorPrimary">#9c27b0</color>
     <color name="colorPrimaryDark">#6a0080</color>
     <color name="colorAccent">#d05ce3</color>
+    <color name="installed_content">#00FF00</color>
+    <color name="deleted_content">@android:color/holo_red_dark</color>
+    <color name="changed_content">#0000ff</color>
+    <color name="window_background_color">#e0000000</color>
 </resources>

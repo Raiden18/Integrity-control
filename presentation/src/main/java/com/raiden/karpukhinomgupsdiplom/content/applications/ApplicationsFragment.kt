@@ -10,6 +10,10 @@ class ApplicationsFragment : ContentFragment() {
 
     override val emptyContentMessageId = R.string.applications_screen_no_updates
 
+    override val contentInstalled = R.string.content_alert_message_app_installed
+    override val contentChanged = R.string.content_alert_message_app_updated
+    override val contentDeleted = R.string.content_alert_message_app_deleted
+
     override fun onItemClick(uiContent: UiContent) {
 
     }

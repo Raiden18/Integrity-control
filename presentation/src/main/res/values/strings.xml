@@ -3,5 +3,18 @@
     <string name="applications_screen_no_updates">Приложения не были изменены</string>
     <string name="files_screen_no_updates">Файлы не были изменены</string>
     <string name="contacts_screen_no_updates">Контакты не были изменены</string>
-    <string name="content_menu_help_message">Перезагрузить данные</string>
+    <string name="content_menu_help_message">Помощь</string>
+    <string name="content_menu_help_message_button">Хорошо</string>
+
+    <string name="content_alert_message_app_installed">Приложение установлено</string>
+    <string name="content_alert_message_app_updated">Приложение обновлено</string>
+    <string name="content_alert_message_app_deleted">Приложение удалено</string>
+
+    <string name="content_alert_message_file_installed">Файл добавлен</string>
+    <string name="content_alert_message_file_changed">Файл изменен</string>
+    <string name="content_alert_message_file_deleted">Файл удален</string>
+
+    <string name="content_alert_message_contact_installed">Контакт добавлен</string>
+    <string name="content_alert_message_contact_changed">Контакт изменен</string>
+    <string name="content_alert_message_contact_deleted">Контакт удален</string>
 </resources>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:background="@android:color/black"
+        android:background="@android:color/transparent"
+        >
+
+
+    <TextView
+            android:id="@+id/dialog_installed_color"
+            style="@style/ColorHint"
+            android:background="@color/installed_content"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/dialog_changed_color"
+            app:layout_constraintEnd_toStartOf="@+id/dialog_installed_message"
+            />
+
+    <TextView
+            android:id="@+id/dialog_changed_color"
+            style="@style/ColorHint"
+            android:background="@color/changed_content"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/dialog_changed_message"
+            />
+
+    <TextView
+            android:id="@+id/dialog_deleted_color"
+            style="@style/ColorHint"
+            android:background="@color/deleted_content"
+            app:layout_constraintTop_toBottomOf="@+id/dialog_changed_color"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="8dp"
+            app:layout_constraintEnd_toStartOf="@+id/dialog_deleted_message"
+            />
+
+    <TextView
+            android:id="@+id/dialog_installed_message"
+            style="@style/ColorMessage"
+            tools:text="asdasdasdasd"
+            app:layout_constraintTop_toTopOf="@+id/dialog_installed_color"
+            app:layout_constraintBottom_toBottomOf="@+id/dialog_installed_color"
+            app:layout_constraintStart_toStartOf="@+id/dialog_changed_message"
+            />
+
+    <TextView
+            android:id="@+id/dialog_changed_message"
+            style="@style/ColorMessage"
+            tools:text="zxczxc"
+            app:layout_constraintTop_toTopOf="@+id/dialog_changed_color"
+            app:layout_constraintBottom_toBottomOf="@+id/dialog_changed_color"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/dialog_changed_color"
+            />
+
+    <TextView
+            android:id="@+id/dialog_deleted_message"
+            style="@style/ColorMessage"
+            tools:text="zxczxc"
+            app:layout_constraintTop_toTopOf="@+id/dialog_deleted_color"
+            app:layout_constraintBottom_toBottomOf="@+id/dialog_deleted_color"
+            app:layout_constraintStart_toStartOf="@+id/dialog_changed_message"
+            />
+
+    <TextView
+            android:id="@+id/dialog_alert_error_ok"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:lineHeight="24sp"
+            android:text="@string/content_menu_help_message_button"
+            android:textAllCaps="true"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@+id/dialog_deleted_message"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="@+id/dialog_changed_message"
+            android:layout_marginEnd="8dp"
+            />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,6 +2,7 @@ package com.raiden.karpukhinomgupsdiplom.content.common
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.StringRes
@@ -15,11 +16,34 @@ import kotlinx.android.synthetic.main.fragment_contents.*
 import kotlinx.android.synthetic.main.fragment_contents.view.*
 
 abstract class ContentFragment : Fragment() {
+    companion object {
+        private const val HELP_KEY = "com.raiden.karpukhinomgupsdiplom.content.common.helpmessage"
+    }
     protected abstract val viewModel: ContentViewModel
     @get:StringRes
     protected abstract val emptyContentMessageId: Int
+    @get:StringRes
+    protected abstract val contentInstalled: Int
+    @get:StringRes
+    protected abstract val contentChanged: Int
+    @get:StringRes
+    protected abstract val contentDeleted: Int
+
+
+    protected val colorMessageAlert: ColorInformationAlert by lazy {
+        ColorInformationAlert().apply {
+            contentInstalledMessage = contentInstalled
+            contentChangeddMessage = contentChanged
+            contentDeletedMessage = contentDeleted
+        }
+    }
     private val adapter: ContentAdapter by lazy {
         ContentAdapter(this::onItemClick)
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
@@ -77,12 +101,21 @@ abstract class ContentFragment : Fragment() {
     private fun showNoContentMessage() {
         content_lentach.visibility = View.VISIBLE
         content_empty_message.visibility = View.VISIBLE
-        R.string.applications_screen_no_updates
         content_empty_message.text = getString(emptyContentMessageId)
     }
 
     private fun hideNoContentMessage() {
         content_lentach.visibility = View.GONE
         content_empty_message.visibility = View.GONE
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.action_info_color -> {
+                colorMessageAlert.show(requireActivity().supportFragmentManager, HELP_KEY)
+                return true
+            }
+        }
+        return false
     }
 }
