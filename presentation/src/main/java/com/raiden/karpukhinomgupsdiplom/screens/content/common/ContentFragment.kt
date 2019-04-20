@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.raiden.karpukhinomgupsdiplom.R
 import com.raiden.karpukhinomgupsdiplom.screens.content.common.adapter.ContentAdapter
@@ -56,9 +57,11 @@ abstract class ContentFragment : Fragment() {
     private fun initRecycler(fragment: View) {
         val recyclerView = fragment.applications_recycler_view
         val linearLayoutManager = LinearLayoutManager(context)
+        val itemDecorator = DividerItemDecoration(context, linearLayoutManager.orientation)
         recyclerView.apply {
             layoutManager = linearLayoutManager
             adapter = this@ContentFragment.adapter
+            addItemDecoration(itemDecorator)
         }
     }
 
