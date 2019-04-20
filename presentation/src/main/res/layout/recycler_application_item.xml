@@ -11,6 +11,8 @@
             android:id="@+id/recycler_application_item"
             style="@style/Content_item"
             tools:text="123123"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
             />
 
     <View
