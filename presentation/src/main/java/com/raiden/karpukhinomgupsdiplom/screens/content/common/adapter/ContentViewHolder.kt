@@ -5,7 +5,7 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.raiden.karpukhinomgupsdiplom.R
 import com.raiden.karpukhinomgupsdiplom.uimodels.UiContent
-import kotlinx.android.synthetic.main.recycler_application_item.view.*
+import kotlinx.android.synthetic.main.recycler_content_item.view.*
 
 class ContentViewHolder(
     viewItem: View,

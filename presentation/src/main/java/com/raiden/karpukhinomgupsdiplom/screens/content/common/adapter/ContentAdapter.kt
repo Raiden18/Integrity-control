@@ -13,7 +13,7 @@ class ContentAdapter(private val onApplicationClick: OnContentClick) :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ContentViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        val itemView = inflater.inflate(R.layout.recycler_application_item, parent, false)
+        val itemView = inflater.inflate(R.layout.recycler_content_item, parent, false)
         return ContentViewHolder(itemView, onApplicationClick)
     }
 
