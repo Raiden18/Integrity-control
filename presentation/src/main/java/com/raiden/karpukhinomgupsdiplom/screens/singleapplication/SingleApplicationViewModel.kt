@@ -13,4 +13,5 @@ class SingleApplicationViewModel : ViewModel() {
             "asdasd"
         )
     }
+    lateinit var uiApplication: UiApplication
 }

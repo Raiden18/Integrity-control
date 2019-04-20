@@ -4,6 +4,7 @@ import androidx.navigation.fragment.NavHostFragment
 import com.raiden.karpukhinomgupsdiplom.R
 import com.raiden.karpukhinomgupsdiplom.screens.content.applications.ApplicationsFragmentDirections.Companion.actionApplicationsFragmentToSingleApplicationFragment
 import com.raiden.karpukhinomgupsdiplom.screens.content.common.ContentFragment
+import com.raiden.karpukhinomgupsdiplom.uimodels.UiApplication
 import com.raiden.karpukhinomgupsdiplom.uimodels.UiContent
 import org.koin.android.ext.android.inject
 
@@ -17,7 +18,8 @@ class ApplicationsFragment : ContentFragment() {
     override val contentDeleted = R.string.content_alert_message_app_deleted
 
     override fun onItemClick(uiContent: UiContent) {
-        val singleAppDirection = actionApplicationsFragmentToSingleApplicationFragment()
+        uiContent as UiApplication
+        val singleAppDirection = actionApplicationsFragmentToSingleApplicationFragment(uiContent)
         NavHostFragment.findNavController(this).navigate(singleAppDirection)
     }
 }

@@ -81,7 +81,7 @@
 
         <TextView
                 android:id="@+id/single_app_name_package"
-                android:text="asdasd"
+                android:text="@{viewModel.uiApplication.packageName}"
                 tools:text="com.raiden.thesiswork"
                 style="@style/LibleInfoTextStyleField"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -103,7 +103,7 @@
 
         <TextView
                 android:id="@+id/single_app_current_hash"
-                android:text="asdasd"
+                android:text="@{viewModel.uiApplication.currentVersionNameMd5}"
                 style="@style/LibleInfoTextStyleField"
                 android:layout_width="120dp"
                 tools:text="1111111111111111111111111111"
@@ -128,7 +128,7 @@
 
         <TextView
                 android:id="@+id/single_app_old_hash"
-                android:text="asdasd"
+                android:text="@{viewModel.uiApplication.currentVersionNameMd5}"
                 style="@style/LibleInfoTextStyleField"
                 android:layout_width="120dp"
                 tools:text="1111111111111111111111111111"
@@ -153,7 +153,7 @@
 
         <TextView
                 android:id="@+id/single_app_action"
-                android:text="asd"
+                android:text="НИНАЮ"
                 style="@style/LibleInfoTextStyleField"
                 android:layout_width="wrap_content"
                 tools:text="Удалено"

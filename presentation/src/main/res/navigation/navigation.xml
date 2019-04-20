@@ -86,5 +86,10 @@
             android:id="@+id/singleApplicationFragment"
             android:name="com.raiden.karpukhinomgupsdiplom.screens.singleapplication.SingleApplicationFragment"
             android:label="SingleApplicationFragment"
-            />
+            >
+        <argument
+                android:name="uiApplication"
+                app:argType="com.raiden.karpukhinomgupsdiplom.uimodels.UiApplication"
+                />
+    </fragment>
 </navigation>
