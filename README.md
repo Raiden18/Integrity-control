@@ -44,9 +44,9 @@ JUnit is a simple framework to write repeatable tests. It is an instance of the 
 Tasty mocking framework for unit tests in Java
 * [JunitParams](https://github.com/Pragmatists/JUnitParams)
 Parameterised tests that don't suck
-* [Mockito-Kotlin] (https://github.com/nhaarman/mockito-kotlin)
+* [Mockito-Kotlin](https://github.com/nhaarman/mockito-kotlin)
 A small library that provides helper functions to work with Mockito in Kotlin.
-* [MockK] (https://mockk.io/)
+* [MockK](https://mockk.io/)
 Tasty mocking framework for unit tests in Kotlin
 ### View
 
