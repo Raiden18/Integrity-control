@@ -31,7 +31,8 @@ A set of Kotlin extensions for Android app development.
 ### Architecture and Design
 
 * [Android Architecture Components](https://developer.android.com/topic/libraries/architecture/index.html)
-A collection of libraries that help you design robust, testable, and maintainable apps.
+A collection of libraries that help you design robust, testable, and maintainable apps. 
+I used  the Navigation Component,  the ViewModel,  the Room, the LiveData
 Start with classes for managing your UI component lifecycle and handling data persistence.
 * [Koin]( https://insert-koin.io)
 A pragmatic lightweight dependency injection framework for Kotlin developers.
