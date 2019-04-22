@@ -21,4 +21,8 @@
     <string name="single_content_name_delete">Удалено</string>
     <string name="single_content_name_installed">Установлено</string>
     <string name="single_content_name_updated">Обновлено</string>
+
+    <string name="single_contact_file_changed">Изменен</string>
+    <string name="single_contact_file_added">Добавлен</string>
+    <string name="single_contact_file_deleted">Удален</string>
 </resources>

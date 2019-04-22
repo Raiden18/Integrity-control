@@ -15,7 +15,7 @@ import org.junit.Test
 
 internal class InfoInteractorCountOfAddedFiles {
     lateinit var interactor: InfoInteractor
-    lateinit var filesGateway: FilesGateway;
+    lateinit var filesGateway: FilesGateway
 
     @Before
     fun setUp() {
@@ -44,7 +44,7 @@ internal class InfoInteractorCountOfAddedFiles {
                 InternalFile("Я")
             ))
             onBlocking { getFilesFromDevice() }.doReturn(listOf(
-                InternalFile("Мой хуй в профиль")
+                InternalFile("Мой 222 в профиль")
             ))
         }
         val countOfAddedFiles = interactor.getCountOfAddedFiles()
@@ -59,16 +59,16 @@ internal class InfoInteractorCountOfAddedFiles {
                 InternalFile("123213aaaa"),
                 InternalFile("zzxcc"),
                 InternalFile("zxczxc"),
-                InternalFile("Мой хуй в wwwww"),
+                InternalFile("Мой asd в wwwww"),
                 InternalFile("Мой xxxx в профиль")
             ))
             onBlocking { getFilesFromDevice() }.doReturn(listOf(
-                InternalFile("11223 хуй в профиль"),
-                InternalFile("Мой хуй в профиль"),
-                InternalFile("Мой хуй в wwwww"),
+                InternalFile("11223 333 в профиль"),
+                InternalFile("Мой ascxz в профиль"),
+                InternalFile("Мой zzz в wwwww"),
                 InternalFile("Мой 3221` в профиль"),
-                InternalFile("Мой хуй в 234"),
-                InternalFile("М11233ой хуй в профиль")
+                InternalFile("Мой asdd в 234"),
+                InternalFile("М11233ой zxc в профиль")
             ))
         }
         val countOfAddedFiles = interactor.getCountOfAddedFiles()
@@ -82,14 +82,14 @@ internal class InfoInteractorCountOfAddedFiles {
                 InternalFile("123213aaaa"),
                 InternalFile("zzxcc"),
                 InternalFile("zxczxc"),
-                InternalFile("Мой хуй в wwwww"),
+                InternalFile("Мой 222 в wwwww"),
                 InternalFile("Мой xxxx в профиль")
             ))
             onBlocking { getFilesFromDevice() }.doReturn(listOf(InternalFile("123123"),
                 InternalFile("123213aaaa"),
                 InternalFile("zzxcc"),
                 InternalFile("zxczxc"),
-                InternalFile("Мой хуй в wwwww"),
+                InternalFile("Мой 122 в wwwww"),
                 InternalFile("Мой xxxx в профиль")))
         }
         val countOfAddedFiles = interactor.getCountOfAddedFiles()

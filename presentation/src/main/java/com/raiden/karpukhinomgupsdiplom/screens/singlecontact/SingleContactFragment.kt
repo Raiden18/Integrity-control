@@ -49,9 +49,9 @@ class SingleContactFragment : Fragment() {
 
     private fun chooseAction() {
         when {
-            uiContact.isDeleted -> setActionMessage(R.string.single_content_name_delete)
-            uiContact.isInstalled -> setActionMessage(R.string.single_content_name_installed)
-            uiContact.isUpdated -> setActionMessage(R.string.single_content_name_updated)
+            uiContact.isDeleted -> setActionMessage(R.string.single_contact_file_deleted)
+            uiContact.isInstalled -> setActionMessage(R.string.single_contact_file_added)
+            uiContact.isUpdated -> setActionMessage(R.string.single_contact_file_changed)
         }
     }
 

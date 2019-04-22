@@ -6,7 +6,7 @@ data class UiApplication(
     val packageName: String = "",
     var oldVersionNameMd5: String = ""
 ) : UiContent {
-    override val primaryKey = versionNameMd5
+    override val primaryKey = packageName
     override val nameContent = name
     override var isDeleted: Boolean = false
     override var isInstalled: Boolean = false
