@@ -66,7 +66,7 @@ A new way of managing background threads that can simplify code by reducing the 
 The Room persistence library provides an abstraction layer over SQLite to allow fluent database access while harnessing the full power of SQLite.
 
 ## P.S.
-There are bad ways to use unit testing in this project. It's first project where I tried the TDD. I need more practise with a unit testing in a term of android development.
+There are bad ways to use unit testing in this project. It's first project where I tried the TDD. I need more practise with a unit testing in terms of android development.
 
 
 ## License
