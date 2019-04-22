@@ -16,8 +16,10 @@ internal class DeviceApplicationsImpl(private val packageManager: PackageManager
     override fun getApplications(): Iterable<Application> {
         devicesApps.clear()
         val packageInfos = packageManager.getInstalledPackages(ALL_APPS)
-        packageInfos.forEach {
-            convertToDomainAndAddToAppsList(it)
+        packageInfos.forEach { packageInfo ->
+            packageInfo.versionName?.let {
+                convertToDomainAndAddToAppsList(packageInfo)
+            }
         }
         //I just don't want explain to teachers and commission of diploma why there are apps with the same titles in my device
         return devicesApps.distinctBy { it.packageName }.distinctBy { it.name }
