@@ -17,9 +17,13 @@ internal class GetCountOfDeletedApps(private val gateway: ApplicationsGateway) {
 
     private fun countOfDeletedApps(savedApps: Iterable<Application>, appsFromDevice: Iterable<Application>) {
         savedApps.forEach { savedApp ->
-            if (!appsFromDevice.contains(savedApp)) {
+            if (!appsFromDevice.isContain(savedApp)) {
                 countOfDeletedApps++
             }
         }
+    }
+
+    private fun Iterable<Application>.isContain(application: Application): Boolean {
+        return find { it.packageName == application.packageName } != null
     }
 }

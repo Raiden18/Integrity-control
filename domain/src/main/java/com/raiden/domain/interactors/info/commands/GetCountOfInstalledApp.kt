@@ -24,6 +24,6 @@ internal class GetCountOfInstalledApp(private val gateway: ApplicationsGateway) 
     }
 
     private fun Iterable<Application>.isUninstall(app: Application): Boolean {
-        return find { it.name == app.name } != null
+        return find { it.packageName == app.packageName } != null
     }
 }

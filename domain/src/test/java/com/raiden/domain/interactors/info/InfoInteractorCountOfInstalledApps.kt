@@ -61,17 +61,17 @@ internal class InfoInteractorCountOfInstalledApps {
         gateway.stub {
             onBlocking { getSavedApplications() }.doReturn(
                 listOf(
-                    Application("asdsad", "asdasdasd", "132123123"),
-                    Application("asdasd", "asdasdasd", "132123123"),
-                    Application("zxczxc", "asdasdasd", "132123123"),
+                    Application("asdsad", "asdasdasd", "asd"),
+                    Application("asdasd", "asdasdasd", "dasd"),
+                    Application("zxczxc", "asdasdasd", "sdg"),
                     Application("444444", "asdasdasd", "132123123")
                 )
             )
             onBlocking { getAppsFromDevice() }.doReturn(
                 listOf(
-                    Application("123213", "asdasdasd", "132123123"),
-                    Application("2222", "asdasdasd", "132123123"),
-                    Application("3333", "asdasdasd", "132123123"),
+                    Application("123213", "asdasdasd", "aa"),
+                    Application("2222", "asdasdasd", "ss"),
+                    Application("3333", "asdasdasd", "dd"),
                     Application("444444", "asdasdasd", "132123123")
                 )
             )

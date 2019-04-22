@@ -22,7 +22,7 @@ internal class DeviceApplicationsImpl(private val packageManager: PackageManager
             }
         }
         //I just don't want explain to teachers and commission of diploma why there are apps with the same titles in my device
-        return devicesApps.distinctBy { it.packageName }.distinctBy { it.name }
+        return devicesApps.distinctBy { it.name }
     }
 
     private fun convertToDomainAndAddToAppsList(packageInfo: PackageInfo) {
