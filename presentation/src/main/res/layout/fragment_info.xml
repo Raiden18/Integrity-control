@@ -144,27 +144,6 @@
                         />
 
                 <TextView
-                        android:id="@+id/info_count_changed_files_title"
-                        style="@style/LibleInfoTextStyleTitle"
-                        android:text="@string/info_count_changed_files_title"
-                        app:layout_constraintBottom_toBottomOf="@+id/info_count_changed_files"
-                        app:layout_constraintTop_toTopOf="@+id/info_count_changed_files"
-                        app:layout_constraintStart_toStartOf="parent"
-                        android:layout_marginStart="8dp"
-                        />
-
-                <TextView
-                        android:id="@+id/info_count_changed_files"
-                        style="@style/LibleInfoTextStyleField"
-                        android:text="@{viewModel.countChangedFiles}"
-                        tools:text="228"
-                        android:layout_marginTop="8dp"
-                        app:layout_constraintTop_toBottomOf="@+id/info_count_upload_apps"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        android:layout_marginEnd="8dp"
-                        />
-
-                <TextView
                         android:id="@+id/info_count_added_files_title"
                         style="@style/LibleInfoTextStyleTitle"
                         android:text="@string/info_count_added_files_title"
@@ -181,7 +160,7 @@
                         android:text="@{viewModel.countAddedFiles}"
                         tools:text="228"
                         android:layout_marginTop="8dp"
-                        app:layout_constraintTop_toBottomOf="@+id/info_count_changed_files"
+                        app:layout_constraintTop_toBottomOf="@+id/info_count_upload_apps"
                         app:layout_constraintEnd_toEndOf="parent"
                         android:layout_marginEnd="8dp"
                         />

@@ -9,4 +9,5 @@
     <string name="single_contact_saved_title">Контакт</string>
 
     <string name="single_contact_action_title">Действие:</string>
+    <string name="single_contact_id_hash_title">Хэш:</string>
 </resources>
