@@ -67,7 +67,7 @@ The Room persistence library provides an abstraction layer over SQLite to allow 
 
 ## P.S.
 There are bad ways to use unit testing in this project. It's first project where I tried the TDD. I need more practise with a unit testing in terms of android development.
-Eventualy I realize the architecture still isn't perfect an clean enough 
+Eventualy I realized the architecture still isn't perfect and clean enough 
  
 
 ## License
